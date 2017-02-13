@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.R.layout.simple_list_item_1;
-import static edu.byui_cs.jmsplmr.a06team.R.id.listView;
-import static edu.byui_cs.jmsplmr.a06team.R.layout.activity_main;
+import static com.byui_cs.jjmn.ponderize.R.id.listView;
+import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
 
 public class MainActivity extends AppCompatActivity {
 
