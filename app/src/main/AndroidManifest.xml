@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".ScriptureViewActivity">
         </activity>
+        <activity android:name=".MemorizeQuizActivity">
+        </activity>
     </application>
 
 </manifest>
