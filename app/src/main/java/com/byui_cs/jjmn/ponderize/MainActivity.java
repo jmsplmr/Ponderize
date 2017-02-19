@@ -15,5 +15,5 @@ public class MainActivity extends AppCompatActivity {
     Log.v(getClass().getSimpleName(), "Create file");
     super.onCreate(savedInstanceState);
     setContentView(activity_main);
-
+  }
 }
