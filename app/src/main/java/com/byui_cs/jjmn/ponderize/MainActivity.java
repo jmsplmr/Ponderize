@@ -12,7 +12,7 @@ import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
 public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    Log.v(getClass().getSimpleName(), "Create file");
+    Log.v(getClass().getSimpleName(), "Create main activity.");
     super.onCreate(savedInstanceState);
     setContentView(activity_main);
   }
