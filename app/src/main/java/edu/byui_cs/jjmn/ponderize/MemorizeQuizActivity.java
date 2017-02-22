@@ -1,4 +1,4 @@
-package com.byui_cs.jjmn.ponderize;
+package edu.byui_cs.jjmn.ponderize;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
