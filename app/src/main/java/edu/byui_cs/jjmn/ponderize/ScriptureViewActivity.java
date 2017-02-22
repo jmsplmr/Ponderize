@@ -1,4 +1,4 @@
-package com.byui_cs.jjmn.ponderize;
+package edu.byui_cs.jjmn.ponderize;
 
 import android.os.Bundle;
 import android.view.Menu;
