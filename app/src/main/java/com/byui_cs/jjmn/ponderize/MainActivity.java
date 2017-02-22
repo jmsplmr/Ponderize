@@ -1,7 +1,7 @@
 package com.byui_cs.jjmn.ponderize;
 
 /**
- * Created by James Palmer on 11-Feb-17. Nick is Hello
+ * Created by James Palmer on 11-Feb-17.
  */
 
 import android.os.Bundle;
