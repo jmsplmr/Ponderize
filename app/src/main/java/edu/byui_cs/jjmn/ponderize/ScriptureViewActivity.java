@@ -24,5 +24,9 @@ public class ScriptureViewActivity extends AppActivity {
     return super.onOptionsItemSelected(item);
   }
 
+  public void testScriptureStorage() {
+
+  }
+
 
 }
