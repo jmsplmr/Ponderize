@@ -1,4 +1,4 @@
-package com.byui_cs.jjmn.ponderize;
+package edu.byui_cs.jjmn.ponderize;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;

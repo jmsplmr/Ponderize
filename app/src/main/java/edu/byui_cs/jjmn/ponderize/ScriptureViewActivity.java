@@ -1,8 +1,10 @@
-package com.byui_cs.jjmn.ponderize;
+package edu.byui_cs.jjmn.ponderize;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.byui_cs.jjmn.ponderize.R;
 
 public class ScriptureViewActivity extends AppActivity {
 
