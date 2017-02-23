@@ -29,6 +29,9 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
 
+        //For Json conversion.
+        compile 'com.google.code.gson:gson:2.3.1'
+
         //Required JUnit 4 framework
         testCompile 'junit:junit:4.12'
         //optional mockito framework
