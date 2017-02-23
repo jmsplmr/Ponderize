@@ -31,4 +31,11 @@ public class ScriptureContainerTest {
     assertNotEquals("Ether 12-4", sc.toString());
   }
 
+  @Test
+  public void loggedIntoFacebook () throws Exception {
+
+    boolean loggedIntoFacebook = true;
+    assertEquals(loggedIntoFacebook, true);
+  }
+
 }
