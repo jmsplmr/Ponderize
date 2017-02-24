@@ -14,7 +14,7 @@ import java.io.IOException;
  * Created by Michael on 2/23/17.
  */
 
-public class scriptureSaver {
+public class ScriptureSaver {
 
     //Turns a scripture to JSON and then uses sharedPreferences to save it for later.
     public void saveScripture(ScriptureContainer scripture, File aFile) {

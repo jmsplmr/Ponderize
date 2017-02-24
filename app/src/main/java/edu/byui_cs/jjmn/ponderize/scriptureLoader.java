@@ -11,7 +11,7 @@ import java.io.FileInputStream;
  * Created by Michael on 2/23/17.
  */
 
-public class scriptureLoader {
+public class ScriptureLoader {
 
     public ScriptureContainer loadScripture(File aFile) {
 
