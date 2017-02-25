@@ -19,13 +19,13 @@ public class ScriptureViewActivity extends AppActivity {
     TabHost host = (TabHost)findViewById(R.id.tabHostScript);
     host.setup();
 
-    //Progressing Tab
+    //Scripture Tab
     TabHost.TabSpec spec = host.newTabSpec("Scripture");
     spec.setContent(R.id.Scripture);
     spec.setIndicator("Scripture");
     host.addTab(spec);
 
-    //Memorized Tab
+    //Notes Tab
     spec = host.newTabSpec("Notes");
     spec.setContent(R.id.Notes);
     spec.setIndicator("Notes");
