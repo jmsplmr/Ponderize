@@ -12,20 +12,38 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import java.util.ArrayList;
+import android.widget.TabHost;
+
 import edu.byui_cs.jjmn.ponderize.ScriptureAdapter;
 import edu.byui_cs.jjmn.ponderize.ScriptureContainer;
 import edu.byui_cs.jjmn.ponderize.ScriptureViewActivity;
-
 import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
 
 public class MainActivity extends AppCompatActivity {
 
+  TabHost tabHost;
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.v(getClass().getSimpleName(), "Create main activity.");
         super.onCreate(savedInstanceState);
         setContentView(activity_main);
 
+        TabHost host = (TabHost)findViewById(R.id.tabHostMain);
+        host.setup();
+
+        //Progressing Tab
+        TabHost.TabSpec spec = host.newTabSpec("Progressing");
+        spec.setContent(R.id.Progressing);
+        spec.setIndicator("Progressing");
+        host.addTab(spec);
+
+        //Memorized Tab
+        spec = host.newTabSpec("Memorized");
+        spec.setContent(R.id.Memorized);
+        spec.setIndicator("Memorized");
+        host.addTab(spec);
+      
         //###########################################
         //******* JOE TEST CODE DO NOT DELETE *******
         //###########################################
@@ -63,4 +81,17 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ScriptureViewActivity.class);
         startActivity(intent);
     }
+
+  //For navigation testing buttons
+  public void onScriptureBtnClick(View v) {
+    Intent i = new Intent(this, ScriptureViewActivity.class);
+    startActivity(i);
+  }
+
+  public void onQuizBtnClick(View v) {
+    Intent i = new Intent(this, MemorizeQuizActivity.class);
+    startActivity(i);
+  }
+
+
 }
