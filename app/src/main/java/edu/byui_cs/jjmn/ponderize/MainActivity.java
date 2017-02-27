@@ -50,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
         //###########################################
 
         // init array
-        ArrayList<ScriptureContainer> sc = new ArrayList<>();
+        ArrayList<ScriptureContainer> omniList = new ArrayList<>();
+        ArrayList<ScriptureContainer> memList = new ArrayList<>();
+        ArrayList<ScriptureContainer> proList = new ArrayList<>();
 
         // init scriptures
         ScriptureContainer a = new ScriptureContainer("Mark", 4, 5);
@@ -58,21 +60,37 @@ public class MainActivity extends AppCompatActivity {
         ScriptureContainer c = new ScriptureContainer("Hockey", 6, 7);
         ScriptureContainer d = new ScriptureContainer("Falron", 7, 3);
 
+
+        a.setCompleted();
+        b.setCompleted();
+
         // add scriptures to array
-        sc.add(0, a);
-        sc.add(1, b);
-        sc.add(2, c);
-        sc.add(3, d);
+        omniList.add(0, a);
+        omniList.add(1, b);
+        omniList.add(2, c);
+        omniList.add(3, d);
+
+        //look at scriptures, determine if completed or not
+        for(ScriptureContainer sc: omniList) {
+            if (sc.getCompleted()) {
+                memList.add(sc);
+            }
+            else {
+                proList.add(sc);
+            }
+        }
 
         // grab list view reference
-        ListView listView = (ListView) findViewById(R.id.listView);
+        ListView memView = (ListView) findViewById(R.id.memorizedScripts);
+        ListView proView = (ListView) findViewById(R.id.progressingScripts);
 
         // create new scripture adapter
-        ScriptureAdapter itemsAdapter = new ScriptureAdapter(this, sc);
+        ScriptureAdapter memAdapter = new ScriptureAdapter(this, memList);
+        ScriptureAdapter proAdapter = new ScriptureAdapter(this, proList);
 
         // set list views adapter to new scripture adapter
-        listView.setAdapter(itemsAdapter);
-
+        memView.setAdapter(memAdapter);
+        proView.setAdapter(proAdapter);
         //###########################################
         //******* JOE TEST CODE DO NOT DELETE *******
         //###########################################
