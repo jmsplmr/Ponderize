@@ -14,11 +14,10 @@ import java.io.IOException;
  * Created by Michael on 2/23/17.
  */
 
-public class ScriptureSaver {
+public class scriptureSaver {
 
     //Turns a scripture to JSON and then uses sharedPreferences to save it for later.
     public void saveScripture(ScriptureContainer scripture, File aFile) {
-
 
         try {
             //Create a print writer to write Json to file.
