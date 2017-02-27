@@ -14,6 +14,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import android.widget.TabHost;
 
+import edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity;
 import edu.byui_cs.jjmn.ponderize.ScriptureAdapter;
 import edu.byui_cs.jjmn.ponderize.ScriptureContainer;
 import edu.byui_cs.jjmn.ponderize.ScriptureViewActivity;
