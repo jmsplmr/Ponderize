@@ -1,11 +1,15 @@
 package edu.byui_cs.jjmn.ponderize;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Michael on 2/25/17.
@@ -13,11 +17,13 @@ import java.io.IOException;
 
 public class ScriptureStorage {
 
-    //TODO: add scripture storage and saver.
-    //TODO: add a load all scriptures function.
-    //TODO: add a funtion that get file directory and turns scriptures names into files to read the files in.
 
-    //Turns a scripture to JSON and then uses sharedPreferences to save it for later.
+    /***************************************
+     * saveScripture
+     * @param scripture
+     * @param aFile
+     * Saves 1 scripture to 1 file.
+     **************************************/
     public void saveScripture(ScriptureContainer scripture, File aFile) {
 
         try {
@@ -42,7 +48,13 @@ public class ScriptureStorage {
     }
 
 
-    //Loads the scripture from a file.
+    /****************************************
+     * loadScriptures
+     * @param aFile
+     * @return Scripture Container
+     * Returns 1 scriptures from a file with
+     * only one scripture in it.
+     ****************************************/
     public ScriptureContainer loadScripture(File aFile) {
 
         ScriptureContainer scripture = new ScriptureContainer("",0,0);
@@ -68,4 +80,59 @@ public class ScriptureStorage {
         return scripture;
 
     }
+
+
+    /*************************************************
+     * saveAllScriptures.
+     * @param scriptList
+     * @param saveFile
+     * saves all the scriptues in a List.
+     *************************************************/
+    public void saveAllScriptures(List<ScriptureContainer> scriptList, File saveFile) {
+
+        //Create Gson object and convert list to string.
+        Gson gson = new Gson();
+        String jsonList = gson.toJson(scriptList);
+
+        //Save list to saveFile.
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(saveFile);
+            writer.write(jsonList);
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return;
+    }
+
+    /***********************************************
+     * loadAllScriptures.
+     * @param loadFile
+     * @return returns a list if it worked and empty
+     * other wise.
+     ************************************************/
+    public List<ScriptureContainer> loadAllScriptures(File loadFile) {
+        Gson gson = new Gson();
+
+        try {
+            //Read all the files into a byte array.
+            FileInputStream input = new FileInputStream(loadFile);
+            byte [] fileContent = new byte[(int)loadFile.length()];
+            input.read(fileContent);
+
+            //Convert byte array to string then back into an array list.
+            String json = new String(fileContent);
+            Type listType = new TypeToken<ArrayList<ScriptureContainer>>(){}.getType();
+            ArrayList<ScriptureContainer> loadList = gson.fromJson(json, listType);
+            return loadList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //Return an empty array if file reader failed.
+        return new ArrayList<ScriptureContainer>();
+    }
+
 }
