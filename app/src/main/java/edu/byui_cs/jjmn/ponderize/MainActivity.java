@@ -5,31 +5,23 @@ package com.byui_cs.jjmn.ponderize;
  * TODO ALOT
  */
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.byui_cs.jjmn.ponderize.ScriptureAdapter;
 import edu.byui_cs.jjmn.ponderize.ScriptureContainer;
-import edu.byui_cs.jjmn.ponderize.ScriptureViewActivity;
-import edu.byui_cs.jjmn.ponderize.scriptureLoader;
-import edu.byui_cs.jjmn.ponderize.scriptureSaver;
+import edu.byui_cs.jjmn.ponderize.ScriptureStorage;
 
 import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
 
@@ -81,35 +73,17 @@ public class MainActivity extends AppCompatActivity {
         scriptureList.add(s3);
         scriptureList.add(s4);
 
-        Gson gson = new Gson();
-        String jsonList = gson.toJson(scriptureList);
+
+
 
         File aFile = new File(this.getFilesDir(), "test.txt");
-        FileWriter writer = null;
-
-        try {
-            writer = new FileWriter(aFile);
-            writer.write(jsonList);
-            System.out.println("Wrote to file.");
-            writer.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        new ScriptureStorage().saveAllScriptures(scriptureList, aFile);
 
         File loadFile = new File(this.getFilesDir(), "test.txt");
+        List<ScriptureContainer> loadList = new ScriptureStorage().loadAllScriptures(loadFile);
 
-        try {
-            FileInputStream input = new FileInputStream(loadFile);
-            byte [] fileContent = new byte[(int)loadFile.length()];
-            input.read(fileContent);
-            System.out.println("Loaded File");
-
-            String json = new String(fileContent);
-            Type listType = new TypeToken<ArrayList<ScriptureContainer>>(){}.getType();
-            ArrayList<ScriptureContainer> loadedList = gson.fromJson(json, listType);
-            System.out.println(loadedList.size());
-        } catch (Exception e) {
-            e.printStackTrace();
+        for (int i = 0; i < loadList.size(); i++) {
+            System.out.println(loadList.get(i).getBook());
         }
 
 
