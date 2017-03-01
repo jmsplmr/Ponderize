@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         List<ScriptureContainer> loadList = new ScriptureStorage().loadAllScriptures(loadFile);
 
         for (int i = 0; i < loadList.size(); i++) {
-            System.out.println(loadList.get(i).getBook());
+            System.out.println(loadList.get(i));
         }
 
 
