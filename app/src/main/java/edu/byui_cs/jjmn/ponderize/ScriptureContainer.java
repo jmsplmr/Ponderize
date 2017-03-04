@@ -8,41 +8,50 @@ public class ScriptureContainer {
   private String _book;
   private int _chapter;
   private int _verse;
-  private boolean isCompleted;
+  private String _text;
+  private boolean _isCompleted;
 
   public ScriptureContainer(String _book, int _chapter, int _verse) {
     this._book = _book;
     this._chapter = _chapter;
     this._verse = _verse;
-    isCompleted = false;
+    this._isCompleted = false;
   }
-
-  public boolean getCompleted() { return isCompleted; }
-
-  public void setCompleted() { isCompleted = true; }
 
   public String getBook() {
     return _book;
-  }
-
-  public void setBook(String book) {
-    this._book = book;
   }
 
   public int getChapter() {
     return _chapter;
   }
 
+  public String getText() {
+    return _text;
+  }
+
+  public boolean getCompleted() {
+    return _isCompleted;
+  }
+
   public void setChapter(int chapter) {
     this._chapter = chapter;
   }
 
-  public int getVerse() {
-    return _verse;
+  public void setBook(String book) {
+    this._book = book;
   }
 
   public void setVerse(int verse) {
     this._verse = verse;
+  }
+
+  public void set_text(String _text) {
+    this._text = _text;
+  }
+
+  public void setCompleted() {
+    _isCompleted = true;
   }
 
   @Override

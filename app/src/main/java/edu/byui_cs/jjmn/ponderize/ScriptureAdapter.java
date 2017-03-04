@@ -16,14 +16,14 @@ import java.util.ArrayList;
 public class ScriptureAdapter extends ArrayAdapter<ScriptureContainer> {
 
     /*************************************************************************************
-     * Constructor
+     * CONSTRUCTOR
      ************************************************************************************/
     public ScriptureAdapter(Context context, ArrayList<ScriptureContainer> scriptures) {
         super(context, 0, scriptures);
     }
 
     /*************************************************************************************
-     * View - returns view
+     * VIEW - returns view
      ************************************************************************************/
 @Override
     public View getView(int position, View convertView, ViewGroup parent) {

@@ -10,9 +10,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import java.util.ArrayList;
 import android.widget.TabHost;
+import android.widget.TextView;
+
+import com.byui_cs.jjmn.ponderize.R;
 
 import edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity;
 import edu.byui_cs.jjmn.ponderize.ScriptureAdapter;
@@ -22,10 +26,14 @@ import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
 
 public class MainActivity extends AppCompatActivity {
 
-  TabHost tabHost;
-  
+    public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
+    public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
+
+    TabHost tabHost;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         Log.v(getClass().getSimpleName(), "Create main activity.");
         super.onCreate(savedInstanceState);
         setContentView(activity_main);
@@ -44,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         spec.setContent(R.id.Memorized);
         spec.setIndicator("Memorized");
         host.addTab(spec);
-      
+
         //###########################################
         //******* JOE TEST CODE DO NOT DELETE *******
         //###########################################
@@ -91,9 +99,72 @@ public class MainActivity extends AppCompatActivity {
         // set list views adapter to new scripture adapter
         memView.setAdapter(memAdapter);
         proView.setAdapter(proAdapter);
+
         //###########################################
         //******* JOE TEST CODE DO NOT DELETE *******
         //###########################################
+
+        /*************************************************************************************
+         * LIST VIEW ON CLICK LISTENER
+         * When an item in the list view is clicked,
+         * Opens a new Scripture View Activity
+         ************************************************************************************/
+
+        proView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        // Make a new Intent
+                        Intent myIntent = new Intent(view.getContext(), ScriptureViewActivity.class);
+
+                        // Grab References
+                        TextView scriptureTitleView = (TextView) view.findViewById(R.id.list_item_scripture_title);
+                        TextView scriptureTextView = (TextView) view.findViewById(R.id.list_item_scripture_text);
+
+                        // Convert to string
+                        String scriptureTitle = scriptureTitleView.getText().toString();
+                        String scriptureText = scriptureTextView.getText().toString();
+
+                        // Put into intent
+                        myIntent.putExtra(SCRIPTURE_TITLE, scriptureTitle);
+                        myIntent.putExtra(SCRIPTURE_TEXT, scriptureText);
+
+                        // Open the new activity
+                        startActivityForResult(myIntent, 0);
+                    }
+                });
+
+        /*************************************************************************************
+         * LIST VIEW ON CLICK LISTENER
+         * When an item in the list view is clicked,
+         * Opens a new Scripture View Activity
+         ************************************************************************************/
+
+        memView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        // Make a new Intent
+                        Intent myIntent = new Intent(view.getContext(), ScriptureViewActivity.class);
+
+                        // Grab References
+                        TextView scriptureTitleView = (TextView) view.findViewById(R.id.list_item_scripture_title);
+                        TextView scriptureTextView = (TextView) view.findViewById(R.id.list_item_scripture_text);
+
+                        // Convert to string
+                        String scriptureTitle = scriptureTitleView.getText().toString();
+                        String scriptureText = scriptureTextView.getText().toString();
+
+                        // Put into intent
+                        myIntent.putExtra(SCRIPTURE_TITLE, scriptureTitle);
+                        myIntent.putExtra(SCRIPTURE_TEXT, scriptureText);
+
+                        // Open the new activity
+                        startActivityForResult(myIntent, 0);
+                    }
+                });
     }
 
     public void goToView(View view) {
