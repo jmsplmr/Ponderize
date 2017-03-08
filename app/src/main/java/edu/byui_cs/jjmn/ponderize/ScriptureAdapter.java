@@ -15,17 +15,25 @@ import java.util.ArrayList;
 
 public class ScriptureAdapter extends ArrayAdapter<ScriptureContainer> {
 
+    /*************************************************************************************
+     * Constructor
+     ************************************************************************************/
     public ScriptureAdapter(Context context, ArrayList<ScriptureContainer> scriptures) {
         super(context, 0, scriptures);
     }
 
+    /*************************************************************************************
+     * View - returns view
+     ************************************************************************************/
 @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
     // get the data item for position
     ScriptureContainer scripture = getItem(position);
 
     // Check if an existing view is being reused, otherwise inflate a new view from custom row layout
     if (convertView == null) {
+
         convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_row, parent, false);
     }
 
@@ -35,8 +43,9 @@ public class ScriptureAdapter extends ArrayAdapter<ScriptureContainer> {
 
     // Make the data appear
     scriptureTitle.setText(scripture.toString());
-    scriptureText.setText("Scripture Text Here");
+    scriptureText.setText("Scripture Text Here"); // Implement Later
 
+    // Returns View
     return convertView;
     }
 }

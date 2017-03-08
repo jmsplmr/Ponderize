@@ -8,12 +8,18 @@ public class ScriptureContainer {
   private String _book;
   private int _chapter;
   private int _verse;
+  private boolean isCompleted;
 
   public ScriptureContainer(String _book, int _chapter, int _verse) {
     this._book = _book;
     this._chapter = _chapter;
     this._verse = _verse;
+    isCompleted = false;
   }
+
+  public boolean getCompleted() { return isCompleted; }
+
+  public void setCompleted() { isCompleted = true; }
 
   public String getBook() {
     return _book;

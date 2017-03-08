@@ -1,4 +1,4 @@
-package com.byui_cs.jjmn.ponderize;
+package edu.byui_cs.jjmn.ponderize;
 
 /**
  * Created by James Palmer on 11-Feb-17.
@@ -12,50 +12,105 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import java.util.ArrayList;
+import android.widget.TabHost;
+
+import edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity;
 import edu.byui_cs.jjmn.ponderize.ScriptureAdapter;
 import edu.byui_cs.jjmn.ponderize.ScriptureContainer;
 import edu.byui_cs.jjmn.ponderize.ScriptureViewActivity;
-import edu.byui_cs.jjmn.ponderize.scriptureLoader;
-import edu.byui_cs.jjmn.ponderize.scriptureSaver;
-
 import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
 
 public class MainActivity extends AppCompatActivity {
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    Log.v(getClass().getSimpleName(), "Create main activity.");
-    super.onCreate(savedInstanceState);
-    setContentView(activity_main);
+  TabHost tabHost;
+  
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        Log.v(getClass().getSimpleName(), "Create main activity.");
+        super.onCreate(savedInstanceState);
+        setContentView(activity_main);
 
-      //###########################################
-      //******* JOE TEST CODE DO NOT DELETE *******
-      //###########################################
-    ArrayList<ScriptureContainer> sc = new ArrayList<>();
+        TabHost host = (TabHost)findViewById(R.id.tabHostMain);
+        host.setup();
 
-    ScriptureContainer a = new ScriptureContainer("Mark", 4, 5);
-    ScriptureContainer b = new ScriptureContainer("James", 5, 3);
-    ScriptureContainer c = new ScriptureContainer("Hockey", 6, 7);
-    ScriptureContainer d = new ScriptureContainer("Falron", 7, 3);
+        //Progressing Tab
+        TabHost.TabSpec spec = host.newTabSpec("Progressing");
+        spec.setContent(R.id.Progressing);
+        spec.setIndicator("Progressing");
+        host.addTab(spec);
 
-    sc.add(0, a);
-    sc.add(1, b);
-    sc.add(2, c);
-    sc.add(3, d);
+        //Memorized Tab
+        spec = host.newTabSpec("Memorized");
+        spec.setContent(R.id.Memorized);
+        spec.setIndicator("Memorized");
+        host.addTab(spec);
+      
+        //###########################################
+        //******* JOE TEST CODE DO NOT DELETE *******
+        //###########################################
 
-    ListView listView = (ListView) findViewById(R.id.listView);
+        // init array
+        ArrayList<ScriptureContainer> omniList = new ArrayList<>();
+        ArrayList<ScriptureContainer> memList = new ArrayList<>();
+        ArrayList<ScriptureContainer> proList = new ArrayList<>();
 
-    listView.getAdapter();
-   ScriptureAdapter itemsAdapter = new ScriptureAdapter(this, sc);
-    listView.setAdapter(itemsAdapter);
+        // init scriptures
+        ScriptureContainer a = new ScriptureContainer("Mark", 4, 5);
+        ScriptureContainer b = new ScriptureContainer("James", 5, 3);
+        ScriptureContainer c = new ScriptureContainer("Hockey", 6, 7);
+        ScriptureContainer d = new ScriptureContainer("Falron", 7, 3);
 
-      //###########################################
-      //******* JOE TEST CODE DO NOT DELETE *******
-      //###########################################
-  }
+
+        a.setCompleted();
+        b.setCompleted();
+
+        // add scriptures to array
+        omniList.add(0, a);
+        omniList.add(1, b);
+        omniList.add(2, c);
+        omniList.add(3, d);
+
+        //look at scriptures, determine if completed or not
+        for(ScriptureContainer sc: omniList) {
+            if (sc.getCompleted()) {
+                memList.add(sc);
+            }
+            else {
+                proList.add(sc);
+            }
+        }
+
+        // grab list view reference
+        ListView memView = (ListView) findViewById(R.id.memorizedScripts);
+        ListView proView = (ListView) findViewById(R.id.progressingScripts);
+
+        // create new scripture adapter
+        ScriptureAdapter memAdapter = new ScriptureAdapter(this, memList);
+        ScriptureAdapter proAdapter = new ScriptureAdapter(this, proList);
+
+        // set list views adapter to new scripture adapter
+        memView.setAdapter(memAdapter);
+        proView.setAdapter(proAdapter);
+        //###########################################
+        //******* JOE TEST CODE DO NOT DELETE *******
+        //###########################################
+    }
 
     public void goToView(View view) {
-      Intent intent = new Intent(this, ScriptureViewActivity.class);
-      startActivity(intent);
+        Intent intent = new Intent(this, ScriptureViewActivity.class);
+        startActivity(intent);
     }
+
+  //For navigation testing buttons
+  public void onScriptureBtnClick(View v) {
+    Intent i = new Intent(this, ScriptureViewActivity.class);
+    startActivity(i);
+  }
+
+  public void onQuizBtnClick(View v) {
+    Intent i = new Intent(this, MemorizeQuizActivity.class);
+    startActivity(i);
+  }
+
+
 }
