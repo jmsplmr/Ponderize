@@ -16,7 +16,15 @@ import java.util.ArrayList;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+// FOR FACEBOOK
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+
 import com.byui_cs.jjmn.ponderize.R;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 
 import edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity;
 import edu.byui_cs.jjmn.ponderize.ScriptureAdapter;
@@ -26,6 +34,8 @@ import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
 
 public class MainActivity extends AppCompatActivity {
 
+    //CallbackManager callbackManager;
+
     public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
     public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
 
@@ -33,6 +43,34 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        // FACEBOOK STUFF
+
+        /*
+        callbackManager = CallbackManager.Factory.create();
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        // App code
+                        Log.e("MAIN ACTIVYITY FACE", "IT WORKED");
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        // App code
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                    }
+                });
+
+                */
+        // FACEBOOK STUFF
 
         Log.v(getClass().getSimpleName(), "Create main activity.");
         super.onCreate(savedInstanceState);
@@ -172,6 +210,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+/*
+    // For Facebook
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+    // For Facebook
+*/
   //For navigation testing buttons
   public void onScriptureBtnClick(View v) {
     Intent i = new Intent(this, ScriptureViewActivity.class);
