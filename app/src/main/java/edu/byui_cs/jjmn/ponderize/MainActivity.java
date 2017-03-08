@@ -1,4 +1,4 @@
-package edu.byui_cs.jjmn.ponderize;
+package com.byui_cs.jjmn.ponderize;
 
 /**
  * Created by James Palmer on 11-Feb-17.
