@@ -1,6 +1,7 @@
 package edu.byui_cs.jjmn.ponderize;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TabHost;
@@ -13,6 +14,7 @@ public class ScriptureViewActivity extends AppActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    Log.v(getClass().getSimpleName(), "Open ScriptureView activity.");
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_scripture_view);
 

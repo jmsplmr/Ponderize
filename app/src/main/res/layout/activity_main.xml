@@ -80,4 +80,13 @@
             </FrameLayout>
         </LinearLayout>
     </TabHost>
+
+    <Button
+        android:id="@+id/btnSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnQuiz"
+        android:layout_toStartOf="@+id/btnScriptures"
+        android:onClick="onSettingClick"
+        android:text="Settings" />
 </RelativeLayout>
