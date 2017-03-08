@@ -1,4 +1,4 @@
-package edu.byui_cs.jjmn.ponderize;
+package com.byui_cs.jjmn.ponderize;
 
 /**
  * Created by James Palmer on 11-Feb-17.
@@ -18,6 +18,8 @@ import edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity;
 import edu.byui_cs.jjmn.ponderize.ScriptureAdapter;
 import edu.byui_cs.jjmn.ponderize.ScriptureContainer;
 import edu.byui_cs.jjmn.ponderize.ScriptureViewActivity;
+import edu.byui_cs.jjmn.ponderize.SettingsActivity;
+
 import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
 
 public class MainActivity extends AppCompatActivity {
@@ -110,6 +112,11 @@ public class MainActivity extends AppCompatActivity {
   public void onQuizBtnClick(View v) {
     Intent i = new Intent(this, MemorizeQuizActivity.class);
     startActivity(i);
+  }
+
+  public void onSettingClick(View v) {
+      Intent i = new Intent(this, SettingsActivity.class);
+      startActivity(i);
   }
 
 
