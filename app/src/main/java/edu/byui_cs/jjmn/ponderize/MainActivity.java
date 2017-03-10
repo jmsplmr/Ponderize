@@ -41,6 +41,7 @@ import com.facebook.share.widget.ShareDialog;
 import org.json.JSONObject;
 
 import edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity;
+import edu.byui_cs.jjmn.ponderize.PracticeActivity;
 import edu.byui_cs.jjmn.ponderize.ScriptureAdapter;
 import edu.byui_cs.jjmn.ponderize.ScriptureContainer;
 import edu.byui_cs.jjmn.ponderize.ScriptureViewActivity;
@@ -255,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToView(View view) {
-        Intent intent = new Intent(this, ScriptureViewActivity.class);
+        Intent intent = new Intent(this, PracticeActivity.class);
         startActivity(intent);
     }
 
