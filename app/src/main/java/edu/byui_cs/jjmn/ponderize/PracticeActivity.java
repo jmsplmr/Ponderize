@@ -83,7 +83,7 @@ public class PracticeActivity extends AppCompatActivity {
         StringBuilder builder = new StringBuilder();
 
         for(String word : words) {
-            builder.append(word);
+            builder.append(word + " ");
         }
 
         return builder.toString();
