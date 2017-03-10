@@ -33,6 +33,14 @@ public class PracticeActivity extends AppCompatActivity {
 
                 Toast toast = Toast.makeText(getApplicationContext(), text, 1);
                 toast.show();
+
+                int removal = (int) progress/10;
+
+                if ( removal >= indexRemove.size()) {
+
+                } else if ( removal < indexRemove.size() ) {
+                    
+                }
             }
 
             @Override
