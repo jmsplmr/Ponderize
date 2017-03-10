@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF9F9F9"
-    android:paddingRight="10dp"
     android:paddingTop="10dp"
     android:paddingBottom="10dp">
 
@@ -12,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/list_item_scripture_title"
-        android:text="Scripture Title"
+        android:text=""
         android:ellipsize="end"
         android:maxLines="1"
         android:layout_marginBottom="2dp"
@@ -22,10 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/list_item_scripture_text"
-        android:text="Scripture Text And it came to pass that Epic G commented on Joseph's legs and Joseph was not ashamed. Then the Dad Palmer summonedd"
+        android:text=""
         android:layout_below="@id/list_item_scripture_title"
         android:ellipsize="end"
         android:maxLines="2"
-        android:layout_marginBottom="0dp"/>
+        android:layout_marginBottom="0dp" />
+
 
 </RelativeLayout>
