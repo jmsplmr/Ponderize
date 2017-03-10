@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.byui_cs.jjmn.ponderize">
+    package="com.byui_cs.jjmn.ponderize">
 
     <application
         android:allowBackup="true"
@@ -10,19 +10,18 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="edu.byui_cs.jjmn.ponderize.ScriptureViewActivity">
-        </activity>
-        <activity android:name="edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity">
-        </activity>
+        <activity android:name="edu.byui_cs.jjmn.ponderize.ScriptureViewActivity" />
+        <activity android:name="edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity" />
         <activity
             android:name="edu.byui_cs.jjmn.ponderize.SettingsActivity"
-            android:label="@string/title_activity_settings">
-        </activity>
+            android:label="@string/title_activity_settings" />
+        <activity android:name="edu.byui_cs.jjmn.ponderize.Memorize" />
+        <activity android:name="edu.byui_cs.jjmn.ponderize.hello"></activity>
     </application>
 
 </manifest>
