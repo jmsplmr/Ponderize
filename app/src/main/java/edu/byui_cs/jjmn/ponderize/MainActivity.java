@@ -6,25 +6,39 @@ package com.byui_cs.jjmn.ponderize;
  */
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import java.util.ArrayList;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 // FOR FACEBOOK
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
+import com.facebook.FacebookDialog;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 
 import com.byui_cs.jjmn.ponderize.R;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.facebook.share.ShareApi;
+import com.facebook.share.model.ShareContent;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareButton;
+import com.facebook.share.widget.ShareDialog;
+
+import org.json.JSONObject;
 
 import edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity;
 import edu.byui_cs.jjmn.ponderize.ScriptureAdapter;
@@ -36,8 +50,12 @@ import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
 
 public class MainActivity extends AppCompatActivity {
 
-    //CallbackManager callbackManager;
 
+    // FACEBOOK THING
+    // CallbackManager - Like the facebook container to do everything.
+    CallbackManager callbackManager;
+
+    // Init scripture items
     public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
     public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
 
@@ -46,39 +64,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-        // FACEBOOK STUFF
-
-        /*
-        callbackManager = CallbackManager.Factory.create();
-
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        // App code
-                        Log.e("MAIN ACTIVYITY FACE", "IT WORKED");
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        // App code
-                    }
-
-                    @Override
-                    public void onError(FacebookException exception) {
-                        // App code
-                    }
-                });
-
-                */
-        // FACEBOOK STUFF
-
         Log.v(getClass().getSimpleName(), "Create main activity.");
         super.onCreate(savedInstanceState);
         setContentView(activity_main);
 
-        TabHost host = (TabHost)findViewById(R.id.tabHostMain);
+        TabHost host = (TabHost) findViewById(R.id.tabHostMain);
         host.setup();
 
         //Progressing Tab
@@ -93,9 +83,12 @@ public class MainActivity extends AppCompatActivity {
         spec.setIndicator("Memorized");
         host.addTab(spec);
 
-        //###########################################
-        //******* JOE TEST CODE DO NOT DELETE *******
-        //###########################################
+        /*************************************************************************************
+         * JOE TEST CODE DO NOT DELETE
+         * Joseph Koetting
+         * Feb 24, 2017
+         * Init an array, then displays contents to the list view
+         ************************************************************************************/
 
         // init array
         ArrayList<ScriptureContainer> omniList = new ArrayList<>();
@@ -108,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         ScriptureContainer c = new ScriptureContainer("Hockey", 6, 7);
         ScriptureContainer d = new ScriptureContainer("Falron", 7, 3);
 
-
+        // these items will show in the completed tab
         a.setCompleted();
         b.setCompleted();
 
@@ -118,12 +111,12 @@ public class MainActivity extends AppCompatActivity {
         omniList.add(2, c);
         omniList.add(3, d);
 
-        //look at scriptures, determine if completed or not
-        for(ScriptureContainer sc: omniList) {
+        // Look at scriptures, determine if completed or not
+        // Adds to appropriate list view
+        for (ScriptureContainer sc : omniList) {
             if (sc.getCompleted()) {
                 memList.add(sc);
-            }
-            else {
+            } else {
                 proList.add(sc);
             }
         }
@@ -140,12 +133,64 @@ public class MainActivity extends AppCompatActivity {
         memView.setAdapter(memAdapter);
         proView.setAdapter(proAdapter);
 
-        //###########################################
-        //******* JOE TEST CODE DO NOT DELETE *******
-        //###########################################
+        /*************************************************************************************
+         * FACEBOOK SHARE BUTTON CODE
+         * Joseph Koetting
+         * Mar 8, 2017
+         * Allows the user to post things to facebook
+         ************************************************************************************/
+
+        // Configures share window
+        ShareLinkContent content = new ShareLinkContent.Builder()
+                .setContentTitle("MASTERED")
+                .setContentUrl(Uri.parse("http://developers.facebook.com/android"))
+                .setContentDescription("I MASTERED A SCRIPTURE WITHOUT COMMENTING ON JOE'S LEGS")
+                .build();
+
+        // Not sure what this code snippet does
+        // DOES NOT WORK WITHOUT
+        callbackManager = CallbackManager.Factory.create();
+
+        // get reference to share button
+        final ShareButton shareButton = (ShareButton) findViewById(R.id.fb_share_button);
+
+        // share window is displayed
+        shareButton.setShareContent(content);
+
+        /*************************************************************************************
+         * FACEBOOK LOGIN CODE
+         * Joseph Koetting
+         * Mar 8, 2017
+         * Allows the user to log into to the application
+         ************************************************************************************/
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+
+                    // Successfully logged into facebook
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        Log.e("MAIN ACTIVITY FACE", "LOGIN SUCCESSFUL");
+                    }
+
+                    // Cancelled logging into facebook
+                    @Override
+                    public void onCancel() {
+
+                        Log.e("MAIN ACTIVITY FACE", "LOGIN CANCELLED");
+                    }
+
+                    // Error logging in
+                    @Override
+                    public void onError(FacebookException exception) {
+                        Log.e("MAIN ACTIVITY FACE", "LOGIN ERROR");
+                    }
+                });
 
         /*************************************************************************************
          * LIST VIEW ON CLICK LISTENER
+         * Joseph Koetting
+         * Mar 4, 2017
          * When an item in the list view is clicked,
          * Opens a new Scripture View Activity
          ************************************************************************************/
@@ -177,6 +222,8 @@ public class MainActivity extends AppCompatActivity {
 
         /*************************************************************************************
          * LIST VIEW ON CLICK LISTENER
+         * Joseph Koetting
+         * Mar 4, 2017
          * When an item in the list view is clicked,
          * Opens a new Scripture View Activity
          ************************************************************************************/
@@ -212,30 +259,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-/*
-    // For Facebook
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+    //For navigation testing buttons
+    public void onScriptureBtnClick(View v) {
+        Intent i = new Intent(this, ScriptureViewActivity.class);
+        startActivity(i);
     }
-    // For Facebook
-*/
-  //For navigation testing buttons
-  public void onScriptureBtnClick(View v) {
-    Intent i = new Intent(this, ScriptureViewActivity.class);
-    startActivity(i);
-  }
 
-  public void onQuizBtnClick(View v) {
-    Intent i = new Intent(this, MemorizeQuizActivity.class);
-    startActivity(i);
-  }
+    public void onQuizBtnClick(View v) {
+        Intent i = new Intent(this, MemorizeQuizActivity.class);
+        startActivity(i);
+    }
 
-  public void onSettingClick(View v) {
-      Intent i = new Intent(this, SettingsActivity.class);
-      startActivity(i);
-  }
-
-
+    public void onSettingClick(View v) {
+        Intent i = new Intent(this, SettingsActivity.class);
+        startActivity(i);
+    }
 }
