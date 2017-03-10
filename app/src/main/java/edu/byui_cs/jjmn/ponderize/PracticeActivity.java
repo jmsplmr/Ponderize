@@ -24,8 +24,11 @@ public class PracticeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice);
 
+        orignalVerse = testVerse.trim().split("\\s+");
+        displayVerse = testVerse.trim().split("\\s+");
+
         TextView aView = (TextView) findViewById(R.id.practiceView);
-        aView.setText(testVerse);
+        aView.setText(toString(displayVerse));
 
 
 
@@ -33,9 +36,6 @@ public class PracticeActivity extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-                orignalVerse = testVerse.trim().split("\\s+");
-                displayVerse = testVerse.trim().split("\\s+");
 
                 CharSequence text = "Display array size: " + displayVerse.length;
 
@@ -73,5 +73,19 @@ public class PracticeActivity extends AppCompatActivity {
      *********************************/
     public void addWords() {
 
+    }
+
+    /*******************************
+     * toString
+     * changes an array to string.
+     *******************************/
+    public String toString(String [] words) {
+        StringBuilder builder = new StringBuilder();
+
+        for(String word : words) {
+            builder.append(word);
+        }
+
+        return builder.toString();
     }
 }
