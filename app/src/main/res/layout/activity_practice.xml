@@ -7,7 +7,7 @@
     tools:context="edu.byui_cs.jjmn.ponderize.PracticeActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/practiceView"
         android:layout_width="365dp"
         android:layout_height="242dp"
         tools:layout_editor_absoluteX="10dp"
@@ -21,6 +21,6 @@
         android:layout_marginTop="20dp"
         android:max="100"
         android:progress="0"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/practiceView"
         tools:layout_editor_absoluteX="8dp" />
 </android.support.constraint.ConstraintLayout>
