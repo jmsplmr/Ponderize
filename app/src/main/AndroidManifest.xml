@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.byui_cs.jjmn.ponderize">
 
+    <!-- FACEBOOK STUFF -->
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- FACEBOOK STUFF -->
 
     <application
         android:allowBackup="true"
@@ -26,7 +29,6 @@
         <activity
             android:name="edu.byui_cs.jjmn.ponderize.SettingsActivity"
             android:label="@string/title_activity_settings"></activity>
-        <activity android:name="edu.byui_cs.jjmn.ponderize.MainActivityFragment"></activity>
     </application>
 
 </manifest>
