@@ -8,10 +8,10 @@
 
     <TextView
         android:id="@+id/practiceView"
-        android:layout_width="365dp"
+        android:layout_width="350dp"
         android:layout_height="242dp"
         android:textColor="#000000"
-        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteX="17dp"
         tools:layout_editor_absoluteY="62dp" />
 
     <SeekBar
