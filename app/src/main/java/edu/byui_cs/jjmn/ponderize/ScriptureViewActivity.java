@@ -21,6 +21,7 @@ public class ScriptureViewActivity extends AppActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    Log.v(getClass().getSimpleName(), "Open ScriptureView activity.");
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_scripture_view);
 

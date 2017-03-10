@@ -18,6 +18,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.byui_cs.jjmn.ponderize.R;
@@ -120,6 +121,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    Log.v(getClass().getSimpleName(), "Open Settings activity.");
     super.onCreate(savedInstanceState);
     setupActionBar();
   }
