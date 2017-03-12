@@ -49,8 +49,6 @@ public class PracticeActivity extends AppCompatActivity {
                 Log.i("PraticeActivity", "Remove Compare: " + removeCompare);
 
                 if ( removeCompare > indexRemove.size()) {
-                    Log.i("PractiveActivity", "indexReomve Size: " + indexRemove.size());
-
                     int removeCount = removeCompare - indexRemove.size();
                     removeWords(removeCount);
                 }
@@ -86,13 +84,13 @@ public class PracticeActivity extends AppCompatActivity {
             Random random = new Random();
 
             //Delete a random word.
-            int wordIndex = random.nextInt(orignalVerse.length) + 1;
+            int wordIndex = random.nextInt(orignalVerse.length);
             Iterator<Integer> it = indexRemove.iterator();
 
             //Make sure that the random int we remove it not already removed.
             while (it.hasNext()) {
                 if (it.next() == wordIndex) {
-                    wordIndex = random.nextInt(orignalVerse.length) + 1;
+                    wordIndex = random.nextInt(orignalVerse.length);
                     it = indexRemove.iterator();
                 }
             }
@@ -101,7 +99,7 @@ public class PracticeActivity extends AppCompatActivity {
             String word = displayVerse[wordIndex];
             char [] charArray = word.toCharArray();
 
-            for (int x = 1; i < charArray.length; i++)
+            for (int x = 1; x < charArray.length; x++)
                 charArray[x] = '_';
 
             //Add modified word back.
