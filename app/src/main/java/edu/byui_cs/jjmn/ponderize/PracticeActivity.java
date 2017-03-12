@@ -45,8 +45,8 @@ public class PracticeActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), text, 1);
                 toast.show();
 
-                int removeCompare = Math.round((progress / 100)) * displayVerse.length;
-                Log.i("PraticeActivity", "Remove Compare: " + (progress / 100.0));
+                int removeCompare = (int) ((progress / 100.0) * displayVerse.length);
+                Log.i("PraticeActivity", "Remove Compare: " + removeCompare);
 
                 if ( removeCompare > indexRemove.size()) {
                     Log.i("PractiveActivity", "indexReomve Size: " + indexRemove.size());
