@@ -3,6 +3,7 @@ package edu.byui_cs.jjmn.ponderize;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 import com.byui_cs.jjmn.ponderize.R;
 
 import java.sql.Array;
+import java.util.Iterator;
+import java.util.Random;
 import java.util.Stack;
 
 public class PracticeActivity extends AppCompatActivity {
@@ -42,6 +45,20 @@ public class PracticeActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), text, 1);
                 toast.show();
 
+                int removeCompare = Math.round((progress / 100)) * displayVerse.length;
+                Log.i("PraticeActivity", "Remove Compare: " + (progress / 100.0));
+
+                if ( removeCompare > indexRemove.size()) {
+                    Log.i("PractiveActivity", "indexReomve Size: " + indexRemove.size());
+
+                    int removeCount = removeCompare - indexRemove.size();
+                    removeWords(removeCount);
+                }
+
+                TextView aView = (TextView) findViewById(R.id.practiceView);
+                String stringVerse = PracticeActivity.this.toString(displayVerse);
+                aView.setText(stringVerse);
+
             }
 
             @Override
@@ -62,7 +79,39 @@ public class PracticeActivity extends AppCompatActivity {
      * practice memorizing.
      *************************************/
 
-    public void removeWords() {
+    public void removeWords(int wordRemoval) {
+
+        //Remove a certain amount of words.
+        for (int i = 0; i < wordRemoval; i++) {
+            Random random = new Random();
+
+            //Delete a random word.
+            int wordIndex = random.nextInt(orignalVerse.length) + 1;
+            Iterator<Integer> it = indexRemove.iterator();
+
+            //Make sure that the random int we remove it not already removed.
+            while (it.hasNext()) {
+                if (it.next() == wordIndex) {
+                    wordIndex = random.nextInt(orignalVerse.length) + 1;
+                    it = indexRemove.iterator();
+                }
+            }
+
+            //Remove word.
+            String word = displayVerse[wordIndex];
+            char [] charArray = word.toCharArray();
+
+            for (int x = 1; i < charArray.length; i++)
+                charArray[x] = '_';
+
+            //Add modified word back.
+            word = new String(charArray);
+            displayVerse[wordIndex] = word;
+
+            indexRemove.push(wordIndex);
+
+            return;
+        }
 
     }
 
