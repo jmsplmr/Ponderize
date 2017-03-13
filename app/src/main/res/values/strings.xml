@@ -79,4 +79,10 @@
     <string name="share">SHARE</string>
     <string name="quiz">Quiz</string>
     <string name="scriptures_notes">Scriptures/Notes</string>
+    <string name="scripture_s_reference">Scripture\'s Reference</string>
+    <string name="where_the_quiz_goes">WHERE THE QUIZ GOES</string>
+    <string name="test_scripture_load_and_save">Test Scripture Load and Save</string>
+    <string name="the_scripture">The Scripture</string>
+    <string name="enter_notes_here">Enter Notes Here</string>
+    <string name="empty"/>
 </resources>

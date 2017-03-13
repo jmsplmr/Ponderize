@@ -17,7 +17,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="118dp"
-        android:text="Test Scripture Load and Save" />
+        android:text="@string/test_scripture_load_and_save" />
 
     <TabHost
         android:id="@+id/tabHostScript"
@@ -52,7 +52,7 @@
                         android:id="@+id/txtScripture"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="The Scripture" />
+                        android:text="@string/the_scripture" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -66,12 +66,9 @@
                         android:id="@+id/etxtNotes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentStart="true"
                         android:ems="10"
                         android:inputType="textMultiLine"
-                        android:text="Enter Notes Here" />
+                        android:text="@string/enter_notes_here" />
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
