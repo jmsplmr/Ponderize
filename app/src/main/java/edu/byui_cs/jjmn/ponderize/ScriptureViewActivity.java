@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.byui_cs.jjmn.ponderize.MainActivity;
 import com.byui_cs.jjmn.ponderize.R;
 
 public class ScriptureViewActivity extends AppActivity {
@@ -16,9 +15,7 @@ public class ScriptureViewActivity extends AppActivity {
   // init scripture data
   String _scriptureTitle;
   String _scriptureText;
-
-  TabHost tabHost;
-
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     Log.v(getClass().getSimpleName(), "Open ScriptureView activity.");
@@ -67,10 +64,4 @@ public class ScriptureViewActivity extends AppActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
     return super.onOptionsItemSelected(item);
   }
-
-  public void testScriptureStorage() {
-
-  }
-
-
 }

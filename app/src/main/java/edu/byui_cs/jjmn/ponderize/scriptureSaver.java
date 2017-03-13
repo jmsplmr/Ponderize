@@ -1,10 +1,6 @@
 package edu.byui_cs.jjmn.ponderize;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.File;
 import java.io.FileWriter;

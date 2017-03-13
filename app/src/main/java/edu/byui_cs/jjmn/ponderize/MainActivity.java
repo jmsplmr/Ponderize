@@ -1,4 +1,4 @@
-package com.byui_cs.jjmn.ponderize;
+package edu.byui_cs.jjmn.ponderize;
 
 /**
  * Created by James Palmer on 11-Feb-17.
@@ -12,41 +12,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
-import java.util.ArrayList;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-// FOR FACEBOOK
-import com.facebook.AccessToken;
+import com.byui_cs.jjmn.ponderize.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
-import com.facebook.FacebookDialog;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-
-import com.byui_cs.jjmn.ponderize.R;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
-import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.facebook.share.ShareApi;
-import com.facebook.share.model.ShareContent;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
-import com.facebook.share.widget.ShareDialog;
 
-import org.json.JSONObject;
-
-import edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity;
-import edu.byui_cs.jjmn.ponderize.ScriptureAdapter;
-import edu.byui_cs.jjmn.ponderize.ScriptureContainer;
-import edu.byui_cs.jjmn.ponderize.ScriptureViewActivity;
-import edu.byui_cs.jjmn.ponderize.SettingsActivity;
+import java.util.ArrayList;
 
 import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
+
+// FOR FACEBOOK
 
 public class MainActivity extends AppCompatActivity {
 

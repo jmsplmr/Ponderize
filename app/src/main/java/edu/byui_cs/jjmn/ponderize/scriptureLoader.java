@@ -1,7 +1,5 @@
 package edu.byui_cs.jjmn.ponderize;
 
-import android.graphics.Path;
-
 import com.google.gson.Gson;
 
 import java.io.File;
