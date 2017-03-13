@@ -1,8 +1,9 @@
-package com.byui_cs.jjmn.ponderize;
+package edu.byui_cs.jjmn.ponderize;
 
 /**
  * Created by James Palmer on 11-Feb-17.
  * TODO ALOT
+ * Call people gypsies - Mike Graver
  */
 
 import android.content.Intent;
@@ -59,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
     public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
 
-    TabHost tabHost;
+    // Init tabs
+    private TabHost host;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(activity_main);
 
-        TabHost host = (TabHost) findViewById(R.id.tabHostMain);
+        host = (TabHost) findViewById(R.id.tabHostMain);
         host.setup();
 
         //Progressing Tab
@@ -83,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         spec.setIndicator("Memorized");
         host.addTab(spec);
 
-        /*************************************************************************************
+        /* ************************************************************************************
          * JOE TEST CODE DO NOT DELETE
          * Joseph Koetting
          * Feb 24, 2017
@@ -133,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         memView.setAdapter(memAdapter);
         proView.setAdapter(proAdapter);
 
-        /*************************************************************************************
+        /* ************************************************************************************
          * FACEBOOK SHARE BUTTON CODE
          * Joseph Koetting
          * Mar 8, 2017
@@ -157,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         // share window is displayed
         shareButton.setShareContent(content);
 
-        /*************************************************************************************
+        /* ************************************************************************************
          * FACEBOOK LOGIN CODE
          * Joseph Koetting
          * Mar 8, 2017
@@ -187,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        /*************************************************************************************
+        /* ************************************************************************************
          * LIST VIEW ON CLICK LISTENER
          * Joseph Koetting
          * Mar 4, 2017
@@ -220,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        /*************************************************************************************
+        /* ************************************************************************************
          * LIST VIEW ON CLICK LISTENER
          * Joseph Koetting
          * Mar 4, 2017
