@@ -3,7 +3,7 @@ package edu.byui_cs.jjmn.ponderize;
 /**
  * Created by James Palmer on 11-Feb-17.
  * TODO ALOT
- * Call people gypsies - Mike Graver
+ * Call people gypsies - Mike Graver --not a feature Mike...
  */
 
 import android.content.Intent;
@@ -155,20 +155,20 @@ public class MainActivity extends AppCompatActivity {
                     // Successfully logged into facebook
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        Log.e("MAIN ACTIVITY FACE", "LOGIN SUCCESSFUL");
+                        Log.d("MAIN ACTIVITY FACE", "LOGIN SUCCESSFUL");
                     }
 
                     // Cancelled logging into facebook
                     @Override
                     public void onCancel() {
 
-                        Log.e("MAIN ACTIVITY FACE", "LOGIN CANCELLED");
+                        Log.d("MAIN ACTIVITY FACE", "LOGIN CANCELLED");
                     }
 
                     // Error logging in
                     @Override
                     public void onError(FacebookException exception) {
-                        Log.e("MAIN ACTIVITY FACE", "LOGIN ERROR");
+                        Log.d("MAIN ACTIVITY FACE", "LOGIN ERROR", exception);
                     }
                 });
 
