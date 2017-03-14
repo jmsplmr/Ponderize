@@ -20,6 +20,14 @@ import com.facebook.login.LoginResult;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 
+import org.json.JSONObject;
+
+import edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity;
+import edu.byui_cs.jjmn.ponderize.PracticeActivity;
+import edu.byui_cs.jjmn.ponderize.ScriptureAdapter;
+import edu.byui_cs.jjmn.ponderize.ScriptureContainer;
+import edu.byui_cs.jjmn.ponderize.ScriptureViewActivity;
+import edu.byui_cs.jjmn.ponderize.SettingsActivity;
 import java.util.ArrayList;
 
 import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
@@ -232,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToView(View view) {
-        Intent intent = new Intent(this, ScriptureViewActivity.class);
+        Intent intent = new Intent(this, PracticeActivity.class);
         startActivity(intent);
     }
 

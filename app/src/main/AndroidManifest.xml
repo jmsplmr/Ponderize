@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- FACEBOOK STUFF -->
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,11 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="edu.byui_cs.jjmn.ponderize.ScriptureViewActivity"></activity>
-        <activity android:name="edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity"></activity>
+        <activity android:name="edu.byui_cs.jjmn.ponderize.ScriptureViewActivity" />
+        <activity android:name="edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity" />
         <activity
             android:name="edu.byui_cs.jjmn.ponderize.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
+        <activity android:name="edu.byui_cs.jjmn.ponderize.PracticeActivity"></activity>
     </application>
 
 </manifest>
