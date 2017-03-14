@@ -7,7 +7,7 @@ import android.util.Log;
 import com.byui_cs.jjmn.ponderize.R;
 
 public class MemorizeQuizActivity extends AppCompatActivity {
-
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     Log.v(getClass().getSimpleName(), "Open MemorizeQuiz activity.");

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_scripture_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.byui_cs.jjmn.ponderize.ScriptureViewActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_scripture_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context="edu.byui_cs.jjmn.ponderize.ScriptureViewActivity">
 
     <Button
         android:id="@+id/testBtn"
@@ -17,7 +17,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="118dp"
-        android:text="@string/test_scripture_load_and_save" />
+        android:text="@string/test_scripture_load_and_save"/>
 
     <TabHost
         android:id="@+id/tabHostScript"
@@ -35,7 +35,7 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
@@ -52,7 +52,7 @@
                         android:id="@+id/txtScripture"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/the_scripture" />
+                        android:text="@string/the_scripture"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -68,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textMultiLine"
-                        android:text="@string/enter_notes_here" />
+                        android:text="@string/enter_notes_here"/>
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>

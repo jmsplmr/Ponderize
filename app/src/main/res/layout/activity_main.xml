@@ -11,32 +11,32 @@
                 tools:context="edu.byui_cs.jjmn.ponderize.MainActivity">
 
     <Button
-        android:text="@string/scriptures_notes"
+        android:id="@+id/btnScriptures"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="109dp"
-        android:id="@+id/btnScriptures"
-        android:onClick="onScriptureBtnClick" />
+        android:onClick="onScriptureBtnClick"
+        android:text="@string/scriptures_notes"/>
 
     <Button
-        android:text="@string/quiz"
+        android:id="@+id/btnQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="37dp"
-        android:id="@+id/btnQuiz"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="onQuizBtnClick" />
+        android:layout_marginBottom="37dp"
+        android:onClick="onQuizBtnClick"
+        android:text="@string/quiz"/>
 
     <TabHost
         android:id="@+id/tabHostMain"
         android:layout_width="200dip"
         android:layout_height="300dip"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true">
+        android:layout_alignParentTop="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" />
+                android:orientation="horizontal"/>
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
@@ -63,7 +63,7 @@
                     <ListView
                         android:id="@+id/memorizedScripts"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -75,7 +75,7 @@
                     <ListView
                         android:id="@+id/progressingScripts"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"/>
                 </LinearLayout>
 
             </FrameLayout>
@@ -89,16 +89,16 @@
         android:layout_alignTop="@+id/btnQuiz"
         android:layout_toStartOf="@+id/btnScriptures"
         android:onClick="onSettingClick"
-        android:text="@string/settings" />
+        android:text="@string/settings"/>
 
     <com.facebook.share.widget.ShareButton
+        android:id="@+id/fb_share_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fb_share_button"
-        android:text="@string/share"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="175dp" />
+        android:layout_marginBottom="175dp"
+        android:text="@string/share"/>
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center_horizontal"
-        android:layout_toEndOf="@+id/btnSettings" />
+        android:layout_toEndOf="@+id/btnSettings"/>
 
     <Button
         android:id="@+id/button2"
@@ -116,6 +116,6 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="20dp"
         android:onClick="goToView"
-        android:text="Practice" />
+        android:text="Practice"/>
 
 </RelativeLayout>
