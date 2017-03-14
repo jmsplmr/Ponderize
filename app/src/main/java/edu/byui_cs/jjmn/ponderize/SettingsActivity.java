@@ -20,9 +20,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 
-import java.util.List;
+import com.byui_cs.jjmn.ponderize.R;
 
-import edu.byui_cs.jjmn.ponderize.R;
+import java.util.List;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
