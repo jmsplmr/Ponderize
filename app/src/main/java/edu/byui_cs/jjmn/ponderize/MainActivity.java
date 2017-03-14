@@ -1,11 +1,5 @@
 package edu.byui_cs.jjmn.ponderize;
 
-/**
- * Created by James Palmer on 11-Feb-17.
- * TODO ALOT
- * Call people gypsies - Mike Graver --not a feature Mike...
- */
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -35,14 +29,12 @@ import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
 public class MainActivity extends AppCompatActivity {
 
 
-    // FACEBOOK THING
-    // CallbackManager - Like the facebook container to do everything.
-    CallbackManager callbackManager;
-
     // Init scripture items
     public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
     public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
-
+  // FACEBOOK THING
+  // CallbackManager - Like the facebook container to do everything.
+  CallbackManager callbackManager;
     // Init tabs
     private TabHost host;
 
@@ -168,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                     // Error logging in
                     @Override
                     public void onError(FacebookException exception) {
-                        Log.d("MAIN ACTIVITY FACE", "LOGIN ERROR", exception);
+                      Log.e("MAIN ACTIVITY FACE", "LOGIN ERROR", exception);
                     }
                 });
 
