@@ -19,9 +19,11 @@ public class ScriptureStorage {
 
 
     /***************************************
-     * saveScripture
-     * @param scripture
-     * @param aFile
+     * saves a single scripture to the file
+     * passed.  Just make sure that the file is empty
+     * because it will overwrite the contents of the file.
+     * @param scripture A scripture container object
+     * @param aFile File object that will be written to.
      * Saves 1 scripture to 1 file.
      **************************************/
     public void saveScripture(ScriptureContainer scripture, File aFile) {
@@ -49,8 +51,10 @@ public class ScriptureStorage {
 
 
     /****************************************
-     * loadScriptures
-     * @param aFile
+     * loads one scripture from a file.
+     * If the file has more then one scripture
+     * it wont be able to load just one and it will crash
+     * @param aFile File object that will be read from.
      * @return Scripture Container
      * Returns 1 scriptures from a file with
      * only one scripture in it.
@@ -83,10 +87,10 @@ public class ScriptureStorage {
 
 
     /*************************************************
-     * saveAllScriptures.
-     * @param scriptList
-     * @param saveFile
-     * saves all the scriptues in a List.
+     * Saves all the scriptures in a scripture list to
+     * a file for storage.
+     * @param scriptList List of scriptures
+     * @param saveFile File Object that is being saved too
      *************************************************/
     public void saveAllScriptures(List<ScriptureContainer> scriptList, File saveFile) {
 
