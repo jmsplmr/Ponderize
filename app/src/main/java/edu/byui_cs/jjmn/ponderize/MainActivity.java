@@ -1,4 +1,4 @@
-package edu.byui_cs.jjmn.ponderize;
+package com.byui_cs.jjmn.ponderize;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -21,6 +21,13 @@ import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 
 import java.util.ArrayList;
+
+import edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity;
+import edu.byui_cs.jjmn.ponderize.PracticeActivity;
+import edu.byui_cs.jjmn.ponderize.ScriptureAdapter;
+import edu.byui_cs.jjmn.ponderize.ScriptureContainer;
+import edu.byui_cs.jjmn.ponderize.ScriptureViewActivity;
+import edu.byui_cs.jjmn.ponderize.SettingsActivity;
 
 import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
 

@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.byui_cs.jjmn.ponderize.MainActivity;
 import com.byui_cs.jjmn.ponderize.R;
 
 public class ScriptureViewActivity extends AppActivity {
@@ -40,7 +41,7 @@ public class ScriptureViewActivity extends AppActivity {
 
     //Test Text
     //scriptureTextView.setText(_scriptureText);
-    scriptureTextView.setText("\n\t\t\t8 Bring forth therefore fruits meet for repentance: " +
+    scriptureTextView.setText("\t\t\t8 Bring forth therefore fruits meet for repentance: " +
             "\n\t\t\t9 And think not to say within yourselves, We have Abraham to our father: for I say unto you, that God is able of these stones to raise up children unto Abraham. " +
             "\n\t\t\t10 And now also the axe is laid unto the root of the trees: therefore every tree which bringeth not forth good fruit is hewn down, and cast into the fire.");
 
