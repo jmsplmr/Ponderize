@@ -1,6 +1,7 @@
 package edu.byui_cs.jjmn.ponderize;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -28,22 +29,6 @@ public class ScriptureViewActivity extends AppActivity {
     TabHost host = (TabHost) findViewById(R.id.tabHostScript);
     host.setup();
 
-    //Scripture Tab
-    TabHost.TabSpec spec = host.newTabSpec("Scripture");
-    spec.setContent(R.id.Scripture);
-    spec.setIndicator("Scripture");
-    host.addTab(spec);
-
-    //Notes Tab
-    spec = host.newTabSpec("Notes");
-    spec.setContent(R.id.Notes);
-    spec.setIndicator("Notes");
-    host.addTab(spec);
-
-    /**
-     * Created by Joseph on 2/24/17.
-     */
-
     // Receive intent from main activity
     Intent intent = getIntent();
 
@@ -52,10 +37,26 @@ public class ScriptureViewActivity extends AppActivity {
     _scriptureText = intent.getStringExtra(MainActivity.SCRIPTURE_TEXT);
 
     // Get reference for Text view
-    TextView scriptureTextView = (TextView) this.findViewById(R.id.txtScripture);
+    TextView scriptureTextView = (TextView) this.findViewById(R.id.txtScriptureText);
 
-    // Format data into Text view
-    scriptureTextView.setText(_scriptureTitle + "\n" + _scriptureText);
+    //Test Text
+    //scriptureTextView.setText(_scriptureText);
+    scriptureTextView.setText("\n\t\t\t8 Bring forth therefore fruits meet for repentance: " +
+            "\n\t\t\t9 And think not to say within yourselves, We have Abraham to our father: for I say unto you, that God is able of these stones to raise up children unto Abraham. " +
+            "\n\t\t\t10 And now also the axe is laid unto the root of the trees: therefore every tree which bringeth not forth good fruit is hewn down, and cast into the fire.");
+
+    //Scripture Tab
+    TabHost.TabSpec spec = host.newTabSpec("Scripture");
+    spec.setContent(R.id.Scripture);
+    spec.setIndicator(_scriptureTitle);
+    host.addTab(spec);
+
+    //Notes Tab
+    spec = host.newTabSpec("Notes");
+    spec.setContent(R.id.Notes);
+    spec.setIndicator("Notes");
+    host.addTab(spec);
+
   }
 
   @Override

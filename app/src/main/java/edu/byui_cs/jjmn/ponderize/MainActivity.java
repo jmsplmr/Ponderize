@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
         shareButton.setShareContent(content);
 
         /* ************************************************************************************
-         * FACEBOOK LOGIN CODE
+         * FACEBOOK LOGIN BUTTON CODE
          * Joseph Koetting
          * Mar 8, 2017
          * Allows the user to log into to the application
