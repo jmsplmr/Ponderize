@@ -20,7 +20,7 @@
         android:text="@string/scripture_s_reference"/>
 
     <EditText
-        android:id="@+id/textQuiz"
+        android:id="@+id/etxtQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -29,5 +29,5 @@
         android:layout_below="@+id/txtScriptureReference"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:text="@string/where_the_quiz_goes"/>
+        android:text="WHERE THE QUIZ GOES"/>
 </RelativeLayout>

@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.byui_cs.jjmn.ponderize.MainActivity;
 import com.byui_cs.jjmn.ponderize.R;
 
 public class ScriptureViewActivity extends AppActivity {
