@@ -15,30 +15,30 @@ import android.view.MenuItem;
 public abstract class AppActivity extends AppCompatActivity {
   
   @Override
-  protected void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+  protected void onCreate (@Nullable Bundle savedInstanceState) {
+    super.onCreate (savedInstanceState);
     
     
     // Initialize settings
-    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences (this);
     // TODO: 19-Feb-17 get preferences for app
     
   }
   
   @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
+  public boolean onCreateOptionsMenu (Menu menu) {
     //getMenuInflater().inflate();// TODO: 19-Feb-17 add menu to R
-    return super.onCreateOptionsMenu(menu);
+    return super.onCreateOptionsMenu (menu);
   }
   
   @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
+  public boolean onOptionsItemSelected (MenuItem item) {
+    switch (item.getItemId ()) {
      /* case : //settings
       case : //
       case :
       case :*/// TODO: 19-Feb-17  fill out menu options
     }
-    return super.onOptionsItemSelected(item);
+    return super.onOptionsItemSelected (item);
   }
 }

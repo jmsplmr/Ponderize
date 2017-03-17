@@ -9,9 +9,9 @@ import com.byui_cs.jjmn.ponderize.R;
 public class MemorizeQuizActivity extends AppCompatActivity {
   
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    Log.v(getClass().getSimpleName(), "Open MemorizeQuiz activity.");
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_memorize_quiz);
+  protected void onCreate (Bundle savedInstanceState) {
+    Log.v (getClass ().getSimpleName (), "Open MemorizeQuiz activity.");
+    super.onCreate (savedInstanceState);
+    setContentView (R.layout.activity_memorize_quiz);
   }
 }

@@ -16,24 +16,24 @@ public class AchievementContainer {
     */
   
   //Constructor
-  public AchievementContainer() {
+  public AchievementContainer () {
     isAchieved = false;
   }
   
   //Getters and Setters
-  public static String getAchievementName() {
+  public static String getAchievementName () {
     return achievementName;
   }
   
-  public static void setAchievementName(String achievementName) {
+  public static void setAchievementName (String achievementName) {
     AchievementContainer.achievementName = achievementName;
   }
   
-  public boolean isAchieved() {
+  public boolean isAchieved () {
     return isAchieved;
   }
   
-  public void setAchieved(boolean achieved) {
+  public void setAchieved (boolean achieved) {
     isAchieved = achieved;
   }
 }

@@ -1,7 +1,6 @@
 package edu.byui_cs.jjmn.ponderize;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -9,69 +8,68 @@ import android.view.MenuItem;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.byui_cs.jjmn.ponderize.MainActivity;
 import com.byui_cs.jjmn.ponderize.R;
 
 public class ScriptureViewActivity extends AppActivity {
-
+  
   // init scripture data
   String _scriptureTitle;
   String _scriptureText;
-
+  
   TabHost tabHost;
-
+  
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    Log.v(getClass().getSimpleName(), "Open ScriptureView activity.");
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_scripture_view);
-
-    TabHost host = (TabHost) findViewById(R.id.tabHostScript);
-    host.setup();
-
+  protected void onCreate (Bundle savedInstanceState) {
+    Log.v (getClass ().getSimpleName (), "Open ScriptureView activity.");
+    super.onCreate (savedInstanceState);
+    setContentView (R.layout.activity_scripture_view);
+    
+    TabHost host = (TabHost) findViewById (R.id.tabHostScript);
+    host.setup ();
+    
     // Receive intent from main activity
-    Intent intent = getIntent();
-
+    Intent intent = getIntent ();
+    
     // Extract data from intent
-    _scriptureTitle = intent.getStringExtra(MainActivity.SCRIPTURE_TITLE);
-    _scriptureText = intent.getStringExtra(MainActivity.SCRIPTURE_TEXT);
-
+    _scriptureTitle = intent.getStringExtra (MainActivity.SCRIPTURE_TITLE);
+    _scriptureText = intent.getStringExtra (MainActivity.SCRIPTURE_TEXT);
+    
     // Get reference for Text view
-    TextView scriptureTextView = (TextView) this.findViewById(R.id.txtScriptureText);
-
+    TextView scriptureTextView = (TextView) this.findViewById (R.id.txtScriptureText);
+    
     //Test Text
     //scriptureTextView.setText(_scriptureText);
-    scriptureTextView.setText("\t\t\t8 Bring forth therefore fruits meet for repentance: " +
-            "\n\t\t\t9 And think not to say within yourselves, We have Abraham to our father: for I say unto you, that God is able of these stones to raise up children unto Abraham. " +
-            "\n\t\t\t10 And now also the axe is laid unto the root of the trees: therefore every tree which bringeth not forth good fruit is hewn down, and cast into the fire.");
-
+    scriptureTextView.setText ("\t\t\t8 Bring forth therefore fruits meet for repentance: " +
+                                     "\n\t\t\t9 And think not to say within yourselves, We have Abraham to our father: for I say unto you, that God is able of these stones to raise up children unto Abraham. " +
+                                     "\n\t\t\t10 And now also the axe is laid unto the root of the trees: therefore every tree which bringeth not forth good fruit is hewn down, and cast into the fire.");
+    
     //Scripture Tab
-    TabHost.TabSpec spec = host.newTabSpec("Scripture");
-    spec.setContent(R.id.Scripture);
-    spec.setIndicator(_scriptureTitle);
-    host.addTab(spec);
-
+    TabHost.TabSpec spec = host.newTabSpec ("Scripture");
+    spec.setContent (R.id.Scripture);
+    spec.setIndicator (_scriptureTitle);
+    host.addTab (spec);
+    
     //Notes Tab
-    spec = host.newTabSpec("Notes");
-    spec.setContent(R.id.Notes);
-    spec.setIndicator("Notes");
-    host.addTab(spec);
-
+    spec = host.newTabSpec ("Notes");
+    spec.setContent (R.id.Notes);
+    spec.setIndicator ("Notes");
+    host.addTab (spec);
+    
   }
-
+  
   @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    return super.onCreateOptionsMenu(menu);
+  public boolean onCreateOptionsMenu (Menu menu) {
+    return super.onCreateOptionsMenu (menu);
   }
-
+  
   @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    return super.onOptionsItemSelected(item);
+  public boolean onOptionsItemSelected (MenuItem item) {
+    return super.onOptionsItemSelected (item);
   }
-
-  public void testScriptureStorage() {
-
+  
+  public void testScriptureStorage () {
+    
   }
-
-
+  
+  
 }
