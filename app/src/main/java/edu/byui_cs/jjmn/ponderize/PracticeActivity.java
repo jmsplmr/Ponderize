@@ -120,7 +120,7 @@ public class PracticeActivity extends AppCompatActivity {
   }
   
   /*******************************
-   * toString
+   * getReference
    * changes an array to string.
    *******************************/
   public String toString (String[] words) {

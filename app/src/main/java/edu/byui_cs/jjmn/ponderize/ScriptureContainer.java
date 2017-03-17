@@ -12,12 +12,23 @@ public class ScriptureContainer {
   private String _text;
   private boolean _isCompleted;
   
-  public ScriptureContainer (){}
+  /**
+   * Default constructor does nothing with initializing fields
+   */
+  public ScriptureContainer () {
+  }
   
-  public ScriptureContainer (String _book, int _chapter, int _verse) {
-    this._book = _book;
-    this._chapter = _chapter;
-    this._verse = _verse;
+  /**
+   * Nondefault constructor
+   *
+   * @param book  Book of reference
+   * @param chapter chapter of reference
+   * @param verse verse of reference
+   */
+  public ScriptureContainer (String book, int chapter, int verse) {
+    this._book = book;
+    this._chapter = chapter;
+    this._verse = verse;
     this._isCompleted = false;
   }
   
@@ -61,8 +72,12 @@ public class ScriptureContainer {
     _isCompleted = true;
   }
   
-  @Override
-  public String toString () {
+  /**
+   * Formatte scripture reference
+   *
+   * @return Formatted string object of object reference
+   */
+  public String getReference () {
     return _book + ' ' + _chapter + ':' + _verse;
   }
 }

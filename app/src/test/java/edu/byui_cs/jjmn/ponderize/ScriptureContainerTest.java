@@ -13,16 +13,15 @@ import static org.junit.Assert.assertNotEquals;
 
 public class ScriptureContainerTest {
   private ScriptureContainer sc0, sc1;
-  private String scriptureReference;
+  
   private final String BOOK = "Ether";
   private final int CHAPTER = 12;
   private final int VERSE = 4;
-  
-  private final String text = "Wherefore, whoso believeth in God might with surety hope for a better" +
-                                    " world, yea, even a place at the right hand of God, which hope " +
-                                    "cometh of faith, maketh an anchor to the souls of men, which " +
-                                    "would make them sure and steadfast, always abounding in good " +
-                                    "works, being led to glorify God.";
+  private final String text = "Wherefore, whoso believeth in God might with surety hope for a " +
+                                    "better world, yea, even a place at the right hand of God, " +
+                                    "which hope cometh of faith, maketh an anchor to the souls of" +
+                                    " men, which would make them sure and steadfast, always " +
+                                    "abounding in good works, being led to glorify God.";
   
   @Before
   public void setUp () throws Exception {
@@ -44,9 +43,9 @@ public class ScriptureContainerTest {
   
   @Test
   public void scriptureContainer_Should_DisplayScriptureReference () throws Exception {
-    assertEquals ("Ether 12:4", sc0.toString ());
+    assertEquals ("Ether 12:4", sc0.getReference ());
     assertEquals ("Ether 12:4", sc0.getBook () + ' ' + sc0.getChapter () + ':' + sc0.getVerse ());
-    assertNotEquals ("Ether 12-4", sc0.toString ());
+    assertNotEquals ("Ether 12-4", sc0.getReference ());
   }
   
   @Test
@@ -61,6 +60,9 @@ public class ScriptureContainerTest {
                         " maketh an anchor to the souls of men, which would make them sure and " +
                         "steadfast, always abounding in good works, being led to glorify God.",
           sc1.getText ());
+    
+    assertNotEquals ("", sc0);
+    assertNotEquals ("", sc1);
   }
   
   @Test
@@ -68,6 +70,6 @@ public class ScriptureContainerTest {
     assertEquals (false, sc0.getCompleted ());
     assertEquals (true, sc1.getCompleted ());
     assertNotEquals (true, sc0.getCompleted ());
-    assertNotEquals (false,sc1.getCompleted ());
+    assertNotEquals (false, sc1.getCompleted ());
   }
 }
