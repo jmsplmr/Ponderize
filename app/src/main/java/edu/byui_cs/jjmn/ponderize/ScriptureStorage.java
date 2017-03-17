@@ -14,16 +14,20 @@ import java.util.List;
 /**
  * Created by Michael on 2/25/17.
  */
-
 public class ScriptureStorage {
   
+  /**
+   *
+   */
+  public ScriptureStorage () {
+  }
   
-  /***************************************
-   * saveScripture
+  /**
+   * Saves 1 scripture to 1 file.
+   *
    * @param scripture
    * @param aFile
-   * Saves 1 scripture to 1 file.
-   **************************************/
+   */
   public void saveScripture (ScriptureContainer scripture, File aFile) {
     
     try {
@@ -40,7 +44,8 @@ public class ScriptureStorage {
       //End file writing.
       fileWriter.close ();
       
-    } catch ( IOException e ) {
+    }
+    catch ( IOException e ) {
       e.printStackTrace ();
     }
     
@@ -48,13 +53,12 @@ public class ScriptureStorage {
   }
   
   
-  /****************************************
-   * loadScriptures
+  /**
+   * Returns 1 scriptures from a file with only one scripture in it.
+   *
    * @param aFile
    * @return Scripture Container
-   * Returns 1 scriptures from a file with
-   * only one scripture in it.
-   ****************************************/
+   */
   public ScriptureContainer loadScripture (File aFile) {
     
     ScriptureContainer scripture = new ScriptureContainer ("", 0, 0);
@@ -73,7 +77,8 @@ public class ScriptureStorage {
       scripture = gsonConverter.fromJson (scriptureJson, ScriptureContainer.class);
       
       
-    } catch ( Exception e ) {
+    }
+    catch ( Exception e ) {
       e.printStackTrace ();
     }
     
@@ -82,12 +87,12 @@ public class ScriptureStorage {
   }
   
   
-  /*************************************************
-   * saveAllScriptures.
+  /**
+   * saves all the scriptues in a List.
+   *
    * @param scriptList
    * @param saveFile
-   * saves all the scriptues in a List.
-   *************************************************/
+   */
   public void saveAllScriptures (List < ScriptureContainer > scriptList, File saveFile) {
     
     //Create Gson object and convert list to string.
@@ -100,20 +105,21 @@ public class ScriptureStorage {
       writer = new FileWriter (saveFile);
       writer.write (jsonList);
       writer.close ();
-    } catch ( Exception e ) {
+    }
+    catch ( Exception e ) {
       e.printStackTrace ();
     }
-    
     return;
   }
   
-  /***********************************************
-   * loadAllScriptures.
+  /**
+   * Load a list of scriptures based on json object
+   *
    * @param loadFile
-   * @return returns a list if it worked and empty
-   * other wise.
-   ************************************************/
+   * @return returns a list if it worked and empty other wise
+   */
   public List < ScriptureContainer > loadAllScriptures (File loadFile) {
+    
     Gson gson = new Gson ();
     
     try {
@@ -128,12 +134,11 @@ public class ScriptureStorage {
       }.getType ();
       ArrayList < ScriptureContainer > loadList = gson.fromJson (json, listType);
       return loadList;
-    } catch ( Exception e ) {
+    }
+    catch ( Exception e ) {
       e.printStackTrace ();
     }
-    
     //Return an empty array if file reader failed.
     return new ArrayList < ScriptureContainer > ();
   }
-  
 }

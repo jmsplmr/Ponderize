@@ -19,7 +19,7 @@ public class ScriptureContainer {
   }
   
   /**
-   * Nondefault constructor
+   * Nondefault constructor setting initial values for the reference
    *
    * @param book  Book of reference
    * @param chapter chapter of reference
