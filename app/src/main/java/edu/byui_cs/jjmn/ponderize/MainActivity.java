@@ -44,11 +44,10 @@ public class MainActivity extends AppCompatActivity {
   public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
   
   /**
-   *
+   * FACEBOOK THING CallbackManager - Like the facebook container to do everything.
    */
-  // FACEBOOK THING
-  // CallbackManager - Like the facebook container to do everything.
   CallbackManager callbackManager;
+  
   /**
    *
    */
@@ -56,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
   private TabHost host;
   
   /**
+   * {@inheritDoc}
    * @param savedInstanceState
    */
   @Override
@@ -180,7 +180,6 @@ public class MainActivity extends AppCompatActivity {
             // Cancelled logging into facebook
             @Override
             public void onCancel () {
-              
               Log.d ("MAIN ACTIVITY FACE", "LOGIN CANCELLED");
             }
             
@@ -194,17 +193,22 @@ public class MainActivity extends AppCompatActivity {
               Log.e ("MAIN ACTIVITY FACE", "LOGIN ERROR", exception);
             }
           });
-
-        /* ************************************************************************************
-         * LIST VIEW ON CLICK LISTENER
-         * Joseph Koetting
-         * Mar 4, 2017
-         * When an item in the list view is clicked,
-         * Opens a new Scripture View Activity
-         ************************************************************************************/
     
+    // LIST VIEW ON CLICK LISTENER
+    // Joseph Koetting
+    // Mar 4, 2017
+    // When an item in the list view is clicked,
+    // Opens a new Scripture View Activity
+      
     proView.setOnItemClickListener (
           new AdapterView.OnItemClickListener () {
+            /**
+             * {@inheritDoc}
+             * @param parent
+             * @param view
+             * @param position
+             * @param id
+             */
             @Override
             public void onItemClick (AdapterView < ? > parent, View view, int position, long id) {
               
@@ -238,6 +242,13 @@ public class MainActivity extends AppCompatActivity {
     
     memView.setOnItemClickListener (
           new AdapterView.OnItemClickListener () {
+            /**
+             * {@inheritDoc}
+             * @param parent
+             * @param view
+             * @param position
+             * @param id
+             */
             @Override
             public void onItemClick (AdapterView < ? > parent, View view, int position, long id) {
               
@@ -263,6 +274,7 @@ public class MainActivity extends AppCompatActivity {
   }
   
   /**
+   *
    * @param view
    */
   public void goToView (View view) {
@@ -271,6 +283,7 @@ public class MainActivity extends AppCompatActivity {
   }
   
   /**
+   *
    * @param v
    */
   //For navigation testing buttons
@@ -290,6 +303,8 @@ public class MainActivity extends AppCompatActivity {
   }
   
   /**
+   * Activity changer to SettingsActivity
+   *
    * @param v
    */
   public void onSettingClick (View v) {
