@@ -49,12 +49,6 @@ public class MainActivity extends AppCompatActivity {
   CallbackManager callbackManager;
   
   /**
-   *
-   */
-  // Init tabs
-  private TabHost host;
-  
-  /**
    * {@inheritDoc}
    * @param savedInstanceState
    */
@@ -65,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate (savedInstanceState);
     setContentView (activity_main);
     
-    host = (TabHost) findViewById (R.id.tabHostMain);
+    TabHost host = (TabHost) findViewById (R.id.tabHostMain);
     host.setup ();
     
     //Progressing Tab
@@ -277,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
   /**
    * Activity changer to PracticeActivity
    *
-   * @param v
+   * @param v Current view
    */
   public void onPracticeBtnClick (View v) {
     Intent intent = new Intent (this, PracticeActivity.class);
@@ -287,7 +281,7 @@ public class MainActivity extends AppCompatActivity {
   /**
    * Activity changer to ScriptureViewActivity
    *
-   * @param v
+   * @param v Current view
    */
   //For navigation testing buttons
   public void onScriptureBtnClick (View v) {
@@ -298,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
   /**
    * Activity changer to MemorizeQuizActivity
    *
-   * @param v
+   * @param v Current view
    */
   public void onQuizBtnClick (View v) {
     Intent i = new Intent (this, MemorizeQuizActivity.class);
@@ -308,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
   /**
    * Activity changer to SettingsActivity
    *
-   * @param v
+   * @param v Current view
    */
   public void onSettingClick (View v) {
     Intent i = new Intent (this, SettingsActivity.class);
