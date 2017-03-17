@@ -115,7 +115,7 @@
         android:layout_alignBottom="@+id/btnQuiz"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="20dp"
-        android:onClick="goToView"
+        android:onClick="onPracticeBtnClick"
         android:text="Practice"/>
 
 </RelativeLayout>

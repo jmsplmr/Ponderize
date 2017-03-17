@@ -243,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
     memView.setOnItemClickListener (
           new AdapterView.OnItemClickListener () {
             /**
+             *
              * {@inheritDoc}
              * @param parent
              * @param view
@@ -274,15 +275,17 @@ public class MainActivity extends AppCompatActivity {
   }
   
   /**
+   * Activity changer to PracticeActivity
    *
-   * @param view
+   * @param v
    */
-  public void goToView (View view) {
+  public void onPracticeBtnClick (View v) {
     Intent intent = new Intent (this, PracticeActivity.class);
     startActivity (intent);
   }
   
   /**
+   * Activity changer to ScriptureViewActivity
    *
    * @param v
    */
