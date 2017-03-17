@@ -7,9 +7,12 @@ package edu.byui_cs.jjmn.ponderize;
 public class ScriptureContainer {
   private String _book;
   private int _chapter;
+  
   private int _verse;
   private String _text;
   private boolean _isCompleted;
+  
+  public ScriptureContainer (){}
   
   public ScriptureContainer (String _book, int _chapter, int _verse) {
     this._book = _book;
@@ -46,7 +49,11 @@ public class ScriptureContainer {
     this._verse = verse;
   }
   
-  public void set_text (String _text) {
+  public int getVerse () {
+    return _verse;
+  }
+  
+  public void setText (String _text) {
     this._text = _text;
   }
   
