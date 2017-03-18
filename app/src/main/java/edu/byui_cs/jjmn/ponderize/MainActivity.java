@@ -59,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
 
-    // Sets up notifications to be working
-    Notifications();
 
     Log.v(getClass().getSimpleName(), "Create main activity.");
     super.onCreate(savedInstanceState);
@@ -314,89 +312,6 @@ public class MainActivity extends AppCompatActivity {
   public void onSettingClick(View v) {
     Intent i = new Intent(this, SettingsActivity.class);
     startActivity(i);
-  }
-
-  public void Notifications() {
-
-    // get shared preferences
-    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-    // get booleans for each day of the week
-    Boolean sun = preferences.getBoolean("check_box_preference_1", false);
-    Boolean mon = preferences.getBoolean("check_box_preference_2", false);
-    Boolean tue = preferences.getBoolean("check_box_preference_3", false);
-    Boolean wed = preferences.getBoolean("check_box_preference_4", false);
-    Boolean thu = preferences.getBoolean("check_box_preference_5", false);
-    Boolean fri = preferences.getBoolean("check_box_preference_6", false);
-    Boolean sat = preferences.getBoolean("check_box_preference_7", false);
-
-    // get time and ampm
-    String ampm = preferences.getString("listPref", "");
-    String time = preferences.getString("time", "");
-
-    // Testing to make sure preferences load correctly.
-    Log.e("CALENDER CHECKING SUN", sun.toString());
-    Log.e("CALENDER CHECKING MON", mon.toString());
-    Log.e("CALENDER CHECKING TUE", tue.toString());
-    Log.e("CALENDER CHECKING WED", wed.toString());
-    Log.e("CALENDER CHECKING THU", thu.toString());
-    Log.e("CALENDER CHECKING FRI", fri.toString());
-    Log.e("CALENDER CHECKING SAT", sat.toString());
-    Log.e("CALENDER CHECKING TIME", time);
-    Log.e("CALENDER CHECKING AMPM", ampm);
-
-    // init calendar object
-    Calendar calendar = Calendar.getInstance();
-
-    // makes it happen on different days
-    if (sun) {
-      calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
-    }
-    if (mon) {
-      calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-    }
-    if (tue) {
-      calendar.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
-    }
-    if (wed) {
-      calendar.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
-    }
-    if (thu) {
-      calendar.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
-    }
-    if (fri) {
-      calendar.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
-    }
-    if (sat) {
-      calendar.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
-    }
-
-    int addTwelveHours = Integer.parseInt(ampm) * 12;
-
-    if (time.charAt(1) == ':') {
-      // Set Hour
-      calendar.set(Calendar.HOUR_OF_DAY, time.charAt(0) + addTwelveHours);
-
-      // Set Minute
-      Integer minute = (time.charAt(2) - '0') * 10 + time.charAt(3) - '0';
-      calendar.set(Calendar.MINUTE, minute);
-    } else {
-      // Set Hour
-      Integer hour = (time.charAt(0) - '0') * 10 + time.charAt(0) - '0';
-      calendar.set(Calendar.HOUR_OF_DAY, hour + addTwelveHours);
-
-      // Set Minute
-      Integer minute = (time.charAt(3) - '0') * 10 + time.charAt(4) - '0';
-      calendar.set(Calendar.MINUTE, minute);
-    }
-
-    // No idea what this does. Requires to work
-    Intent intent = new Intent(getApplicationContext(), Notification_receiver.class);
-    PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-    // Sets the alarm
-    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
   }
 }
 

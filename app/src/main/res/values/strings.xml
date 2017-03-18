@@ -85,7 +85,7 @@
     <string name="the_scripture">The Scripture</string>
     <string name="enter_notes_here">Enter Notes Here</string>
     <string name="empty"/>
-
+    <string name="myCoolButton">Save</string>
 
     <string-array name="listArray">
         <item>AM</item>
