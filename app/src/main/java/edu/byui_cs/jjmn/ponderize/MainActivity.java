@@ -35,7 +35,6 @@ import static edu.byui_cs.jjmn.ponderize.R.layout.activity_main;
  */
 public class MainActivity extends AppCompatActivity {
 
-
   /**
    *
    */
