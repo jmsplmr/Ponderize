@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.byui_cs.jjmn.ponderize">
+          package="edu.byui_cs.jjmn.ponderize">
 
     <!-- FACEBOOK STUFF -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <!-- FACEBOOK STUFF -->
     <application
@@ -14,39 +14,28 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
+            android:value="@string/facebook_app_id"/>
 
         <activity android:name="edu.byui_cs.jjmn.ponderize.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="edu.byui_cs.jjmn.ponderize.ScriptureViewActivity"
-            android:parentActivityName="edu.byui_cs.jjmn.ponderize.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.byui_cs.jjmn.ponderize.MainActivity"/>
+        <activity android:name="edu.byui_cs.jjmn.ponderize.ScriptureViewActivity">
+            <!--android:parentActivityName="edu.byui_cs.jjmn.ponderize.MainActivity">-->
         </activity>
-        <activity android:name="edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity"
-            android:parentActivityName="edu.byui_cs.jjmn.ponderize.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.byui_cs.jjmn.ponderize.MainActivity"/>
+        <activity android:name="edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity">
+            <!--android:parentActivityName="edu.byui_cs.jjmn.ponderize.MainActivity">-->
         </activity>
         <activity
             android:name="edu.byui_cs.jjmn.ponderize.SettingsActivity"
-            android:parentActivityName="edu.byui_cs.jjmn.ponderize.MainActivity"
-            android:label="@string/title_activity_settings" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.byui_cs.jjmn.ponderize.MainActivity"/>
+            android:label="@string/title_activity_settings">
+            <!--android:parentActivityName="edu.byui_cs.jjmn.ponderize.MainActivity"-->
         </activity>
-        <activity android:name="edu.byui_cs.jjmn.ponderize.PracticeActivity"
-            android:parentActivityName="edu.byui_cs.jjmn.ponderize.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.byui_cs.jjmn.ponderize.MainActivity"/>
+        <activity
+            android:name="edu.byui_cs.jjmn.ponderize.PracticeActivity">
+            <!--android:parentActivityName="edu.byui_cs.jjmn.ponderize.MainActivity"-->
         </activity>
     </application>
 

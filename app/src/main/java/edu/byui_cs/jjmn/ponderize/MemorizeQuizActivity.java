@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.byui_cs.jjmn.ponderize.R;
-
 public class MemorizeQuizActivity extends AppCompatActivity {
   
   @Override

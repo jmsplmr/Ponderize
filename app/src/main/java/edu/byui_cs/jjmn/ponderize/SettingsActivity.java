@@ -20,8 +20,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.byui_cs.jjmn.ponderize.R;
-
 import java.util.List;
 
 /**

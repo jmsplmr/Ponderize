@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.byui_cs.jjmn.ponderize.R;
-
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Stack;

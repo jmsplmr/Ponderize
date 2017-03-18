@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.byui_cs.jjmn.ponderize.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -22,7 +21,7 @@ import com.facebook.share.widget.ShareButton;
 
 import java.util.ArrayList;
 
-import static com.byui_cs.jjmn.ponderize.R.layout.activity_main;
+import static edu.byui_cs.jjmn.ponderize.R.layout.activity_main;
 
 // FOR FACEBOOK
 
