@@ -1,12 +1,20 @@
 package edu.byui_cs.jjmn.ponderize;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TabHost;
 import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 
 public class ScriptureViewActivity extends AppActivity {
   
@@ -50,7 +58,30 @@ public class ScriptureViewActivity extends AppActivity {
     spec.setContent (R.id.Notes);
     spec.setIndicator ("Notes");
     host.addTab (spec);
-    
+
+    EditText noteView = (EditText) findViewById(R.id.etxtNotes);
+    String scriptRef = _scriptureTitle.replaceAll("\\s", "") + "Note.txt";
+    //noteView.setText(scriptRef);
+    String placeHolder = "no notes on file";
+    String noteString = "";
+    //Read the text from the file
+    try {
+      FileInputStream fin = openFileInput(scriptRef);
+      InputStreamReader isr = new InputStreamReader(fin);
+      BufferedReader buff = new BufferedReader(isr);
+      StringBuilder sb = new StringBuilder();
+
+      while ((placeHolder = buff.readLine()) != null) {
+
+        sb.append(placeHolder);
+        noteString += placeHolder;
+      }
+    }
+    catch(Exception e) {
+      e.printStackTrace();
+    }
+
+    noteView.setText(noteString);
   }
   
   @Override
@@ -62,7 +93,42 @@ public class ScriptureViewActivity extends AppActivity {
   public boolean onOptionsItemSelected (MenuItem item) {
     return super.onOptionsItemSelected (item);
   }
-  
+
+  @Override
+  protected void onStop() {
+    super.onStop();
+    Log.v(getClass().getName(), "Paused");
+
+    //Create the file name from the scripture reference
+    String scriptRef = _scriptureTitle.replaceAll("\\s", "") + "Note.txt";
+
+    //Create the file if it does not exist
+    File note = new File(getFilesDir(), scriptRef);
+
+    //Get the editText reference
+    EditText saveText = (EditText) this.findViewById(R.id.etxtNotes);
+
+    //Logging
+    Log.v(getClass().getName(), scriptRef);
+
+    //grab the string from the text box
+    String noteString = saveText.getText().toString();
+    Log.v(getClass().getName(), noteString);
+
+    try {
+      //Create an output stream for the note file.
+      FileOutputStream fout = openFileOutput(scriptRef, Context.MODE_PRIVATE);
+
+      //Write to the file
+      fout.write(noteString.getBytes());
+
+      //End file writing.
+      fout.close();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
   public void testScriptureStorage () {
     
   }
