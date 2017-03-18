@@ -7,33 +7,33 @@ package edu.byui_cs.jjmn.ponderize;
 public class AchievementContainer {
   
   //Variables
-  private static String achievementName;
-  private boolean isAchieved;
+  private String _achievementName;
+  private boolean _isAchieved;
     /*
     TODO add some sort of act to complete,
     probably an int or another boolean
     of representing the act
     */
   
-  //Constructor
+  
+  
   public AchievementContainer () {
-    isAchieved = false;
+    _isAchieved = false;
   }
   
-  //Getters and Setters
-  public static String getAchievementName () {
-    return achievementName;
+  public String getAchievementName () {
+    return _achievementName;
   }
   
-  public static void setAchievementName (String achievementName) {
-    AchievementContainer.achievementName = achievementName;
+  public void setAchievementName (String achievementName) {
+    _achievementName = achievementName;
   }
   
-  public boolean isAchieved () {
-    return isAchieved;
+  public boolean isIsAchieved () {
+    return _isAchieved;
   }
   
-  public void setAchieved (boolean achieved) {
-    isAchieved = achieved;
+  public void setIsAchieved (boolean isAchieved) {
+    this._isAchieved = isAchieved;
   }
 }
