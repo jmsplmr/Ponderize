@@ -20,9 +20,6 @@ import static org.mockito.Mockito.mock;
 
 public class ScriptureStorageTest {
   
-  private ScriptureContainer scripture;
-  private List < ScriptureContainer > scriptureList;
-  
   private final String BOOK = "Ether";
   private final int CHAPTER = 12;
   private final int VERSE = 4;
@@ -31,6 +28,8 @@ public class ScriptureStorageTest {
                                     "which hope cometh of faith, maketh an anchor to the souls of" +
                                     " men, which would make them sure and steadfast, always " +
                                     "abounding in good works, being led to glorify God.";
+  private ScriptureContainer scripture;
+  private List < ScriptureContainer > scriptureList;
   @Mock
   private Context context;
   
@@ -66,20 +65,24 @@ public class ScriptureStorageTest {
   @Test
   public void scriptureStorage_Should_SaveAndLoadManyScriptures () throws Exception {
     ScriptureStorage scriptureSave = new ScriptureStorage ();
-  
+    
     File file = new File (context.getFilesDir (), "allScriptures.txt");
+    File noneFile = new File (context.getFilesDir (), "none.txt");
     scriptureSave.saveAllScriptures (scriptureList, file);
-  
-    List<ScriptureContainer> loadedScriptures = scriptureSave.loadAllScriptures (file);
-  
-    for (ScriptureContainer scriptureRef :loadedScriptures) {
-  
-  
+    
+    List < ScriptureContainer > loadedScriptures = scriptureSave.loadAllScriptures (file);
+    
+    for (ScriptureContainer scriptureRef : loadedScriptures) {
       assertEquals (scripture.getReference (), scriptureRef.getReference ());
-  
-      //scripture.setBook ("James");
-      //assertNotEquals (scripture.getReference (),scriptureRef.getReference ());
     }
+    
+    scripture.setBook ("James");
+    for (ScriptureContainer scriptureRef : loadedScriptures) {
+      assertNotEquals (scripture.getReference (), scriptureRef.getReference ());
+    }
+    
+    List < ScriptureContainer > loadedScriptures1 = scriptureSave.loadAllScriptures (noneFile);
+    assertEquals (0, loadedScriptures1.size ());
   }
 }
 
