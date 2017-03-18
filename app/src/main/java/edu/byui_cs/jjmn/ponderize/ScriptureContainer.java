@@ -21,9 +21,9 @@ public class ScriptureContainer {
   /**
    * Nondefault constructor setting initial values for the reference
    *
-   * @param book  Book of reference
+   * @param book    Book of reference
    * @param chapter chapter of reference
-   * @param verse verse of reference
+   * @param verse   verse of reference
    */
   public ScriptureContainer (String book, int chapter, int verse) {
     this._book = book;
@@ -52,20 +52,20 @@ public class ScriptureContainer {
     return _text;
   }
   
-  public boolean getCompleted () {
-    return _isCompleted;
+  public void setText (String text) {
+    this._text = text;
   }
   
-  public void setVerse (int verse) {
-    this._verse = verse;
+  public boolean getCompleted () {
+    return _isCompleted;
   }
   
   public int getVerse () {
     return _verse;
   }
   
-  public void setText (String _text) {
-    this._text = _text;
+  public void setVerse (int verse) {
+    this._verse = verse;
   }
   
   public void setCompleted () {

@@ -16,8 +16,6 @@ public class ScriptureViewActivity extends AppActivity {
   String _scriptureTitle;
   String _scriptureText;
   
-  TabHost tabHost;
-  
   @Override
   protected void onCreate (Bundle savedInstanceState) {
     Log.v (getClass ().getSimpleName (), "Open ScriptureView activity.");

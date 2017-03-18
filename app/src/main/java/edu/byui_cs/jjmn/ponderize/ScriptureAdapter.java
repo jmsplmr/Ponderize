@@ -17,17 +17,26 @@ import java.util.ArrayList;
 
 public class ScriptureAdapter extends ArrayAdapter < ScriptureContainer > {
   
-  /*************************************************************************************
-   * CONSTRUCTOR
-   ************************************************************************************/
+  
+  /**
+   *
+   *
+   * @param context
+   * @param scriptures
+   */
   public ScriptureAdapter (Context context, ArrayList < ScriptureContainer > scriptures) {
     super (context, 0, scriptures);
   }
   
-  /*************************************************************************************
-   * VIEW - returns view
-   ************************************************************************************/
-  @Override
+  
+  /**
+   *
+   *
+   * @param position
+   * @param convertView
+   * @param parent
+   * @return
+   */
   public View getView (int position, View convertView, ViewGroup parent) {
     
     // get the data item for position

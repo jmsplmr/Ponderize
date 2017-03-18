@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
   
   /**
    * {@inheritDoc}
+   *
    * @param savedInstanceState
    */
   @Override
@@ -193,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
     // Mar 4, 2017
     // When an item in the list view is clicked,
     // Opens a new Scripture View Activity
-      
+    
     proView.setOnItemClickListener (
           new AdapterView.OnItemClickListener () {
             /**

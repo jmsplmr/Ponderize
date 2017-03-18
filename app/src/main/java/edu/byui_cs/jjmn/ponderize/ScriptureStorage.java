@@ -44,8 +44,7 @@ public class ScriptureStorage {
       //End file writing.
       fileWriter.close ();
       
-    }
-    catch ( IOException e ) {
+    } catch ( IOException e ) {
       e.printStackTrace ();
     }
     
@@ -77,8 +76,7 @@ public class ScriptureStorage {
       scripture = gsonConverter.fromJson (scriptureJson, ScriptureContainer.class);
       
       
-    }
-    catch ( Exception e ) {
+    } catch ( Exception e ) {
       e.printStackTrace ();
     }
     
@@ -105,8 +103,7 @@ public class ScriptureStorage {
       writer = new FileWriter (saveFile);
       writer.write (jsonList);
       writer.close ();
-    }
-    catch ( Exception e ) {
+    } catch ( Exception e ) {
       e.printStackTrace ();
     }
     return;
@@ -134,8 +131,7 @@ public class ScriptureStorage {
       }.getType ();
       ArrayList < ScriptureContainer > loadList = gson.fromJson (json, listType);
       return loadList;
-    }
-    catch ( Exception e ) {
+    } catch ( Exception e ) {
       e.printStackTrace ();
     }
     //Return an empty array if file reader failed.
