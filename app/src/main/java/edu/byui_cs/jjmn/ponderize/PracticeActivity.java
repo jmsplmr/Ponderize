@@ -97,10 +97,7 @@ public class PracticeActivity extends AppCompatActivity {
       displayVerse[wordIndex] = word;
       
       indexStack.push (wordIndex);
-      
-      return;
     }
-    
   }
   
   /**********************************
