@@ -11,17 +11,17 @@ import java.util.Stack;
 
 public class PracticeActivity extends AppCompatActivity {
   
-  private Stack indexStack = new Stack ();
-  private String testVerse = "and it came to pass that the lord flooded the earth.";
-  private String[] orignalVerse;
+  private Stack < Integer > indexStack = new Stack <> ();
+  private String[] originalVerse;
   private String[] displayVerse;
   
   @Override
   protected void onCreate (Bundle savedInstanceState) {
     super.onCreate (savedInstanceState);
     setContentView (R.layout.activity_practice);
-    
-    orignalVerse = testVerse.trim ().split ("\\s+");
+  
+    String testVerse = "and it came to pass that the lord flooded the earth.";
+    originalVerse = testVerse.trim ().split ("\\s+");
     displayVerse = testVerse.trim ().split ("\\s+");
     
     TextView aView = (TextView) findViewById (R.id.practiceView);
@@ -74,13 +74,13 @@ public class PracticeActivity extends AppCompatActivity {
       Random random = new Random ();
       
       //Delete a random word.
-      int wordIndex = random.nextInt (orignalVerse.length);
+      int wordIndex = random.nextInt (originalVerse.length);
       Iterator < Integer > it = indexStack.iterator ();
       
       //Make sure that the random int we remove it not already removed.
       while (it.hasNext ()) {
         if (it.next () == wordIndex) {
-          wordIndex = random.nextInt (orignalVerse.length);
+          wordIndex = random.nextInt (originalVerse.length);
           it = indexStack.iterator ();
         }
       }
@@ -97,10 +97,7 @@ public class PracticeActivity extends AppCompatActivity {
       displayVerse[wordIndex] = word;
       
       indexStack.push (wordIndex);
-      
-      return;
     }
-    
   }
   
   /**********************************
@@ -110,11 +107,9 @@ public class PracticeActivity extends AppCompatActivity {
    *********************************/
   public void addWords (int addCount) {
     for (int i = 0; i < addCount; i++) {
-      int wordIndex = (int) indexStack.pop ();
-      displayVerse[wordIndex] = orignalVerse[wordIndex];
+      int wordIndex = indexStack.pop ();
+      displayVerse[wordIndex] = originalVerse[wordIndex];
     }
-    
-    return;
   }
   
   /*******************************
@@ -125,7 +120,7 @@ public class PracticeActivity extends AppCompatActivity {
     StringBuilder builder = new StringBuilder ();
     
     for (String word : words) {
-      builder.append (word + " ");
+      builder.append (word).append (" ");
     }
     
     return builder.toString ();

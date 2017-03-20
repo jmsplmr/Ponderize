@@ -47,7 +47,7 @@ public class ScriptureAdapter extends ArrayAdapter < ScriptureContainer > {
     TextView scriptureText = (TextView) convertView.findViewById (R.id.list_item_scripture_text);
     
     // Make the data appear
-    scriptureTitle.setText (scripture.getReference ());
+    scriptureTitle.setText (scripture != null ? scripture.getReference () : null);
     scriptureText.setText ("Scripture Text Here"); // Implement Later
     
     // Returns View
