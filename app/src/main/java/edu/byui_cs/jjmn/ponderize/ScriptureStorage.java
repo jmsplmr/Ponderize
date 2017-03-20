@@ -47,8 +47,6 @@ public class ScriptureStorage {
     } catch ( IOException e ) {
       e.printStackTrace ();
     }
-    
-    return;
   }
   
   
@@ -98,7 +96,7 @@ public class ScriptureStorage {
     String jsonList = gson.toJson (scriptList);
     
     //Save list to saveFile.
-    FileWriter writer = null;
+    FileWriter writer;
     try {
       writer = new FileWriter (saveFile);
       writer.write (jsonList);
@@ -106,7 +104,6 @@ public class ScriptureStorage {
     } catch ( Exception e ) {
       e.printStackTrace ();
     }
-    return;
   }
   
   /**
@@ -129,12 +126,11 @@ public class ScriptureStorage {
       String json = new String (fileContent);
       Type listType = new TypeToken < ArrayList < ScriptureContainer > > () {
       }.getType ();
-      ArrayList < ScriptureContainer > loadList = gson.fromJson (json, listType);
-      return loadList;
+      return gson. < ArrayList < ScriptureContainer > > fromJson (json, listType);
     } catch ( Exception e ) {
       e.printStackTrace ();
     }
     //Return an empty array if file reader failed.
-    return new ArrayList < ScriptureContainer > ();
+    return new ArrayList <> ();
   }
 }
