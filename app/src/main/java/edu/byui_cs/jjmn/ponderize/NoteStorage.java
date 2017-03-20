@@ -12,12 +12,13 @@ import java.io.InputStreamReader;
 
 /**
  * Created by Nick on 3/20/2017.
+ * Takes care of the saving and loading of notes
  */
 
 public class NoteStorage {
 
     /**
-     * noteSaver class
+     * noteSaver function
      */
 
     public void saveNote(String ref, Context context, EditText text) {
@@ -51,7 +52,7 @@ public class NoteStorage {
     }
 
     /**
-     * noteLoader class
+     * noteLoader function
      */
     public void loadNote(String ref, Context context, EditText noteView) {
 
