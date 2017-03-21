@@ -86,6 +86,12 @@
     <string name="enter_notes_here">Enter Notes Here</string>
     <string name="empty"/>
     <string name="myCoolButton">Save</string>
+    <string name="FACEBOOK_LOGIN_ERROR">MAIN ACTIVITY FACE</string>
+    <string name="LOGIN_ERROR">LOGIN ERROR</string>
+    <string name="FACEBOOK_LOGIN_CANCEL">MAIN ACTIVITY FACE</string>
+    <string name="LOGIN_CANCELLED">LOGIN CANCELLED</string>
+    <string name="FACEBOOK_LOGIN_SECCESSFUL">MAIN ACTIVITY FACE</string>
+    <string name="LOGIN_SECCESSFUL">LOGIN SUCCESSFUL</string>
 
     <string-array name="listArray">
         <item>AM</item>

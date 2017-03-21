@@ -38,9 +38,11 @@ public class PracticeActivity extends AppCompatActivity {
         if (removeCompare > indexStack.size ()) {
           int removeCount = removeCompare - indexStack.size ();
           removeWords (removeCount);
-        } else if (removeCompare < indexStack.size ()) {
-          int addCount = indexStack.size () - removeCompare;
-          addWords (addCount);
+        } else {
+          if (removeCompare < indexStack.size ()) {
+            int addCount = indexStack.size () - removeCompare;
+            addWords (addCount);
+          }
         }
         
         TextView aView = (TextView) findViewById (R.id.practiceView);

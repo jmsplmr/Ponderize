@@ -1,12 +1,8 @@
 package edu.byui_cs.jjmn.ponderize;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +20,6 @@ import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import static edu.byui_cs.jjmn.ponderize.R.layout.activity_main;
 
@@ -38,24 +33,13 @@ public class MainActivity extends AppCompatActivity {
   /**
    *
    */
-  // Init scripture items
   public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
 
   /**
    *
    */
   public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
-
-  /**
-   * FACEBOOK THING CallbackManager - Like the facebook container to do everything.
-   */
-  CallbackManager callbackManager;
-
-  /**
-   * {@inheritDoc}
-   *
-   * @param savedInstanceState
-   */
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
 
@@ -68,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     host.setup();
 
     //Progressing Tab
+    Log.v(getClass().getSimpleName(), "Setup Progressing Tab");
     TabHost.TabSpec spec = host.newTabSpec("Progressing");
     spec.setContent(R.id.Progressing);
     spec.setIndicator("Progressing");
@@ -110,11 +95,10 @@ public class MainActivity extends AppCompatActivity {
     // Look at scriptures, determine if completed or not
     // Adds to appropriate list view
     for (ScriptureContainer sc : omniList) {
-      if (sc.getCompleted()) {
-        memList.add(sc);
-      } else {
-        proList.add(sc);
-      }
+      if (sc.getCompleted ())
+        memList.add (sc);
+      else
+        proList.add (sc);
     }
 
     // grab list view reference
@@ -145,7 +129,10 @@ public class MainActivity extends AppCompatActivity {
 
     // Not sure what this code snippet does
     // DOES NOT WORK WITHOUT
-    callbackManager = CallbackManager.Factory.create();
+    /*
+    FACEBOOK THING CallbackManager - Like the facebook container to do everything.
+   */
+    CallbackManager callbackManager = CallbackManager.Factory.create ();
 
     // get reference to share button
     final ShareButton shareButton = (ShareButton) findViewById(R.id.fb_share_button);
@@ -162,34 +149,21 @@ public class MainActivity extends AppCompatActivity {
 
     LoginManager.getInstance().registerCallback(callbackManager,
             new FacebookCallback<LoginResult>() {
-
-              /**
-               * {@inheritDoc}
-               * @param loginResult
-               */
+              
               // Successfully logged into facebook
               @Override
               public void onSuccess(LoginResult loginResult) {
-                Log.d("MAIN ACTIVITY FACE", "LOGIN SUCCESSFUL");
+                Log.d(getString(R.string.FACEBOOK_LOGIN_SECCESSFUL), getString(R.string.LOGIN_SECCESSFUL));
               }
 
-              /**
-               * {@inheritDoc}
-               */
-              // Cancelled logging into facebook
               @Override
               public void onCancel() {
-                Log.d("MAIN ACTIVITY FACE", "LOGIN CANCELLED");
+                Log.d(getString(R.string.FACEBOOK_LOGIN_CANCEL), getString(R.string.LOGIN_CANCELLED));
               }
 
-              /**
-               * {@inheritDoc}
-               * @param exception
-               */
-              // Error logging in
-              @Override
+             @Override
               public void onError(FacebookException exception) {
-                Log.e("MAIN ACTIVITY FACE", "LOGIN ERROR", exception);
+                Log.e(getString(R.string.FACEBOOK_LOGIN_ERROR), getString(R.string.LOGIN_ERROR), exception);
               }
             });
 
@@ -201,13 +175,7 @@ public class MainActivity extends AppCompatActivity {
 
     proView.setOnItemClickListener(
             new AdapterView.OnItemClickListener() {
-              /**
-               * {@inheritDoc}
-               * @param parent
-               * @param view
-               * @param position
-               * @param id
-               */
+              
               @Override
               public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -241,14 +209,7 @@ public class MainActivity extends AppCompatActivity {
 
     memView.setOnItemClickListener(
             new AdapterView.OnItemClickListener() {
-              /**
-               *
-               * {@inheritDoc}
-               * @param parent
-               * @param view
-               * @param position
-               * @param id
-               */
+              
               @Override
               public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -264,9 +225,8 @@ public class MainActivity extends AppCompatActivity {
                 String scriptureText = scriptureTextView.getText().toString();
 
                 // Put into intent
-                myIntent.putExtra(SCRIPTURE_TITLE, scriptureTitle);
-                myIntent.putExtra(SCRIPTURE_TEXT, scriptureText);
-
+                myIntent.putExtra (SCRIPTURE_TITLE, scriptureTitle).putExtra (SCRIPTURE_TEXT, scriptureText);
+  
                 // Open the new activity
                 startActivityForResult(myIntent, 0);
               }

@@ -6,6 +6,10 @@ import android.util.Log;
 
 public class MemorizeQuizActivity extends AppCompatActivity {
   
+  /**
+   * {@inheritDoc}
+   * @param savedInstanceState
+   */
   @Override
   protected void onCreate (Bundle savedInstanceState) {
     Log.v (getClass ().getSimpleName (), "Open MemorizeQuiz activity.");
