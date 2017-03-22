@@ -24,7 +24,6 @@ public class ScriptureAdapter extends ArrayAdapter < ScriptureContainer > {
     super (context, 0, scriptures);
   }
   
-  
   /**
    * @param position
    * @param convertView
