@@ -100,14 +100,6 @@
         android:layout_marginBottom="175dp"
         android:text="@string/share"/>
 
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_toEndOf="@+id/btnSettings"/>
-
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"

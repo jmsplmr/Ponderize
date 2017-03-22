@@ -84,7 +84,7 @@
     <string name="test_scripture_load_and_save">Test Scripture Load and Save</string>
     <string name="the_scripture">The Scripture</string>
     <string name="enter_notes_here">Enter Notes Here</string>
-    <string name="empty"/>
+    <string name="empty" />
     <string name="myCoolButton">Save</string>
     <string name="FACEBOOK_LOGIN_ERROR">MAIN ACTIVITY FACE</string>
     <string name="LOGIN_ERROR">LOGIN ERROR</string>
@@ -102,4 +102,5 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+    <string name="title_activity_facebook">activity_facebook</string>
 </resources>

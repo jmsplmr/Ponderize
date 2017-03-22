@@ -139,33 +139,6 @@ public class MainActivity extends AppCompatActivity {
     
     // share window is displayed
     shareButton.setShareContent (content);
-
-        /* ************************************************************************************
-         * FACEBOOK LOGIN BUTTON CODE
-         * Joseph Koetting
-         * Mar 8, 2017
-         * Allows the user to log into to the application
-         ************************************************************************************/
-    
-    LoginManager.getInstance ().registerCallback (callbackManager,
-          new FacebookCallback < LoginResult > () {
-            
-            // Successfully logged into facebook
-            @Override
-            public void onSuccess (LoginResult loginResult) {
-              Log.d (getString (R.string.FACEBOOK_LOGIN_SECCESSFUL), getString (R.string.LOGIN_SECCESSFUL));
-            }
-            
-            @Override
-            public void onCancel () {
-              Log.d (getString (R.string.FACEBOOK_LOGIN_CANCEL), getString (R.string.LOGIN_CANCELLED));
-            }
-            
-            @Override
-            public void onError (FacebookException exception) {
-              Log.e (getString (R.string.FACEBOOK_LOGIN_ERROR), getString (R.string.LOGIN_ERROR), exception);
-            }
-          });
     
     // LIST VIEW ON CLICK LISTENER
     // Joseph Koetting
