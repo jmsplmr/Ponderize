@@ -58,30 +58,29 @@ public class ScriptureViewActivity extends AppActivity {
     spec.setContent (R.id.Notes);
     spec.setIndicator ("Notes");
     host.addTab (spec);
-
-    EditText noteView = (EditText) findViewById(R.id.etxtNotes);
-    String scriptRef = _scriptureTitle.replaceAll("\\s", "") + "Note.txt";
+    
+    EditText noteView = (EditText) findViewById (R.id.etxtNotes);
+    String scriptRef = _scriptureTitle.replaceAll ("\\s", "") + "Note.txt";
     //noteView.setText(scriptRef);
     String placeHolder = "no notes on file";
     String noteString = "";
     //Read the text from the file
     try {
-      FileInputStream fin = openFileInput(scriptRef);
-      InputStreamReader isr = new InputStreamReader(fin);
-      BufferedReader buff = new BufferedReader(isr);
-      StringBuilder sb = new StringBuilder();
-
-      while ((placeHolder = buff.readLine()) != null) {
-
-        sb.append(placeHolder);
+      FileInputStream fin = openFileInput (scriptRef);
+      InputStreamReader isr = new InputStreamReader (fin);
+      BufferedReader buff = new BufferedReader (isr);
+      StringBuilder sb = new StringBuilder ();
+      
+      while ((placeHolder = buff.readLine ()) != null) {
+        
+        sb.append (placeHolder);
         noteString += placeHolder;
       }
+    } catch ( Exception e ) {
+      e.printStackTrace ();
     }
-    catch(Exception e) {
-      e.printStackTrace();
-    }
-
-    noteView.setText(noteString);
+    
+    noteView.setText (noteString);
   }
   
   @Override
@@ -93,42 +92,42 @@ public class ScriptureViewActivity extends AppActivity {
   public boolean onOptionsItemSelected (MenuItem item) {
     return super.onOptionsItemSelected (item);
   }
-
+  
   @Override
-  protected void onStop() {
-    super.onStop();
-    Log.v(getClass().getName(), "Paused");
-
+  protected void onStop () {
+    super.onStop ();
+    Log.v (getClass ().getName (), "Paused");
+    
     //Create the file name from the scripture reference
-    String scriptRef = _scriptureTitle.replaceAll("\\s", "") + "Note.txt";
-
+    String scriptRef = _scriptureTitle.replaceAll ("\\s", "") + "Note.txt";
+    
     //Create the file if it does not exist
-    File note = new File(getFilesDir(), scriptRef);
-
+    File note = new File (getFilesDir (), scriptRef);
+    
     //Get the editText reference
-    EditText saveText = (EditText) this.findViewById(R.id.etxtNotes);
-
+    EditText saveText = (EditText) this.findViewById (R.id.etxtNotes);
+    
     //Logging
-    Log.v(getClass().getName(), scriptRef);
-
+    Log.v (getClass ().getName (), scriptRef);
+    
     //grab the string from the text box
-    String noteString = saveText.getText().toString();
-    Log.v(getClass().getName(), noteString);
-
+    String noteString = saveText.getText ().toString ();
+    Log.v (getClass ().getName (), noteString);
+    
     try {
       //Create an output stream for the note file.
-      FileOutputStream fout = openFileOutput(scriptRef, Context.MODE_PRIVATE);
-
+      FileOutputStream fout = openFileOutput (scriptRef, Context.MODE_PRIVATE);
+      
       //Write to the file
-      fout.write(noteString.getBytes());
-
+      fout.write (noteString.getBytes ());
+      
       //End file writing.
-      fout.close();
-    }
-    catch (Exception e) {
-      e.printStackTrace();
+      fout.close ();
+    } catch ( Exception e ) {
+      e.printStackTrace ();
     }
   }
+  
   public void testScriptureStorage () {
     
   }

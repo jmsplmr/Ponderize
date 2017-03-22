@@ -8,6 +8,7 @@ public class MemorizeQuizActivity extends AppCompatActivity {
   
   /**
    * {@inheritDoc}
+   *
    * @param savedInstanceState
    */
   @Override

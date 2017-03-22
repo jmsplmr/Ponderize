@@ -19,7 +19,7 @@ public class PracticeActivity extends AppCompatActivity {
   protected void onCreate (Bundle savedInstanceState) {
     super.onCreate (savedInstanceState);
     setContentView (R.layout.activity_practice);
-  
+    
     String testVerse = "and it came to pass that the lord flooded the earth.";
     originalVerse = testVerse.trim ().split ("\\s+");
     displayVerse = testVerse.trim ().split ("\\s+");
