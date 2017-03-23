@@ -78,7 +78,7 @@ public class ScriptureViewActivity extends AppActivity {
   public boolean onOptionsItemSelected (MenuItem item) {
     return super.onOptionsItemSelected (item);
   }
-
+  
   @Override
   protected void onStop() {
     super.onStop();

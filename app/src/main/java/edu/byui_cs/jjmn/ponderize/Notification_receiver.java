@@ -13,12 +13,15 @@ import android.support.v4.app.NotificationCompat;
 
 public class Notification_receiver extends BroadcastReceiver {
   
+  /**
+   * {@inheritDoc}
+   */
   @Override
   public void onReceive (Context context, Intent intent) {
     
     // no idea
-    NotificationManager notificationManager = (NotificationManager)
-                                                    context.getSystemService ((context.NOTIFICATION_SERVICE));
+    NotificationManager nManager = (NotificationManager) context.getSystemService ((Context
+                                                                                          .NOTIFICATION_SERVICE));
     
     // When notification is clicked, open Main Activity
     Intent repeating_intent = new Intent (context, MainActivity.class);
@@ -38,6 +41,6 @@ public class Notification_receiver extends BroadcastReceiver {
                                                .setAutoCancel (true);
     
     // runs notification
-    notificationManager.notify (100, builder.build ());
+    nManager.notify (100, builder.build ());
   }
 }

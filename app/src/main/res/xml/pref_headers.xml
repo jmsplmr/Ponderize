@@ -17,4 +17,10 @@
         android:icon="@drawable/ic_sync_black_24dp"
         android:title="@string/pref_header_data_sync"/>
 
+    <header
+        android:title="Facebook"
+        android:icon="@drawable/com_facebook_button_icon_blue">
+        <intent android:targetPackage="edu.byui_cs.jjmn.ponderize"
+            android:targetClass="edu.byui_cs.jjmn.ponderize.FacebookActivity" /></header>
+
 </preference-headers>
