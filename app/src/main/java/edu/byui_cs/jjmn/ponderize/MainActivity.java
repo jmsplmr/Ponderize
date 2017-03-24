@@ -23,6 +23,7 @@ import com.facebook.login.LoginResult;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -315,3 +316,6 @@ public class MainActivity extends AppCompatActivity {
   }
 }
 
+public void makePreLoad() {
+
+}
