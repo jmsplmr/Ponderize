@@ -14,12 +14,9 @@ import android.widget.TextView;
 import com.facebook.CallbackManager;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
+import com.google.gson.Gson;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +28,8 @@ import static edu.byui_cs.jjmn.ponderize.R.layout.activity_main;
  *
  */
 public class MainActivity extends AppCompatActivity {
+  
+  protected List< ScriptureContainer > omniList;
   
   /**
    *
@@ -77,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
     * Loads the preloaded scriptures into an array and loads them into the scripture view
     ********************************************************************************************/
     // init array
-    List< ScriptureContainer > omniList = new ArrayList <> ();
     ArrayList < ScriptureContainer > memList = new ArrayList <> ();
     ArrayList < ScriptureContainer > proList = new ArrayList <> ();
 
@@ -256,6 +254,8 @@ public class MainActivity extends AppCompatActivity {
   
   public void addNewScripture (View view){
     Intent i = new Intent (this, AddScriptureActivity.class);
+    String scriptureList = new Gson ().toJson (omniList);
+    i.putExtra ("List", scriptureList);
     startActivity (i);
   }
 }
