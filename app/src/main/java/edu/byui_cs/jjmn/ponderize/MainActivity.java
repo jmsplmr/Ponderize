@@ -12,14 +12,16 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 import static edu.byui_cs.jjmn.ponderize.R.layout.activity_main;
 
@@ -70,27 +72,32 @@ public class MainActivity extends AppCompatActivity {
          * Feb 24, 2017
          * Init an array, then displays contents to the list view
          ************************************************************************************/
-    
+
+    /*******************************************************************************************
+    * Loads the preloaded scriptures into an array and loads them into the scripture view
+    ********************************************************************************************/
     // init array
-    ArrayList < ScriptureContainer > omniList = new ArrayList <> ();
+    List< ScriptureContainer > omniList = new ArrayList <> ();
     ArrayList < ScriptureContainer > memList = new ArrayList <> ();
     ArrayList < ScriptureContainer > proList = new ArrayList <> ();
-    
+
+    // The file path of the file in the internal directory with the pre-loaded scriptures
+    File saveFile = new File(getFilesDir(), "scriptureFile.json");
+
+    ScriptureStorage loadScriptures = new ScriptureStorage();
+    omniList = loadScriptures.loadAllScriptures(saveFile);
+
     // init scriptures
     ScriptureContainer a = new ScriptureContainer ("Mark", 4, 5);
     ScriptureContainer b = new ScriptureContainer ("James", 5, 3);
-    ScriptureContainer c = new ScriptureContainer ("Hockey", 6, 7);
-    ScriptureContainer d = new ScriptureContainer ("Falron", 7, 3);
     
     // these items will show in the completed tab
     a.setCompleted ();
     b.setCompleted ();
     
     // add scriptures to array
-    omniList.add (0, a);
-    omniList.add (1, b);
-    omniList.add (2, c);
-    omniList.add (3, d);
+    omniList.add (/*0,*/ a);
+    omniList.add (/*1,*/ b);
     
     // Look at scriptures, determine if completed or not
     // Adds to appropriate list view
