@@ -19,7 +19,7 @@ public class PracticeActivity extends AppCompatActivity {
   protected void onCreate (Bundle savedInstanceState) {
     super.onCreate (savedInstanceState);
     setContentView (R.layout.activity_practice);
-  
+    
     String testVerse = "and it came to pass that the lord flooded the earth.";
     originalVerse = testVerse.trim ().split ("\\s+");
     displayVerse = testVerse.trim ().split ("\\s+");
@@ -38,9 +38,11 @@ public class PracticeActivity extends AppCompatActivity {
         if (removeCompare > indexStack.size ()) {
           int removeCount = removeCompare - indexStack.size ();
           removeWords (removeCount);
-        } else if (removeCompare < indexStack.size ()) {
-          int addCount = indexStack.size () - removeCompare;
-          addWords (addCount);
+        } else {
+          if (removeCompare < indexStack.size ()) {
+            int addCount = indexStack.size () - removeCompare;
+            addWords (addCount);
+          }
         }
         
         TextView aView = (TextView) findViewById (R.id.practiceView);

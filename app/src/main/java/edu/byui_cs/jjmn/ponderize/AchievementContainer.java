@@ -16,7 +16,6 @@ public class AchievementContainer {
     */
   
   
-  
   public AchievementContainer () {
     _isAchieved = false;
   }
