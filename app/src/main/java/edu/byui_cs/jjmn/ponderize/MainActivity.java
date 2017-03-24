@@ -12,10 +12,6 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 
@@ -244,6 +240,11 @@ public class MainActivity extends AppCompatActivity {
    */
   public void onSettingClick (View v) {
     Intent i = new Intent (this, SettingsActivity.class);
+    startActivity (i);
+  }
+  
+  public void addNewScripture (View view){
+    Intent i = new Intent (this, AddScriptureActivity.class);
     startActivity (i);
   }
 }

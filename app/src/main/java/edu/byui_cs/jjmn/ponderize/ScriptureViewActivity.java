@@ -10,12 +10,6 @@ import android.widget.EditText;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-
 public class ScriptureViewActivity extends AppActivity {
   
   // init scripture data
