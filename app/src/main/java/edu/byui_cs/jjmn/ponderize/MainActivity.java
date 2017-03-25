@@ -84,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
     omniList = loadScriptures.loadAllScriptures (saveFile);
     
     // init scriptures
-    ScriptureContainer a = new ScriptureContainer ("Mark");
-    ScriptureContainer b = new ScriptureContainer ("James");
+    ScriptureContainer a = new ScriptureContainer ("Mark", "BLANK");
+    ScriptureContainer b = new ScriptureContainer ("James", "BLANK");
     
     // these items will show in the completed tab
     a.setCompleted ();
