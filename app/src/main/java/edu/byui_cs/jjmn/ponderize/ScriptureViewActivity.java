@@ -37,10 +37,10 @@ public class ScriptureViewActivity extends AppActivity {
     TextView scriptureTextView = (TextView) this.findViewById (R.id.txtScriptureText);
     
     //Test Text
-    //scriptureTextView.setText(_scriptureText);
-    scriptureTextView.setText ("\t\t\t8 Bring forth therefore fruits meet for repentance: " +
-                                     "\n\t\t\t9 And think not to say within yourselves, We have Abraham to our father: for I say unto you, that God is able of these stones to raise up children unto Abraham. " +
-                                     "\n\t\t\t10 And now also the axe is laid unto the root of the trees: therefore every tree which bringeth not forth good fruit is hewn down, and cast into the fire.");
+    scriptureTextView.setText(_scriptureText);
+    //scriptureTextView.setText ("\t\t\t8 Bring forth therefore fruits meet for repentance: " +
+      //                               "\n\t\t\t9 And think not to say within yourselves, We have Abraham to our father: for I say unto you, that God is able of these stones to raise up children unto Abraham. " +
+        //                             "\n\t\t\t10 And now also the axe is laid unto the root of the trees: therefore every tree which bringeth not forth good fruit is hewn down, and cast into the fire.");
     
     //Scripture Tab
     TabHost.TabSpec spec = host.newTabSpec ("Scripture");

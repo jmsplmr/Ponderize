@@ -1,5 +1,6 @@
 package edu.byui_cs.jjmn.ponderize;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,7 +17,11 @@ import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 import com.google.gson.Gson;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,20 +68,26 @@ public class MainActivity extends AppCompatActivity {
          * Feb 24, 2017
          * Init an array, then displays contents to the list view
          ************************************************************************************/
-    
+
     /*******************************************************************************************
      * Loads the preloaded scriptures into an array and loads them into the scripture view
      ********************************************************************************************/
     // init array
     ArrayList < ScriptureContainer > memList = new ArrayList <> ();
     ArrayList < ScriptureContainer > proList = new ArrayList <> ();
-    
+
+    String scriptureFilePath = getFilesDir() + "/scriptureFile.json";
     // The file path of the file in the internal directory with the pre-loaded scriptures
-    File saveFile = new File (getFilesDir (), "scriptureFile.json");
-    
-    ScriptureStorage loadScriptures = new ScriptureStorage ();
-    omniList = loadScriptures.loadAllScriptures (saveFile);
-    
+    File saveFile = new File(getFilesDir(), "/scriptureFile.json");
+
+    if (!saveFile.exists()) {
+      Context cntxt = getApplicationContext();
+      new preLoader().loadPreLoaded(cntxt, scriptureFilePath);
+    }
+
+    ScriptureStorage loadScriptures = new ScriptureStorage();
+    omniList = loadScriptures.loadAllScriptures(saveFile);
+
     // init scriptures
     ScriptureContainer a = new ScriptureContainer ("Mark", "BLANK");
     ScriptureContainer b = new ScriptureContainer ("James", "BLANK");
@@ -202,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
             }
           });
   }
-  
+
   /**
    * Activity changer to ScriptureViewActivity
    *
