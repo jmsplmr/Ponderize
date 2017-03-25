@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -88,9 +89,11 @@ public class ScriptureViewActivity extends AppActivity {
     NoteStorage note = new NoteStorage ();
     note.saveNote (_scriptureTitle, scriptureContext, saveText);
   }
-  
-  public void testScriptureStorage () {
-    
+
+  public void toPractice (View view) {
+      Intent practiceIntent = new Intent(this, PracticeActivity.class);
+      practiceIntent.putExtra(MainActivity.SCRIPTURE_TEXT, _scriptureText);
+      startActivity(practiceIntent);
   }
   
   

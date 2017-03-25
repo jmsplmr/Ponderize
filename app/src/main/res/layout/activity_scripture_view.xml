@@ -11,13 +11,14 @@
                 tools:context="com.byui_cs.jjmn.ponderize.edu.byui_cs.jjmn.ponderize.ScriptureViewActivity">
 
     <Button
-        android:id="@+id/testBtn"
+        android:id="@+id/practiceBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="Test Scripture Load and Save"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:onClick="toPractice"
+        android:text="Memorize" />
 
     <TabHost
         android:id="@+id/tabHostScript"
@@ -26,7 +27,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/testBtn">
+        android:layout_above="@+id/practiceBtn">
 
         <LinearLayout
             android:layout_width="match_parent"

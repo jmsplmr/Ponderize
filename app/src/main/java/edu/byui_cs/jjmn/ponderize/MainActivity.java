@@ -210,16 +210,6 @@ public class MainActivity extends AppCompatActivity {
   }
   
   /**
-   * Activity changer to PracticeActivity
-   *
-   * @param v Current view
-   */
-  public void onPracticeBtnClick (View v) {
-    Intent intent = new Intent (this, PracticeActivity.class);
-    startActivity (intent);
-  }
-  
-  /**
    * Activity changer to ScriptureViewActivity
    *
    * @param v Current view
