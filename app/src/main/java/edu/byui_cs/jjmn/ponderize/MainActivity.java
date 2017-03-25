@@ -14,12 +14,9 @@ import android.widget.TextView;
 import com.facebook.CallbackManager;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
+import com.google.gson.Gson;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +28,8 @@ import static edu.byui_cs.jjmn.ponderize.R.layout.activity_main;
  *
  */
 public class MainActivity extends AppCompatActivity {
+  
+  protected List< ScriptureContainer > omniList;
   
   /**
    *
@@ -77,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
     * Loads the preloaded scriptures into an array and loads them into the scripture view
     ********************************************************************************************/
     // init array
-    List< ScriptureContainer > omniList = new ArrayList <> ();
     ArrayList < ScriptureContainer > memList = new ArrayList <> ();
     ArrayList < ScriptureContainer > proList = new ArrayList <> ();
 
@@ -88,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
     omniList = loadScriptures.loadAllScriptures(saveFile);
 
     // init scriptures
-    ScriptureContainer a = new ScriptureContainer ("Mark", 4, 5);
-    ScriptureContainer b = new ScriptureContainer ("James", 5, 3);
+    ScriptureContainer a = new ScriptureContainer ("Mark");
+    ScriptureContainer b = new ScriptureContainer ("James");
     
     // these items will show in the completed tab
     a.setCompleted ();
@@ -241,6 +239,13 @@ public class MainActivity extends AppCompatActivity {
    */
   public void onSettingClick (View v) {
     Intent i = new Intent (this, SettingsActivity.class);
+    startActivity (i);
+  }
+  
+  public void addNewScripture (View view){
+    Intent i = new Intent (this, AddScriptureActivity.class);
+    String scriptureList = new Gson ().toJson (omniList);
+    i.putExtra ("List", scriptureList);
     startActivity (i);
   }
 }
