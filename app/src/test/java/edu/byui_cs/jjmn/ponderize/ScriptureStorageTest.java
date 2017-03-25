@@ -28,6 +28,7 @@ public class ScriptureStorageTest {
                                     "abounding in good works, being led to glorify God.";
   private ScriptureContainer scripture;
   private List < ScriptureContainer > scriptureList;
+  
   @Mock
   private Context context;
   
@@ -35,6 +36,7 @@ public class ScriptureStorageTest {
   public void setUp () throws Exception {
     scripture = new ScriptureContainer (BOOK, TEXT);
     scripture.setText (TEXT);
+    
     context = mock (MainActivity.class);
     
     scriptureList = new ArrayList <> (10);
