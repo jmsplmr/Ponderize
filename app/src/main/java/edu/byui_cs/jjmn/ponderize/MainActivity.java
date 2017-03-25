@@ -29,15 +29,9 @@ import static edu.byui_cs.jjmn.ponderize.R.layout.activity_main;
  */
 public class MainActivity extends AppCompatActivity {
   
-  /**
-   *
-   */
   public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
-  /**
-   *
-   */
   public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
-  protected List < ScriptureContainer > omniList;
+  private List < ScriptureContainer > omniList;
   
   @Override
   protected void onCreate (Bundle savedInstanceState) {
