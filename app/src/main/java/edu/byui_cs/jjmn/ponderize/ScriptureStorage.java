@@ -58,7 +58,7 @@ public class ScriptureStorage {
    */
   public ScriptureContainer loadScripture (File aFile) {
     
-    ScriptureContainer scripture = new ScriptureContainer ("");
+    ScriptureContainer scripture = new ScriptureContainer ();
     try {
       //Reading all the bytes into an array.
       FileInputStream fileInput = new FileInputStream (aFile);
@@ -70,8 +70,8 @@ public class ScriptureStorage {
       String scriptureJson = new String (fileContents, "UTF-8");
       
       //Turning back into a scripture.
-      Gson gsonConverter = new Gson ();
-      scripture = gsonConverter.fromJson (scriptureJson, ScriptureContainer.class);
+      Gson gson = new Gson ();
+      scripture = gson.fromJson (scriptureJson, ScriptureContainer.class);
       
       
     } catch ( Exception e ) {

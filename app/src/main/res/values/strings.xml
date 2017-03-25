@@ -110,4 +110,5 @@
     <string name="book">Book</string>
     <string name="practice">Practice</string>
     <string name="add_scripture">Add Scripture</string>
+    <string name="reference">Reference</string>
 </resources>

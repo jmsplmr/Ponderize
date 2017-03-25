@@ -14,7 +14,7 @@ public class ScriptureContainerTest {
   private ScriptureContainer sc0, sc1;
   
   private final String BOOK = "Ether 12:4";
-  private final String text = "4 Wherefore, whoso believeth in God might with surety hope for a " +
+  private final String TEXT = "4 Wherefore, whoso believeth in God might with surety hope for a " +
                                     "better world, yea, even a place at the right hand of God, " +
                                     "which hope cometh of faith, maketh an anchor to the souls of" +
                                     " men, which would make them sure and steadfast, always " +
@@ -22,12 +22,11 @@ public class ScriptureContainerTest {
   
   @Before
   public void setUp () throws Exception {
-    sc0 = new ScriptureContainer (BOOK);
+    sc0 = new ScriptureContainer (BOOK, TEXT);
     sc1 = new ScriptureContainer ();
-    sc0.setText (text);
     
     sc1.setReference (BOOK);
-    sc1.setText (text);
+    sc1.setText (TEXT);
     sc1.setCompleted ();
   }
   

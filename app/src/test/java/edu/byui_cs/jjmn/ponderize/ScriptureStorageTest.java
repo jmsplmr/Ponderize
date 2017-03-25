@@ -21,8 +21,6 @@ import static org.mockito.Mockito.mock;
 public class ScriptureStorageTest {
   
   private final String BOOK = "Ether";
-  private final int CHAPTER = 12;
-  private final int VERSE = 4;
   private final String TEXT = "Wherefore, whoso believeth in God might with surety hope for a " +
                                     "better world, yea, even a place at the right hand of God, " +
                                     "which hope cometh of faith, maketh an anchor to the souls of" +
@@ -30,13 +28,15 @@ public class ScriptureStorageTest {
                                     "abounding in good works, being led to glorify God.";
   private ScriptureContainer scripture;
   private List < ScriptureContainer > scriptureList;
+  
   @Mock
   private Context context;
   
   @Before
   public void setUp () throws Exception {
-    scripture = new ScriptureContainer (BOOK);
+    scripture = new ScriptureContainer (BOOK, TEXT);
     scripture.setText (TEXT);
+    
     context = mock (MainActivity.class);
     
     scriptureList = new ArrayList <> (10);
