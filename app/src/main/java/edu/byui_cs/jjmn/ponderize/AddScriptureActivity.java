@@ -15,7 +15,7 @@ import java.util.List;
 
 public class AddScriptureActivity extends AppCompatActivity {
   
-  private List < ScriptureContainer > scriptures;
+  private List < ScriptureContainer > _scriptures;
   
   @Override
   protected void onCreate (Bundle savedInstanceState) {
@@ -26,23 +26,23 @@ public class AddScriptureActivity extends AppCompatActivity {
     }.getType ();
     
     String list = (String) savedInstanceState.get ("List");
-    scriptures = new Gson ().fromJson (list, listType);
+    _scriptures = new Gson ().fromJson (list, listType);
   }
   
   public void addScriptureToList () {
-  
+    
     String scriptureReference = getStringFromView (R.id.editScriptureReference);
-    String scriptureText = getStringFromView(R.id.editScriptureText);
+    String scriptureText = getStringFromView (R.id.editScriptureText);
     
-    scriptures.add ( new ScriptureContainer (scriptureReference, scriptureText));
+    _scriptures.add (new ScriptureContainer (scriptureReference, scriptureText));
     
-    File saveFile = new File(getFilesDir(), "");
+    File saveFile = new File (getFilesDir (), "");
     
-    new ScriptureStorage ().saveAllScriptures (scriptures, saveFile);
+    new ScriptureStorage ().saveAllScriptures (_scriptures, saveFile);
   }
   
   @NonNull
-  private String getStringFromView(int view) {
-    return ((EditText) findViewById(view)).getText().toString();
+  private String getStringFromView (int view) {
+    return ((EditText) findViewById (view)).getText ().toString ();
   }
 }
