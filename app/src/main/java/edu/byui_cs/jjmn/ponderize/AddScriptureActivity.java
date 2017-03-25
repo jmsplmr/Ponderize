@@ -1,11 +1,14 @@
 package edu.byui_cs.jjmn.ponderize;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +30,19 @@ public class AddScriptureActivity extends AppCompatActivity {
   }
   
   public void addScriptureToList () {
+  
+    String scriptureReference = getStringFromView (R.id.editScriptureReference);
+    String scriptureText = getStringFromView(R.id.editScriptureText);
     
+    scriptures.add ( new ScriptureContainer (scriptureReference, scriptureText));
+    
+    File saveFile = new File(getFilesDir(), "");
+    
+    new ScriptureStorage ().saveAllScriptures (scriptures, saveFile);
   }
   
+  @NonNull
+  private String getStringFromView(int view) {
+    return ((EditText) findViewById(view)).getText().toString();
+  }
 }

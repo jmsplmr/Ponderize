@@ -18,10 +18,12 @@ public class ScriptureContainer {
   /**
    * Nondefault constructor setting initial values for the reference
    *
-   * @param book Book of reference
+   * @param ref Book of reference
    */
-  public ScriptureContainer (String book) {
-    this._reference = book;
+  public ScriptureContainer (String ref, String text) {
+    this._reference = ref;
+    this._text = text;
+    
     this._isCompleted = false;
   }
   
