@@ -29,17 +29,15 @@ import static edu.byui_cs.jjmn.ponderize.R.layout.activity_main;
  */
 public class MainActivity extends AppCompatActivity {
   
-  protected List< ScriptureContainer > omniList;
-  
   /**
    *
    */
   public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
-  
   /**
    *
    */
   public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
+  protected List < ScriptureContainer > omniList;
   
   @Override
   protected void onCreate (Bundle savedInstanceState) {
@@ -71,20 +69,20 @@ public class MainActivity extends AppCompatActivity {
          * Feb 24, 2017
          * Init an array, then displays contents to the list view
          ************************************************************************************/
-
+    
     /*******************************************************************************************
-    * Loads the preloaded scriptures into an array and loads them into the scripture view
-    ********************************************************************************************/
+     * Loads the preloaded scriptures into an array and loads them into the scripture view
+     ********************************************************************************************/
     // init array
     ArrayList < ScriptureContainer > memList = new ArrayList <> ();
     ArrayList < ScriptureContainer > proList = new ArrayList <> ();
-
+    
     // The file path of the file in the internal directory with the pre-loaded scriptures
-    File saveFile = new File(getFilesDir(), "scriptureFile.json");
-
-    ScriptureStorage loadScriptures = new ScriptureStorage();
-    omniList = loadScriptures.loadAllScriptures(saveFile);
-
+    File saveFile = new File (getFilesDir (), "scriptureFile.json");
+    
+    ScriptureStorage loadScriptures = new ScriptureStorage ();
+    omniList = loadScriptures.loadAllScriptures (saveFile);
+    
     // init scriptures
     ScriptureContainer a = new ScriptureContainer ("Mark");
     ScriptureContainer b = new ScriptureContainer ("James");
@@ -252,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
     startActivity (i);
   }
   
-  public void addNewScripture (View view){
+  public void addNewScripture (View view) {
     Intent i = new Intent (this, AddScriptureActivity.class);
     String scriptureList = new Gson ().toJson (omniList);
     i.putExtra ("List", scriptureList);

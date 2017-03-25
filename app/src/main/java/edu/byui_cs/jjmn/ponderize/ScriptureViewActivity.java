@@ -52,15 +52,15 @@ public class ScriptureViewActivity extends AppActivity {
     spec.setContent (R.id.Notes);
     spec.setIndicator ("Notes");
     host.addTab (spec);
-
+    
     //load the notes for the scripture
-    Context scriptureContext = this.getApplicationContext();
+    Context scriptureContext = this.getApplicationContext ();
     //get the edit text reference
-    EditText noteView = (EditText) findViewById(R.id.etxtNotes);
+    EditText noteView = (EditText) findViewById (R.id.etxtNotes);
     //load the note
-    NoteStorage loadNote = new NoteStorage();
-    loadNote.loadNote(_scriptureTitle, scriptureContext, noteView);
-
+    NoteStorage loadNote = new NoteStorage ();
+    loadNote.loadNote (_scriptureTitle, scriptureContext, noteView);
+    
   }
   
   @Override
@@ -74,21 +74,21 @@ public class ScriptureViewActivity extends AppActivity {
   }
   
   @Override
-  protected void onStop() {
-    super.onStop();
-    Log.v(getClass().getName(), "Paused");
-
+  protected void onStop () {
+    super.onStop ();
+    Log.v (getClass ().getName (), "Paused");
+    
     //get the context for the scripture view
-    Context scriptureContext = this.getApplicationContext();
-
+    Context scriptureContext = this.getApplicationContext ();
+    
     //Get the editText reference
-    EditText saveText = (EditText) this.findViewById(R.id.etxtNotes);
-
+    EditText saveText = (EditText) this.findViewById (R.id.etxtNotes);
+    
     //save the note
-    NoteStorage note = new NoteStorage();
-    note.saveNote(_scriptureTitle, scriptureContext, saveText);
+    NoteStorage note = new NoteStorage ();
+    note.saveNote (_scriptureTitle, scriptureContext, saveText);
   }
-
+  
   public void testScriptureStorage () {
     
   }

@@ -27,10 +27,6 @@ public class ScriptureContainer {
     this._isCompleted = false;
   }
   
-  public void setReference (String book) {
-    this._reference = book;
-  }
-  
   public String getText () {
     return _text;
   }
@@ -49,5 +45,9 @@ public class ScriptureContainer {
   
   public String getReference () {
     return _reference;
+  }
+  
+  public void setReference (String book) {
+    this._reference = book;
   }
 }
