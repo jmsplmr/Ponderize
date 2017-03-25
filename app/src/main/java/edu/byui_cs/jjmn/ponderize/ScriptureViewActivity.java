@@ -95,8 +95,10 @@ public class ScriptureViewActivity extends AppActivity {
     note.saveNote(_scriptureTitle, scriptureContext, saveText);
   }
 
-  public void testScriptureStorage () {
-    
+  public void toPractice () {
+      Intent practiceIntent = new Intent(this, PracticeActivity.class);
+      practiceIntent.putExtra(MainActivity.SCRIPTURE_TEXT, _scriptureText);
+      startActivity(practiceIntent);
   }
   
   
