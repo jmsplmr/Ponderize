@@ -1,5 +1,6 @@
 package edu.byui_cs.jjmn.ponderize;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.SeekBar;
@@ -19,10 +20,14 @@ public class PracticeActivity extends AppCompatActivity {
   protected void onCreate (Bundle savedInstanceState) {
     super.onCreate (savedInstanceState);
     setContentView (R.layout.activity_practice);
-    
-    String testVerse = "and it came to pass that the lord flooded the earth.";
-    originalVerse = testVerse.trim ().split ("\\s+");
-    displayVerse = testVerse.trim ().split ("\\s+");
+
+    //Get scripture from intent.
+    Intent intent = getIntent();
+    String Verse = intent.getStringExtra(MainActivity.SCRIPTURE_TEXT);
+
+    //String testVerse = "and it came to pass that the lord flooded the earth.";
+    originalVerse = Verse.trim ().split ("\\s+");
+    displayVerse = Verse.trim ().split ("\\s+");
     
     TextView aView = (TextView) findViewById (R.id.practiceView);
     aView.setText (toString (displayVerse));
