@@ -6,15 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TabHost;
 import android.widget.TextView;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
 
 public class ScriptureViewActivity extends AppActivity {
   
@@ -95,8 +90,10 @@ public class ScriptureViewActivity extends AppActivity {
     note.saveNote(_scriptureTitle, scriptureContext, saveText);
   }
 
-  public void testScriptureStorage () {
-    
+  public void toPractice (View view) {
+      Intent practiceIntent = new Intent(this, PracticeActivity.class);
+      practiceIntent.putExtra(MainActivity.SCRIPTURE_TEXT, _scriptureText);
+      startActivity(practiceIntent);
   }
   
   

@@ -60,7 +60,7 @@
         <item>3</item>
     </string-array>
 
-    <string-array name="multi_select_list_preference_default_value" />
+    <string-array name="multi_select_list_preference_default_value"/>
 
     <string name="pref_title_system_sync_settings">System sync settings</string>
 
@@ -103,4 +103,11 @@
         <item>1</item>
     </string-array>
     <string name="title_activity_facebook">activity_facebook</string>
+    <string name="verse">Verse</string>
+    <string name="text">Text</string>
+    <string name="button">Button</string>
+    <string name="chapter">Chapter</string>
+    <string name="book">Book</string>
+    <string name="practice">Practice</string>
+    <string name="add_scripture">Add Scripture</string>
 </resources>
