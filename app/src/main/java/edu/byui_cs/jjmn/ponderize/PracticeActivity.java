@@ -24,7 +24,7 @@ public class PracticeActivity extends AppCompatActivity {
     //Get scripture from intent.
     Intent intent = getIntent();
     String Verse = intent.getStringExtra(MainActivity.SCRIPTURE_TEXT);
-      
+
     originalVerse = Verse.trim ().split ("\\s+");
     displayVerse = Verse.trim ().split ("\\s+");
     
