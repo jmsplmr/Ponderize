@@ -35,7 +35,7 @@ public class ScriptureStorageTest {
   
   @Before
   public void setUp () throws Exception {
-    scripture = new ScriptureContainer (BOOK, CHAPTER, VERSE);
+    scripture = new ScriptureContainer (BOOK);
     scripture.setText (TEXT);
     context = mock (MainActivity.class);
     
@@ -58,7 +58,7 @@ public class ScriptureStorageTest {
     
     assertEquals (scripture.getReference (), loadedScripture.getReference ());
     
-    scripture.setBook ("James");
+    scripture.setReference ("James");
     assertNotEquals (scripture.getReference (), loadedScripture.getReference ());
   }
   
@@ -76,7 +76,7 @@ public class ScriptureStorageTest {
       assertEquals (scripture.getReference (), scriptureRef.getReference ());
     }
     
-    scripture.setBook ("James");
+    scripture.setReference ("James");
     for (ScriptureContainer scriptureRef : loadedScriptures) {
       assertNotEquals (scripture.getReference (), scriptureRef.getReference ());
     }

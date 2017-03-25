@@ -5,10 +5,7 @@ package edu.byui_cs.jjmn.ponderize;
  */
 
 public class ScriptureContainer {
-  private String _book;
-  private int _chapter;
-  
-  private int _verse;
+  private String _reference;
   private String _text;
   private boolean _isCompleted;
   
@@ -21,31 +18,15 @@ public class ScriptureContainer {
   /**
    * Nondefault constructor setting initial values for the reference
    *
-   * @param book    Book of reference
-   * @param chapter chapter of reference
-   * @param verse   verse of reference
+   * @param book Book of reference
    */
-  public ScriptureContainer (String book, int chapter, int verse) {
-    this._book = book;
-    this._chapter = chapter;
-    this._verse = verse;
+  public ScriptureContainer (String book) {
+    this._reference = book;
     this._isCompleted = false;
   }
   
-  public String getBook () {
-    return _book;
-  }
-  
-  public void setBook (String book) {
-    this._book = book;
-  }
-  
-  public int getChapter () {
-    return _chapter;
-  }
-  
-  public void setChapter (int chapter) {
-    this._chapter = chapter;
+  public void setReference (String book) {
+    this._reference = book;
   }
   
   public String getText () {
@@ -60,24 +41,11 @@ public class ScriptureContainer {
     return _isCompleted;
   }
   
-  public int getVerse () {
-    return _verse;
-  }
-  
-  public void setVerse (int verse) {
-    this._verse = verse;
-  }
-  
   public void setCompleted () {
     _isCompleted = true;
   }
   
-  /**
-   * Formatte scripture reference
-   *
-   * @return Formatted string object of object reference
-   */
   public String getReference () {
-    return _book + ' ' + _chapter + ':' + _verse;
+    return _reference;
   }
 }

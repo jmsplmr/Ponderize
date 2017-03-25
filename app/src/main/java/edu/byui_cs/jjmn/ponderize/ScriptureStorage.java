@@ -58,7 +58,7 @@ public class ScriptureStorage {
    */
   public ScriptureContainer loadScripture (File aFile) {
     
-    ScriptureContainer scripture = new ScriptureContainer ("", 0, 0);
+    ScriptureContainer scripture = new ScriptureContainer ("");
     try {
       //Reading all the bytes into an array.
       FileInputStream fileInput = new FileInputStream (aFile);
