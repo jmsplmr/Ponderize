@@ -1,5 +1,6 @@
 package edu.byui_cs.jjmn.ponderize;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ import static edu.byui_cs.jjmn.ponderize.R.layout.activity_main;
  *
  */
 public class MainActivity extends AppCompatActivity {
-  
+
   /**
    *
    */
@@ -81,8 +82,14 @@ public class MainActivity extends AppCompatActivity {
     ArrayList < ScriptureContainer > memList = new ArrayList <> ();
     ArrayList < ScriptureContainer > proList = new ArrayList <> ();
 
+    String scriptureFilePath = getFilesDir() + "/scriptureFile.json";
     // The file path of the file in the internal directory with the pre-loaded scriptures
-    File saveFile = new File(getFilesDir(), "scriptureFile.json");
+    File saveFile = new File(getFilesDir(), "/scriptureFile.json");
+
+    if (!saveFile.exists()) {
+      Context cntxt = getApplicationContext();
+      new preLoader().loadPreLoaded(cntxt, scriptureFilePath);
+    }
 
     ScriptureStorage loadScriptures = new ScriptureStorage();
     omniList = loadScriptures.loadAllScriptures(saveFile);
