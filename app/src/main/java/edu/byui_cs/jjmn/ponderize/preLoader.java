@@ -17,10 +17,10 @@ public class preLoader {
 
     public void loadPreLoaded(Context context, String scriptureFile) {
         StringBuilder returnString = new StringBuilder();
-        InputStream fIn = null;
-        InputStreamReader isr = null;
-        BufferedReader input = null;
-        String line = "";
+        InputStream fIn;
+        InputStreamReader isr;
+        BufferedReader input;
+        String line;
         try {
             fIn = context.getResources().getAssets()
                     .open("preloadedScriptures", context.MODE_WORLD_READABLE);
@@ -35,13 +35,13 @@ public class preLoader {
         }
 
         // The file path of the file in the internal directory with the pre-loaded scriptures
-        File saveFile = new File(context.getFilesDir(), "scriptureFile.json");
+        File saveFile = new File(scriptureFile);
 
         //Save list to saveFile.
         FileWriter writer;
         try {
             writer = new FileWriter (saveFile);
-            writer.write (line);
+            writer.write (returnString.toString());
             writer.close ();
         } catch (Exception e ) {
             e.printStackTrace ();
