@@ -17,11 +17,7 @@ import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 import com.google.gson.Gson;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,54 +69,60 @@ public class MainActivity extends AppCompatActivity {
      * Loads the preloaded scriptures into an array and loads them into the scripture view
      ********************************************************************************************/
     // init array
+    Log.d(getClass ().getSimpleName (), "Setting up lists");
     ArrayList < ScriptureContainer > memList = new ArrayList <> ();
     ArrayList < ScriptureContainer > proList = new ArrayList <> ();
 
+    Log.d(getClass ().getSimpleName (), "try to get save file");
     String scriptureFilePath = getFilesDir() + "/scriptureFile.json";
     // The file path of the file in the internal directory with the pre-loaded scriptures
+    Log.d(getClass ().getSimpleName (), "Point to file");
 
     File oldFile = new File(getFilesDir(), "/scriptureFile.json");
     oldFile.delete();
 
     File saveFile = new File(getFilesDir(), "/scriptureFile.json");
+
+    Log.d(getClass ().getSimpleName (), "Did we find a file");
     if (!saveFile.exists()) {
       Context cntxt = getApplicationContext();
       new preLoader().loadPreLoaded(cntxt, scriptureFilePath);
-
     }
 
+    Log.d(getClass ().getSimpleName (), "Store scriptures");
     ScriptureStorage loadScriptures = new ScriptureStorage();
+    omniList = new ArrayList <> ();
     omniList = loadScriptures.loadAllScriptures(saveFile);
 
-    // init scriptures
-    ScriptureContainer a = new ScriptureContainer ("Mark", "BLANK");
-    ScriptureContainer b = new ScriptureContainer ("James", "BLANK");
-    
-    // these items will show in the completed tab
-    a.setCompleted ();
-    b.setCompleted ();
-    
-    // add scriptures to array
-    omniList.add (/*0,*/ a);
-    omniList.add (/*1,*/ b);
-    
+
     // Look at scriptures, determine if completed or not
     // Adds to appropriate list view
+    Log.v(getClass ().getSimpleName (), "Add scriptures to lists");
     for (ScriptureContainer sc : omniList) {
-      if (sc.getCompleted ())
+      Log.v(getClass ().getSimpleName (), "Attempt to separate lists");
+      if (sc.getCompleted ()) {
+        Log.v(getClass ().getSimpleName (), "Add to memorized list");
         memList.add (sc);
-      else
+        Log.v(getClass ().getSimpleName (), "Added");
+      }
+      else {
+        Log.v(getClass ().getSimpleName (), "Add to progressing list");
         proList.add (sc);
+        Log.v(getClass ().getSimpleName (), "Added");
+      }
     }
-    
+
+    Log.d(getClass ().getSimpleName (), "Set views");
     // grab list view reference
     ListView memView = (ListView) findViewById (R.id.memorizedScripts);
     ListView proView = (ListView) findViewById (R.id.progressingScripts);
-    
+
+    Log.d(getClass ().getSimpleName (), "Create Adapters");
     // create new scripture adapter
     ScriptureAdapter memAdapter = new ScriptureAdapter (this, memList);
     ScriptureAdapter proAdapter = new ScriptureAdapter (this, proList);
-    
+
+    Log.d(getClass ().getSimpleName (), "Update list views");
     // set list views adapter to new scripture adapter
     memView.setAdapter (memAdapter);
     proView.setAdapter (proAdapter);

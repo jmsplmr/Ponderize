@@ -17,10 +17,10 @@ public class preLoader {
 
     public void loadPreLoaded(Context context, String scriptureFile) {
         StringBuilder returnString = new StringBuilder();
-        InputStream fIn = null;
-        InputStreamReader isr = null;
-        BufferedReader input = null;
-        String line = "";
+        InputStream fIn;
+        InputStreamReader isr;
+        BufferedReader input;
+        String line;
         try {
             fIn = context.getResources().getAssets()
                     .open("preloadedScriptures", context.MODE_WORLD_READABLE);
