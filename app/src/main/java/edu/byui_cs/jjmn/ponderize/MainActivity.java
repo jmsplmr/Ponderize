@@ -41,7 +41,9 @@ public class MainActivity extends AppCompatActivity {
   /**
    *
    */
+
   public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
+  //Log.v("About to instantiate the omniList");
   protected List < ScriptureContainer > omniList;
 
   @Override
@@ -84,11 +86,15 @@ public class MainActivity extends AppCompatActivity {
 
     String scriptureFilePath = getFilesDir() + "/scriptureFile.json";
     // The file path of the file in the internal directory with the pre-loaded scriptures
-    File saveFile = new File(getFilesDir(), "/scriptureFile.json");
 
+    File oldFile = new File(getFilesDir(), "/scriptureFile.json");
+    oldFile.delete();
+
+    File saveFile = new File(getFilesDir(), "/scriptureFile.json");
     if (!saveFile.exists()) {
       Context cntxt = getApplicationContext();
       new preLoader().loadPreLoaded(cntxt, scriptureFilePath);
+
     }
 
     ScriptureStorage loadScriptures = new ScriptureStorage();
@@ -250,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
     Intent i = new Intent (this, SettingsActivity.class);
     startActivity (i);
   }
-  
+
   public void addNewScripture (View view) {
     Intent i = new Intent (this, AddScriptureActivity.class);
     String scriptureList = new Gson ().toJson (omniList);
