@@ -47,8 +47,8 @@ public class ScriptureAdapter extends ArrayAdapter < ScriptureContainer > {
     
     // Make the data appear
     scriptureTitle.setText (scripture != null ? scripture.getReference () : null);
-    scriptureText.setText (scripture!= null ? scripture.getText () : null);
-
+    scriptureText.setText (scripture != null ? scripture.getText () : null);
+    
     // Returns View
     return convertView;
   }
