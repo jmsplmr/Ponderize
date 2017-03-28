@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -38,21 +37,21 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate (savedInstanceState);
     setContentView (activity_main);
     
-    TabHost host = (TabHost) findViewById (R.id.tabHostMain);
-    host.setup ();
-    
-    //Progressing Tab
-    Log.v (getClass ().getSimpleName (), "Setup Progressing Tab");
-    TabHost.TabSpec spec = host.newTabSpec ("Progressing");
-    spec.setContent (R.id.Progressing);
-    spec.setIndicator ("Progressing");
-    host.addTab (spec);
-    
-    //Memorized Tab
-    spec = host.newTabSpec ("Memorized");
-    spec.setContent (R.id.Memorized);
-    spec.setIndicator ("Memorized");
-    host.addTab (spec);
+//    TabHost host = (TabHost) findViewById (R.id.tabHostMain);
+//    host.setup ();
+//
+//    //Progressing Tab
+//    Log.v (getClass ().getSimpleName (), "Setup Progressing Tab");
+//    TabHost.TabSpec spec = host.newTabSpec ("Progressing");
+//    spec.setContent (R.id.Progressing);
+//    spec.setIndicator ("Progressing");
+//    host.addTab (spec);
+//
+//    //Memorized Tab
+//    spec = host.newTabSpec ("Memorized");
+//    spec.setContent (R.id.Memorized);
+//    spec.setIndicator ("Memorized");
+//    host.addTab (spec);
 
     /* ******************************************************************************************
      * Loads the pre-loaded scriptures into an array and loads them into the scripture view
@@ -67,22 +66,18 @@ public class MainActivity extends AppCompatActivity {
     // The file path of the file in the internal directory with the pre-loaded scriptures
     Log.d (getClass ().getSimpleName (), "Point to file");
     
-    File oldFile = new File (getFilesDir (), "/scriptureFile.json");
-    oldFile.delete ();
-    
     File saveFile = new File (getFilesDir (), "/scriptureFile.json");
     
     Log.d (getClass ().getSimpleName (), "Did we find a file");
     if (!saveFile.exists ()) {
-      Context cntxt = getApplicationContext ();
-      new preLoader ().loadPreLoaded (cntxt, scriptureFilePath);
+      Context context = getApplicationContext ();
+      new preLoader ().loadPreLoaded (context, scriptureFilePath);
     }
     
     Log.d (getClass ().getSimpleName (), "Store scriptures");
     ScriptureStorage loadScriptures = new ScriptureStorage ();
     omniList = new ArrayList <> ();
     omniList = loadScriptures.loadAllScriptures (saveFile);
-    
     
     // Look at scriptures, determine if completed or not
     // Adds to appropriate list view
@@ -184,10 +179,10 @@ public class MainActivity extends AppCompatActivity {
   /**
    * Activity changer to ScriptureViewActivity
    *
-   * @param v Current view
+   * @param view Current view
    */
   //For navigation testing buttons
-  public void onScriptureBtnClick (View v) {
+  public void launch_ScriptureViewActivity (View view) {
     Intent i = new Intent (this, ScriptureViewActivity.class);
     startActivity (i);
   }
@@ -195,9 +190,9 @@ public class MainActivity extends AppCompatActivity {
   /**
    * Activity changer to MemorizeQuizActivity
    *
-   * @param v Current view
+   * @param view Current view
    */
-  public void onQuizBtnClick (View v) {
+  public void launch_MemorizeQuizActivity (View view) {
     Intent i = new Intent (this, MemorizeQuizActivity.class);
     startActivity (i);
   }
@@ -205,14 +200,19 @@ public class MainActivity extends AppCompatActivity {
   /**
    * Activity changer to SettingsActivity
    *
-   * @param v Current view
+   * @param view Current view
    */
-  public void onSettingClick (View v) {
+  public void launch_SettingsActivity (View view) {
     Intent i = new Intent (this, SettingsActivity.class);
     startActivity (i);
   }
   
-  public void addNewScripture (View view) {
+  /**
+   * Activity changer to AddScriptureActivity
+   *
+   * @param view Current view
+   */
+  public void launch_AddScriptureActivity (View view) {
     Intent i = new Intent (this, AddScriptureActivity.class);
     String scriptureList = new Gson ().toJson (omniList);
     i.putExtra ("List", scriptureList);
