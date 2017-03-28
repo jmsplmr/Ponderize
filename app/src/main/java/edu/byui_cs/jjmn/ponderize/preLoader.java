@@ -16,19 +16,19 @@ import java.io.InputStreamReader;
 public class preLoader {
 
     public void loadPreLoaded(Context context, String scriptureFile) {
-        StringBuilder returnString = new StringBuilder();
-        InputStream fIn;
-        InputStreamReader isr;
-        BufferedReader input;
+        StringBuilder jsonString = new StringBuilder();
+        InputStream inputStream;
+        InputStreamReader inputStreamReader;
+        BufferedReader bufferedReader;
         String line;
         try {
-            fIn = context.getResources().getAssets()
-                    .open("preloadedScriptures", context.MODE_WORLD_READABLE);
-            isr = new InputStreamReader(fIn);
-            input = new BufferedReader(isr);
+            inputStream = context.getResources().getAssets()
+                    .open("preloadScriptures", Context.MODE_WORLD_READABLE);
+            inputStreamReader = new InputStreamReader(inputStream);
+            bufferedReader = new BufferedReader(inputStreamReader);
 
-            while ((line = input.readLine()) != null) {
-                returnString.append(line);
+            while ((line = bufferedReader.readLine()) != null) {
+                jsonString.append(line);
             }
         } catch (Exception e) {
             e.getMessage();
@@ -41,7 +41,7 @@ public class preLoader {
         FileWriter writer;
         try {
             writer = new FileWriter (saveFile);
-            writer.write (returnString.toString());
+            writer.write (jsonString.toString());
             writer.close ();
         } catch (Exception e ) {
             e.printStackTrace ();
