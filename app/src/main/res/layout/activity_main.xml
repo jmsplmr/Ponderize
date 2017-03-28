@@ -92,15 +92,6 @@
         android:onClick="onSettingClick"
         android:text="@string/settings"/>
 
-    <com.facebook.share.widget.ShareButton
-        android:id="@+id/fb_share_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="175dp"
-        android:text="@string/share"/>
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"

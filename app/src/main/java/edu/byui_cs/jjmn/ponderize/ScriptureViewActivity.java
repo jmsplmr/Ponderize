@@ -2,6 +2,7 @@ package edu.byui_cs.jjmn.ponderize;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -10,6 +11,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TabHost;
 import android.widget.TextView;
+
+import com.facebook.CallbackManager;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareButton;
 
 public class ScriptureViewActivity extends AppActivity {
   
@@ -61,7 +66,35 @@ public class ScriptureViewActivity extends AppActivity {
     //load the note
     NoteStorage loadNote = new NoteStorage ();
     loadNote.loadNote (_scriptureTitle, scriptureContext, noteView);
-    
+
+     /* ************************************************************************************
+         * FACEBOOK SHARE BUTTON CODE
+         * Joseph Koetting
+         * Mar 8, 2017
+         * Allows the user to post things to facebook
+         ************************************************************************************/
+
+    // Configures share window
+    ShareLinkContent content = new ShareLinkContent.Builder ()
+            .setContentTitle ("MASTERED")
+            .setContentUrl (Uri.parse ("http://developers.facebook.com/android"))
+            .setContentDescription ("I MASTERED A SCRIPTURE WITHOUT COMMENTING ON JOE'S LEGS")
+            .build ();
+
+    // Not sure what this code snippet does
+    // DOES NOT WORK WITHOUT
+    /*
+    FACEBOOK THING CallbackManager - Like the facebook container to do everything.
+   */
+    CallbackManager callbackManager = CallbackManager.Factory.create ();
+
+    // get reference to share button
+    final ShareButton shareButton = (ShareButton) findViewById (R.id.fb_share_button);
+
+    // share window is displayed
+    shareButton.setShareContent (content);
+
+
   }
   
   @Override

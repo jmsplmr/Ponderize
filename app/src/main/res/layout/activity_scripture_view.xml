@@ -14,11 +14,21 @@
         android:id="@+id/practiceBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
         android:onClick="toPractice"
-        android:text="Memorize" />
+        android:text="Memorize"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp" />
+
+    <com.facebook.share.widget.ShareButton
+        android:id="@+id/fb_share_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/share"
+        android:layout_marginStart="28dp"
+        android:layout_alignBaseline="@+id/practiceBtn"
+        android:layout_alignBottom="@+id/practiceBtn"
+        android:layout_alignParentStart="true" />
 
     <TabHost
         android:id="@+id/tabHostScript"
@@ -54,7 +64,7 @@
                     <TextView
                         android:id="@+id/txtScriptureText"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="403dp"
                         android:fontFamily="sans-serif-medium"
                         android:textColor="#ff444444"
                         android:scrollbars = "vertical"

@@ -58,15 +58,8 @@ public class MainActivity extends AppCompatActivity {
     spec.setIndicator ("Memorized");
     host.addTab (spec);
 
-        /* ************************************************************************************
-         * JOE TEST CODE DO NOT DELETE
-         * Joseph Koetting
-         * Feb 24, 2017
-         * Init an array, then displays contents to the list view
-         ************************************************************************************/
-
-    /*******************************************************************************************
-     * Loads the preloaded scriptures into an array and loads them into the scripture view
+    /* ******************************************************************************************
+     * Loads the pre-loaded scriptures into an array and loads them into the scripture view
      ********************************************************************************************/
     // init array
     Log.d(getClass ().getSimpleName (), "Setting up lists");
@@ -127,33 +120,6 @@ public class MainActivity extends AppCompatActivity {
     memView.setAdapter (memAdapter);
     proView.setAdapter (proAdapter);
 
-        /* ************************************************************************************
-         * FACEBOOK SHARE BUTTON CODE
-         * Joseph Koetting
-         * Mar 8, 2017
-         * Allows the user to post things to facebook
-         ************************************************************************************/
-    
-    // Configures share window
-    ShareLinkContent content = new ShareLinkContent.Builder ()
-                                     .setContentTitle ("MASTERED")
-                                     .setContentUrl (Uri.parse ("http://developers.facebook.com/android"))
-                                     .setContentDescription ("I MASTERED A SCRIPTURE WITHOUT COMMENTING ON JOE'S LEGS")
-                                     .build ();
-    
-    // Not sure what this code snippet does
-    // DOES NOT WORK WITHOUT
-    /*
-    FACEBOOK THING CallbackManager - Like the facebook container to do everything.
-   */
-    CallbackManager callbackManager = CallbackManager.Factory.create ();
-    
-    // get reference to share button
-    final ShareButton shareButton = (ShareButton) findViewById (R.id.fb_share_button);
-    
-    // share window is displayed
-    shareButton.setShareContent (content);
-    
     // LIST VIEW ON CLICK LISTENER
     // Joseph Koetting
     // Mar 4, 2017
