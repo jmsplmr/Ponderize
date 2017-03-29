@@ -30,6 +30,7 @@ public class MemorizeQuizActivity extends AppCompatActivity {
     Verse = intent.getStringExtra(MainActivity.SCRIPTURE_TEXT);
 
     originalVerse = Verse.trim().split("\\s+");
+    List<String> testWords = removeWords(originalVerse);
 
     TextView title = (TextView) findViewById(R.id.quizTitle);
     title.setText(intent.getStringExtra(MainActivity.SCRIPTURE_TITLE));
@@ -47,4 +48,6 @@ public class MemorizeQuizActivity extends AppCompatActivity {
     }
     return testWords;
   }
+
+  
 }
