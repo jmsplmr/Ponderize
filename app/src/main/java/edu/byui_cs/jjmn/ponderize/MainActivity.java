@@ -2,7 +2,6 @@ package edu.byui_cs.jjmn.ponderize;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,9 +11,6 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.facebook.CallbackManager;
-import com.facebook.share.model.ShareLinkContent;
-import com.facebook.share.widget.ShareButton;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -29,11 +25,11 @@ import static edu.byui_cs.jjmn.ponderize.R.layout.activity_main;
  *
  */
 public class MainActivity extends AppCompatActivity {
-
+  
   public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
   public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
   private List < ScriptureContainer > omniList;
-
+  
   @Override
   protected void onCreate (Bundle savedInstanceState) {
     
@@ -62,64 +58,63 @@ public class MainActivity extends AppCompatActivity {
      * Loads the pre-loaded scriptures into an array and loads them into the scripture view
      ********************************************************************************************/
     // init array
-    Log.d(getClass ().getSimpleName (), "Setting up lists");
+    Log.d (getClass ().getSimpleName (), "Setting up lists");
     ArrayList < ScriptureContainer > memList = new ArrayList <> ();
     ArrayList < ScriptureContainer > proList = new ArrayList <> ();
-
-    Log.d(getClass ().getSimpleName (), "try to get save file");
-    String scriptureFilePath = getFilesDir() + "/scriptureFile.json";
+    
+    Log.d (getClass ().getSimpleName (), "try to get save file");
+    String scriptureFilePath = getFilesDir () + "/scriptureFile.json";
     // The file path of the file in the internal directory with the pre-loaded scriptures
-    Log.d(getClass ().getSimpleName (), "Point to file");
-
-    File oldFile = new File(getFilesDir(), "/scriptureFile.json");
-    oldFile.delete();
-
-    File saveFile = new File(getFilesDir(), "/scriptureFile.json");
-
-    Log.d(getClass ().getSimpleName (), "Did we find a file");
-    if (!saveFile.exists()) {
-      Context cntxt = getApplicationContext();
-      new preLoader().loadPreLoaded(cntxt, scriptureFilePath);
+    Log.d (getClass ().getSimpleName (), "Point to file");
+    
+    File oldFile = new File (getFilesDir (), "/scriptureFile.json");
+    oldFile.delete ();
+    
+    File saveFile = new File (getFilesDir (), "/scriptureFile.json");
+    
+    Log.d (getClass ().getSimpleName (), "Did we find a file");
+    if (!saveFile.exists ()) {
+      Context cntxt = getApplicationContext ();
+      new preLoader ().loadPreLoaded (cntxt, scriptureFilePath);
     }
-
-    Log.d(getClass ().getSimpleName (), "Store scriptures");
-    ScriptureStorage loadScriptures = new ScriptureStorage();
+    
+    Log.d (getClass ().getSimpleName (), "Store scriptures");
+    ScriptureStorage loadScriptures = new ScriptureStorage ();
     omniList = new ArrayList <> ();
-    omniList = loadScriptures.loadAllScriptures(saveFile);
-
-
+    omniList = loadScriptures.loadAllScriptures (saveFile);
+    
+    
     // Look at scriptures, determine if completed or not
     // Adds to appropriate list view
-    Log.v(getClass ().getSimpleName (), "Add scriptures to lists");
+    Log.v (getClass ().getSimpleName (), "Add scriptures to lists");
     for (ScriptureContainer sc : omniList) {
-      Log.v(getClass ().getSimpleName (), "Attempt to separate lists");
+      Log.v (getClass ().getSimpleName (), "Attempt to separate lists");
       if (sc.getCompleted ()) {
-        Log.v(getClass ().getSimpleName (), "Add to memorized list");
+        Log.v (getClass ().getSimpleName (), "Add to memorized list");
         memList.add (sc);
-        Log.v(getClass ().getSimpleName (), "Added");
-      }
-      else {
-        Log.v(getClass ().getSimpleName (), "Add to progressing list");
+        Log.v (getClass ().getSimpleName (), "Added");
+      } else {
+        Log.v (getClass ().getSimpleName (), "Add to progressing list");
         proList.add (sc);
-        Log.v(getClass ().getSimpleName (), "Added");
+        Log.v (getClass ().getSimpleName (), "Added");
       }
     }
-
-    Log.d(getClass ().getSimpleName (), "Set views");
+    
+    Log.d (getClass ().getSimpleName (), "Set views");
     // grab list view reference
     ListView memView = (ListView) findViewById (R.id.memorizedScripts);
     ListView proView = (ListView) findViewById (R.id.progressingScripts);
-
-    Log.d(getClass ().getSimpleName (), "Create Adapters");
+    
+    Log.d (getClass ().getSimpleName (), "Create Adapters");
     // create new scripture adapter
     ScriptureAdapter memAdapter = new ScriptureAdapter (this, memList);
     ScriptureAdapter proAdapter = new ScriptureAdapter (this, proList);
-
-    Log.d(getClass ().getSimpleName (), "Update list views");
+    
+    Log.d (getClass ().getSimpleName (), "Update list views");
     // set list views adapter to new scripture adapter
     memView.setAdapter (memAdapter);
     proView.setAdapter (proAdapter);
-
+    
     // LIST VIEW ON CLICK LISTENER
     // Joseph Koetting
     // Mar 4, 2017
@@ -185,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
             }
           });
   }
-
+  
   /**
    * Activity changer to ScriptureViewActivity
    *
@@ -216,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
     Intent i = new Intent (this, SettingsActivity.class);
     startActivity (i);
   }
-
+  
   public void addNewScripture (View view) {
     Intent i = new Intent (this, AddScriptureActivity.class);
     String scriptureList = new Gson ().toJson (omniList);
