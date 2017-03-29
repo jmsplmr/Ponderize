@@ -15,6 +15,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 class ScriptureList {
   
   private static List<ScriptureContainer> list;
+  
   private static final ScriptureList ourInstance = new ScriptureList ();
   
   private ScriptureList (){
@@ -40,10 +41,9 @@ class ScriptureList {
   /**
    *
    */
-  public void updateList(){
+  public void updateList(List<ScriptureContainer> scriptures){
     Log.d (getClass ().getSimpleName (), "load scriptures again");
-    list = new ScriptureStorage ().loadAllScriptures (
-          new File (getApplicationContext ().getFilesDir (), "/scriptureFile.json"));
+    list = scriptures;
   }
   
   /**
