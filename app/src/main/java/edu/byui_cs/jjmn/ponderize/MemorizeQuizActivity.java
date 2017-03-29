@@ -1,5 +1,6 @@
 package edu.byui_cs.jjmn.ponderize;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ public class MemorizeQuizActivity extends AppCompatActivity {
 
   private String[] originalVerse;
   private String displayString;
+  int guessIndex;
   String Verse;
 
   /**
@@ -28,6 +31,7 @@ public class MemorizeQuizActivity extends AppCompatActivity {
     super.onCreate (savedInstanceState);
     setContentView (R.layout.activity_memorize_quiz);
 
+    guessIndex = 0;
     Intent intent = getIntent();
     Verse = intent.getStringExtra(MainActivity.SCRIPTURE_TEXT);
 
@@ -62,9 +66,27 @@ public class MemorizeQuizActivity extends AppCompatActivity {
       return stringBuilder.toString();
   }
 
+  public void updateQuiz(String answer) {
+    answer.toLowerCase();
+    String compareWord = new String(originalVerse[guessIndex]);
+    compareWord.toLowerCase();
+
+    if (answer.equals(compareWord)) {
+
+    } else {
+      Context context = getApplicationContext();
+      CharSequence text = "Incorrect";
+      int duration = Toast.LENGTH_SHORT;
+
+      Toast toast = Toast.makeText(context, text, duration);
+      toast.show();
+    }
+  }
+
   public void getAnswer(View view) {
     EditText editText = (EditText) findViewById(R.id.answerText);
     String answer = editText.getText().toString();
     editText.setText("");
+    updateQuiz(answer);
   }
 }
