@@ -35,10 +35,11 @@
         android:id="@+id/checkBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="119dp"
-        android:text="Check"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="119dp"
+        android:onClick="getAnswer"
+        android:text="Check" />
 
     <EditText
         android:id="@+id/answerText"
