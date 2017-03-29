@@ -7,13 +7,16 @@ import java.util.List;
  */
 
 class ScriptureList {
-  List<ScriptureContainer> list;
+  
+  private static List<ScriptureContainer> list;
   private static final ScriptureList ourInstance = new ScriptureList ();
+  
+  private ScriptureList (){
+    
+  }
   
   static ScriptureList getInstance () {
     return ourInstance;
   }
   
-  private ScriptureList () {
-  }
 }
