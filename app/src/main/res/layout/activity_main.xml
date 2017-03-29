@@ -12,13 +12,24 @@
                 tools:context="edu.byui_cs.jjmn.ponderize.MainActivity">
 
     <Button
+        android:id="@+id/btnScriptures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="109dp"
+        android:onClick="launch_ScriptureViewActivity"
+        android:text="@string/scriptures_notes"/>
+
+    <Button
         android:id="@+id/btnQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="launch_MemorizeQuizActivity"
-        android:text="@string/quiz"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="37dp"
+        android:onClick="launch_MemorizeQuizActivity"
+        android:text="@string/quiz"/>
 
     <TabHost
         android:id="@+id/tabHostMain"
