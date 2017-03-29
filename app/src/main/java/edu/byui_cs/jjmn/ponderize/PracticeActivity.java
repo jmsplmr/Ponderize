@@ -3,6 +3,7 @@ package edu.byui_cs.jjmn.ponderize;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -22,7 +23,7 @@ public class PracticeActivity extends AppCompatActivity {
     setContentView (R.layout.activity_practice);
     
     //Get scripture from intent.
-    Intent intent = getIntent ();
+    Intent intent = getIntent();
     String Verse = intent.getStringExtra (MainActivity.SCRIPTURE_TEXT);
     String Title = intent.getStringExtra(MainActivity.SCRIPTURE_TITLE);
     
@@ -134,5 +135,15 @@ public class PracticeActivity extends AppCompatActivity {
     }
     
     return builder.toString ();
+  }
+
+  public void toTest(View view) {
+    Intent intent = new Intent(this, MemorizeQuizActivity.class);
+    Intent startIntent = getIntent();
+
+    intent.putExtra(MainActivity.SCRIPTURE_TITLE, startIntent.getStringExtra(MainActivity.SCRIPTURE_TITLE));
+    intent.putExtra(MainActivity.SCRIPTURE_TEXT, startIntent.getStringExtra(MainActivity.SCRIPTURE_TEXT));
+
+    startActivity(intent);
   }
 }
