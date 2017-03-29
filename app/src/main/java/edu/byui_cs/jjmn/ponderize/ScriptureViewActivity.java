@@ -73,12 +73,15 @@ public class ScriptureViewActivity extends AppActivity {
          * Mar 8, 2017
          * Allows the user to post things to facebook
          ************************************************************************************/
-    
+
+     String masteredTitle = "I Memorized " + _scriptureTitle;
+    //String maseredDescription =
+
     // Configures share window
     ShareLinkContent content = new ShareLinkContent.Builder ()
-                                     .setContentTitle ("MASTERED")
-                                     .setContentUrl (Uri.parse ("http://developers.facebook.com/android"))
-                                     .setContentDescription ("I MASTERED A SCRIPTURE WITHOUT COMMENTING ON JOE'S LEGS")
+                                     .setContentTitle (masteredTitle)
+                                     .setContentUrl (Uri.parse ("http://lds.org"))
+                                     .setContentDescription (_scriptureText)
                                      .build ();
     
     // Not sure what this code snippet does
