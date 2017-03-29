@@ -12,25 +12,43 @@
     tools:context="edu.byui_cs.jjmn.ponderize.MemorizeQuizActivity">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/quizTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:text="TextView"
-        android:textColor="#000000"
-        tools:text="dlfhasldkjf;laskjdf;lkajsd;flkjas;dlkfjas;ljkf" />
+        android:textColor="#000000" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/quizContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/quizTitle"
         android:layout_marginTop="45dp"
         android:text="TextView"
-        android:textColor="#000000"
-        tools:text="fajsdhflkajhsdflkjhasldjfhalsjdkhflkajsdhflkjashdf"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/checkBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="119dp"
+        android:text="Check"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/checkBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Answer" />
 
 </RelativeLayout>
