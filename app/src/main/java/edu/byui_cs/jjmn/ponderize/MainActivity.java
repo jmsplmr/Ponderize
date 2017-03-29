@@ -2,7 +2,6 @@ package edu.byui_cs.jjmn.ponderize;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,9 +11,6 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.facebook.CallbackManager;
-import com.facebook.share.model.ShareLinkContent;
-import com.facebook.share.widget.ShareButton;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -29,11 +25,11 @@ import static edu.byui_cs.jjmn.ponderize.R.layout.activity_main;
  *
  */
 public class MainActivity extends AppCompatActivity {
-
+  
   public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
   public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
   private List < ScriptureContainer > omniList;
-
+  
   @Override
   protected void onCreate (Bundle savedInstanceState) {
     
@@ -41,118 +37,65 @@ public class MainActivity extends AppCompatActivity {
     Log.v (getClass ().getSimpleName (), "Create main activity.");
     super.onCreate (savedInstanceState);
     setContentView (activity_main);
-    
-    TabHost host = (TabHost) findViewById (R.id.tabHostMain);
-    host.setup ();
-    
-    //Progressing Tab
-    Log.v (getClass ().getSimpleName (), "Setup Progressing Tab");
-    TabHost.TabSpec spec = host.newTabSpec ("Progressing");
-    spec.setContent (R.id.Progressing);
-    spec.setIndicator ("Progressing");
-    host.addTab (spec);
-    
-    //Memorized Tab
-    spec = host.newTabSpec ("Memorized");
-    spec.setContent (R.id.Memorized);
-    spec.setIndicator ("Memorized");
-    host.addTab (spec);
+  
+    setupTabs ();
 
-        /* ************************************************************************************
-         * JOE TEST CODE DO NOT DELETE
-         * Joseph Koetting
-         * Feb 24, 2017
-         * Init an array, then displays contents to the list view
-         ************************************************************************************/
-
-    /*******************************************************************************************
-     * Loads the preloaded scriptures into an array and loads them into the scripture view
+    /* ******************************************************************************************
+     * Loads the pre-loaded scriptures into an array and loads them into the scripture view
      ********************************************************************************************/
     // init array
-    Log.d(getClass ().getSimpleName (), "Setting up lists");
+    Log.d (getClass ().getSimpleName (), "Setting up lists");
     ArrayList < ScriptureContainer > memList = new ArrayList <> ();
     ArrayList < ScriptureContainer > proList = new ArrayList <> ();
-
-    Log.d(getClass ().getSimpleName (), "try to get save file");
-    String scriptureFilePath = getFilesDir() + "/scriptureFile.json";
+    
+    Log.d (getClass ().getSimpleName (), "try to get save file");
+    String scriptureFilePath = getFilesDir () + "/scriptureFile.json";
     // The file path of the file in the internal directory with the pre-loaded scriptures
-    Log.d(getClass ().getSimpleName (), "Point to file");
-
-    File oldFile = new File(getFilesDir(), "/scriptureFile.json");
-    oldFile.delete();
-
-    File saveFile = new File(getFilesDir(), "/scriptureFile.json");
-
-    Log.d(getClass ().getSimpleName (), "Did we find a file");
-    if (!saveFile.exists()) {
-      Context cntxt = getApplicationContext();
-      new preLoader().loadPreLoaded(cntxt, scriptureFilePath);
+    Log.d (getClass ().getSimpleName (), "Point to file");
+    
+    File saveFile = new File (getFilesDir (), "/scriptureFile.json");
+    
+    Log.d (getClass ().getSimpleName (), "Did we find a file");
+    if (!saveFile.exists ()) {
+      Context context = getApplicationContext ();
+      new preLoader ().loadPreLoaded (context, scriptureFilePath);
     }
-
-    Log.d(getClass ().getSimpleName (), "Store scriptures");
-    ScriptureStorage loadScriptures = new ScriptureStorage();
+    
+    Log.d (getClass ().getSimpleName (), "Store scriptures");
+    ScriptureStorage loadScriptures = new ScriptureStorage ();
     omniList = new ArrayList <> ();
-    omniList = loadScriptures.loadAllScriptures(saveFile);
-
-
+    omniList = loadScriptures.loadAllScriptures (saveFile);
+    
     // Look at scriptures, determine if completed or not
     // Adds to appropriate list view
-    Log.v(getClass ().getSimpleName (), "Add scriptures to lists");
+    Log.v (getClass ().getSimpleName (), "Add scriptures to lists");
     for (ScriptureContainer sc : omniList) {
-      Log.v(getClass ().getSimpleName (), "Attempt to separate lists");
+      Log.v (getClass ().getSimpleName (), "Attempt to separate lists");
       if (sc.getCompleted ()) {
-        Log.v(getClass ().getSimpleName (), "Add to memorized list");
+        Log.v (getClass ().getSimpleName (), "Add to memorized list");
         memList.add (sc);
-        Log.v(getClass ().getSimpleName (), "Added");
-      }
-      else {
-        Log.v(getClass ().getSimpleName (), "Add to progressing list");
+        Log.v (getClass ().getSimpleName (), "Added");
+      } else {
+        Log.v (getClass ().getSimpleName (), "Add to progressing list");
         proList.add (sc);
-        Log.v(getClass ().getSimpleName (), "Added");
+        Log.v (getClass ().getSimpleName (), "Added");
       }
     }
-
-    Log.d(getClass ().getSimpleName (), "Set views");
+    
+    Log.d (getClass ().getSimpleName (), "Set views");
     // grab list view reference
     ListView memView = (ListView) findViewById (R.id.memorizedScripts);
     ListView proView = (ListView) findViewById (R.id.progressingScripts);
-
-    Log.d(getClass ().getSimpleName (), "Create Adapters");
+    
+    Log.d (getClass ().getSimpleName (), "Create Adapters");
     // create new scripture adapter
     ScriptureAdapter memAdapter = new ScriptureAdapter (this, memList);
     ScriptureAdapter proAdapter = new ScriptureAdapter (this, proList);
-
-    Log.d(getClass ().getSimpleName (), "Update list views");
+    
+    Log.d (getClass ().getSimpleName (), "Update list views");
     // set list views adapter to new scripture adapter
     memView.setAdapter (memAdapter);
     proView.setAdapter (proAdapter);
-
-        /* ************************************************************************************
-         * FACEBOOK SHARE BUTTON CODE
-         * Joseph Koetting
-         * Mar 8, 2017
-         * Allows the user to post things to facebook
-         ************************************************************************************/
-    
-    // Configures share window
-    ShareLinkContent content = new ShareLinkContent.Builder ()
-                                     .setContentTitle ("MASTERED")
-                                     .setContentUrl (Uri.parse ("http://developers.facebook.com/android"))
-                                     .setContentDescription ("I MASTERED A SCRIPTURE WITHOUT COMMENTING ON JOE'S LEGS")
-                                     .build ();
-    
-    // Not sure what this code snippet does
-    // DOES NOT WORK WITHOUT
-    /*
-    FACEBOOK THING CallbackManager - Like the facebook container to do everything.
-   */
-    CallbackManager callbackManager = CallbackManager.Factory.create ();
-    
-    // get reference to share button
-    final ShareButton shareButton = (ShareButton) findViewById (R.id.fb_share_button);
-    
-    // share window is displayed
-    shareButton.setShareContent (content);
     
     // LIST VIEW ON CLICK LISTENER
     // Joseph Koetting
@@ -219,14 +162,32 @@ public class MainActivity extends AppCompatActivity {
             }
           });
   }
-
+  
+  private void setupTabs () {
+    TabHost host = (TabHost) findViewById (R.id.tabHostMain);
+    host.setup ();
+    
+    //Progressing Tab
+    Log.v (getClass ().getSimpleName (), "Setup Progressing Tab");
+    TabHost.TabSpec spec = host.newTabSpec ("Progressing");
+    spec.setContent (R.id.Progressing);
+    spec.setIndicator ("Progressing");
+    host.addTab (spec);
+    
+    //Memorized Tab
+    spec = host.newTabSpec ("Memorized");
+    spec.setContent (R.id.Memorized);
+    spec.setIndicator ("Memorized");
+    host.addTab (spec);
+  }
+  
   /**
    * Activity changer to ScriptureViewActivity
    *
-   * @param v Current view
+   * @param view Current view
    */
   //For navigation testing buttons
-  public void onScriptureBtnClick (View v) {
+  public void launch_ScriptureViewActivity (View view) {
     Intent i = new Intent (this, ScriptureViewActivity.class);
     startActivity (i);
   }
@@ -234,9 +195,9 @@ public class MainActivity extends AppCompatActivity {
   /**
    * Activity changer to MemorizeQuizActivity
    *
-   * @param v Current view
+   * @param view Current view
    */
-  public void onQuizBtnClick (View v) {
+  public void launch_MemorizeQuizActivity (View view) {
     Intent i = new Intent (this, MemorizeQuizActivity.class);
     startActivity (i);
   }
@@ -244,14 +205,19 @@ public class MainActivity extends AppCompatActivity {
   /**
    * Activity changer to SettingsActivity
    *
-   * @param v Current view
+   * @param view Current view
    */
-  public void onSettingClick (View v) {
+  public void launch_SettingsActivity (View view) {
     Intent i = new Intent (this, SettingsActivity.class);
     startActivity (i);
   }
-
-  public void addNewScripture (View view) {
+  
+  /**
+   * Activity changer to AddScriptureActivity
+   *
+   * @param view Current view
+   */
+  public void launch_AddScriptureActivity (View view) {
     Intent i = new Intent (this, AddScriptureActivity.class);
     String scriptureList = new Gson ().toJson (omniList);
     i.putExtra ("List", scriptureList);

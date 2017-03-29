@@ -18,7 +18,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="109dp"
-        android:onClick="onScriptureBtnClick"
+        android:onClick="launch_ScriptureViewActivity"
         android:text="@string/scriptures_notes"/>
 
     <Button
@@ -28,7 +28,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="37dp"
-        android:onClick="onQuizBtnClick"
+        android:onClick="launch_MemorizeQuizActivity"
         android:text="@string/quiz"/>
 
     <TabHost
@@ -65,6 +65,7 @@
                         android:id="@+id/memorizedScripts"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -89,17 +90,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/btnQuiz"
         android:layout_toStartOf="@+id/btnScriptures"
-        android:onClick="onSettingClick"
+        android:onClick="launch_SettingsActivity"
         android:text="@string/settings"/>
-
-    <com.facebook.share.widget.ShareButton
-        android:id="@+id/fb_share_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="175dp"
-        android:text="@string/share"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -108,7 +100,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:clickable="true"
-        android:onClick="addNewScripture"
+        android:onClick="launch_AddScriptureActivity"
         app:fabSize="mini"
         app:srcCompat="@android:drawable/ic_menu_add"/>
 
