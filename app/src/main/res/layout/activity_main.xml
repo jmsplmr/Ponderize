@@ -12,36 +12,26 @@
                 tools:context="edu.byui_cs.jjmn.ponderize.MainActivity">
 
     <Button
-        android:id="@+id/btnScriptures"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="109dp"
-        android:onClick="launch_ScriptureViewActivity"
-        android:text="@string/scriptures_notes"/>
-
-    <Button
         android:id="@+id/btnQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="37dp"
         android:onClick="launch_MemorizeQuizActivity"
-        android:text="@string/quiz"/>
+        android:text="@string/quiz"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <TabHost
         android:id="@+id/tabHostMain"
         android:layout_width="200dip"
         android:layout_height="300dip"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/btnQuiz">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="445dp"
             android:orientation="vertical">
 
             <TabWidget
@@ -53,18 +43,18 @@
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="389dp">
 
                 <LinearLayout
                     android:id="@+id/Memorized"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="366dp"
                     android:orientation="vertical">
 
                     <ListView
                         android:id="@+id/memorizedScripts"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="394dp"/>
 
                 </LinearLayout>
 

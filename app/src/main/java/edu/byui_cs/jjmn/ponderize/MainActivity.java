@@ -19,10 +19,8 @@ import java.util.List;
 
 import static edu.byui_cs.jjmn.ponderize.R.layout.activity_main;
 
-// FOR FACEBOOK
-
 /**
- *
+ * Main Activity
  */
 public class MainActivity extends AppCompatActivity {
   
@@ -32,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
   
   @Override
   protected void onCreate (Bundle savedInstanceState) {
-    
-    
+
     Log.v (getClass ().getSimpleName (), "Create main activity.");
     super.onCreate (savedInstanceState);
     setContentView (activity_main);
@@ -224,4 +221,3 @@ public class MainActivity extends AppCompatActivity {
     startActivity (i);
   }
 }
-
