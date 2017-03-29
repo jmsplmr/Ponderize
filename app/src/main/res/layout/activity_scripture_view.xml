@@ -61,16 +61,28 @@
                     android:orientation="vertical"
                     android:weightSum="1">
 
-                    <TextView
-                        android:id="@+id/txtScriptureText"
+                    <ScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="403dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:textColor="#ff444444"
-                        android:scrollbars = "vertical"
-                        android:text="Scripture Text"
-                        android:lineSpacingExtra="10dp"
-                        android:textSize="18sp" />
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/txtScriptureText"
+                                android:layout_width="match_parent"
+                                android:layout_height="403dp"
+                                android:fontFamily="sans-serif-medium"
+                                android:lineSpacingExtra="10dp"
+                                android:scrollbars="vertical"
+                                android:text="Scripture Text"
+                                android:textColor="#ff444444"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+                    </ScrollView>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -80,16 +92,28 @@
                     android:orientation="vertical"
                     >
 
-                    <EditText
-                        android:id="@+id/etxtNotes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentStart="true"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:text="@string/enter_notes_here"/>
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" >
+
+                            <EditText
+                                android:id="@+id/etxtNotes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentStart="true"
+                                android:ems="10"
+                                android:inputType="textMultiLine"
+                                android:text="@string/enter_notes_here" />
+                        </LinearLayout>
+                    </ScrollView>
+
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
