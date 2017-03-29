@@ -129,6 +129,7 @@ public class ScriptureViewActivity extends AppActivity {
   public void toPractice (View view) {
     Intent practiceIntent = new Intent (this, PracticeActivity.class);
     practiceIntent.putExtra (MainActivity.SCRIPTURE_TEXT, _scriptureText);
+    practiceIntent.putExtra(MainActivity.SCRIPTURE_TITLE, _scriptureTitle);
     startActivity (practiceIntent);
   }
   
