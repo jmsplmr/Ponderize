@@ -24,12 +24,16 @@ public class PracticeActivity extends AppCompatActivity {
     //Get scripture from intent.
     Intent intent = getIntent ();
     String Verse = intent.getStringExtra (MainActivity.SCRIPTURE_TEXT);
+    String Title = intent.getStringExtra(MainActivity.SCRIPTURE_TITLE);
     
     originalVerse = Verse.trim ().split ("\\s+");
     displayVerse = Verse.trim ().split ("\\s+");
     
     TextView aView = (TextView) findViewById (R.id.practiceView);
     aView.setText (toString (displayVerse));
+
+    TextView tView = (TextView) findViewById(R.id.ScriptureTitle);
+    tView.setText(Title);
     
     
     SeekBar seekBar = (SeekBar) findViewById (R.id.seekBar);
