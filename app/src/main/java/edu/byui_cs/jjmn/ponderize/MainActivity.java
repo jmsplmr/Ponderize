@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -36,22 +37,8 @@ public class MainActivity extends AppCompatActivity {
     Log.v (getClass ().getSimpleName (), "Create main activity.");
     super.onCreate (savedInstanceState);
     setContentView (activity_main);
-    
-//    TabHost host = (TabHost) findViewById (R.id.tabHostMain);
-//    host.setup ();
-//
-//    //Progressing Tab
-//    Log.v (getClass ().getSimpleName (), "Setup Progressing Tab");
-//    TabHost.TabSpec spec = host.newTabSpec ("Progressing");
-//    spec.setContent (R.id.Progressing);
-//    spec.setIndicator ("Progressing");
-//    host.addTab (spec);
-//
-//    //Memorized Tab
-//    spec = host.newTabSpec ("Memorized");
-//    spec.setContent (R.id.Memorized);
-//    spec.setIndicator ("Memorized");
-//    host.addTab (spec);
+  
+    setupTabs ();
 
     /* ******************************************************************************************
      * Loads the pre-loaded scriptures into an array and loads them into the scripture view
@@ -174,6 +161,24 @@ public class MainActivity extends AppCompatActivity {
               startActivityForResult (myIntent, 0);
             }
           });
+  }
+  
+  private void setupTabs () {
+    TabHost host = (TabHost) findViewById (R.id.tabHostMain);
+    host.setup ();
+    
+    //Progressing Tab
+    Log.v (getClass ().getSimpleName (), "Setup Progressing Tab");
+    TabHost.TabSpec spec = host.newTabSpec ("Progressing");
+    spec.setContent (R.id.Progressing);
+    spec.setIndicator ("Progressing");
+    host.addTab (spec);
+    
+    //Memorized Tab
+    spec = host.newTabSpec ("Memorized");
+    spec.setContent (R.id.Memorized);
+    spec.setIndicator ("Memorized");
+    host.addTab (spec);
   }
   
   /**
