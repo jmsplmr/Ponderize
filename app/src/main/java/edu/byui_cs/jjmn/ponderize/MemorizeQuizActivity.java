@@ -12,7 +12,7 @@ import java.util.List;
 public class MemorizeQuizActivity extends AppCompatActivity {
 
   private String[] originalVerse;
-  private String[] displayVerse;
+  private String displayString;
   String Verse;
 
   /**
@@ -31,9 +31,12 @@ public class MemorizeQuizActivity extends AppCompatActivity {
 
     originalVerse = Verse.trim().split("\\s+");
     List<String> testWords = removeWords(originalVerse);
+    displayString = toString(testWords);
 
     TextView title = (TextView) findViewById(R.id.quizTitle);
     title.setText(intent.getStringExtra(MainActivity.SCRIPTURE_TITLE));
+    TextView quiz = (TextView) findViewById(R.id.quizContent);
+    quiz.setText(displayString);
   }
 
   private List<String> removeWords(String [] words) {
@@ -49,5 +52,11 @@ public class MemorizeQuizActivity extends AppCompatActivity {
     return testWords;
   }
 
-  
+  public String toString(List<String> words) {
+      StringBuilder stringBuilder = new StringBuilder();
+      for (String word: words) {
+          stringBuilder.append(word + " ");
+      }
+      return stringBuilder.toString();
+  }
 }
