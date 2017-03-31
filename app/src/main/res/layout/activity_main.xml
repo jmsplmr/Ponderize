@@ -11,37 +11,18 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context="edu.byui_cs.jjmn.ponderize.MainActivity">
 
-    <Button
-        android:id="@+id/btnScriptures"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="109dp"
-        android:onClick="launch_ScriptureViewActivity"
-        android:text="@string/scriptures_notes"/>
-
-    <Button
-        android:id="@+id/btnQuiz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="37dp"
-        android:onClick="launch_MemorizeQuizActivity"
-        android:text="@string/quiz"/>
-
     <TabHost
         android:id="@+id/tabHostMain"
         android:layout_width="200dip"
         android:layout_height="300dip"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/btnSettings">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="462dp"
             android:orientation="vertical">
 
             <TabWidget
@@ -53,20 +34,7 @@
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:id="@+id/Memorized"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ListView
-                        android:id="@+id/memorizedScripts"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
-
-                </LinearLayout>
+                android:layout_height="389dp">
 
                 <LinearLayout
                     android:id="@+id/Progressing"
@@ -77,7 +45,20 @@
                     <ListView
                         android:id="@+id/progressingScripts"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Memorized"
+                    android:layout_width="match_parent"
+                    android:layout_height="409dp"
+                    android:orientation="vertical">
+
+                    <ListView
+                        android:id="@+id/memorizedScripts"
+                        android:layout_width="match_parent"
+                        android:layout_height="394dp" />
+
                 </LinearLayout>
 
             </FrameLayout>
@@ -88,10 +69,10 @@
         android:id="@+id/btnSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btnQuiz"
-        android:layout_toStartOf="@+id/btnScriptures"
         android:onClick="launch_SettingsActivity"
-        android:text="@string/settings"/>
+        android:text="@string/settings"
+        android:layout_alignTop="@+id/floatingActionButton"
+        android:layout_centerHorizontal="true" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"

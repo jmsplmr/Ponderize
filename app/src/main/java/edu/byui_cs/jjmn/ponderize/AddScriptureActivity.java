@@ -3,46 +3,48 @@ package edu.byui_cs.jjmn.ponderize;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.File;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AddScriptureActivity extends AppCompatActivity {
   
   private List < ScriptureContainer > _scriptures;
+  private static ScriptureList list = ScriptureList.getInstance ();
   
   @Override
   protected void onCreate (Bundle savedInstanceState) {
     super.onCreate (savedInstanceState);
     setContentView (R.layout.activity_add_scripture);
     
-    Type listType = new TypeToken < ArrayList < ScriptureContainer > > () {
-    }.getType ();
-    
-    String list = (String) savedInstanceState.get ("List");
-    _scriptures = new Gson ().fromJson (list, listType);
+    _scriptures = list.getList ();
   }
   
-  public void addScriptureToList () {
-    
+  @Override
+  protected void onStop () {
+    super.onStop ();
+    list.saveList ();
+  }
+  
+  public void addScriptureToList (View view) {
+  
+    Log.d (getClass ().getSimpleName (), "Grab scripture info");
     String scriptureReference = getStringFromView (R.id.editScriptureReference);
     String scriptureText = getStringFromView (R.id.editScriptureText);
-    
+  
+    Log.d (getClass ().getSimpleName (), "add to scripture list");
     _scriptures.add (new ScriptureContainer (scriptureReference, scriptureText));
-    
-    File saveFile = new File (getFilesDir (), "");
-    
-    new ScriptureStorage ().saveAllScriptures (_scriptures, saveFile);
+  
+    Log.d (getClass ().getSimpleName (), "Update main list");
+    list.updateList (_scriptures);
   }
   
   @NonNull
   private String getStringFromView (int view) {
     return ((EditText) findViewById (view)).getText ().toString ();
   }
+  
+  
 }
