@@ -15,7 +15,7 @@
         android:id="@+id/btnQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onQuizBtnClick"
+        android:onClick="launch_MemorizeQuizActivity"
         android:text="@string/quiz"
         android:layout_alignBottom="@+id/floatingActionButton"
         android:layout_centerHorizontal="true" />
@@ -77,8 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/btnQuiz"
-
-        android:onClick="onSettingClick"
+        android:onClick="launch_SettingsActivity"
         android:text="@string/settings"/>
 
     <android.support.design.widget.FloatingActionButton
@@ -86,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:onClick="addNewScripture"
+        android:onClick="launch_AddScriptureActivity"
         app:fabSize="mini"
         app:srcCompat="@android:drawable/ic_menu_add"
         android:layout_marginBottom="44dp"

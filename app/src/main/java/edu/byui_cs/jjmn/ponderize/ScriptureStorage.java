@@ -98,7 +98,7 @@ public class ScriptureStorage {
     //Save list to saveFile.
     FileWriter writer;
     try {
-      writer = new FileWriter (saveFile);
+      writer = new FileWriter (saveFile, false);
       writer.write (jsonList);
       writer.close ();
     } catch ( Exception e ) {

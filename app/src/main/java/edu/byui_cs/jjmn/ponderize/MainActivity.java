@@ -24,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
   
   public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
   public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
-  private List < ScriptureContainer > omniList;
+  private static List < ScriptureContainer > omniList;
   private ArrayList < ScriptureContainer > memList = new ArrayList <> ();
   private ArrayList < ScriptureContainer > proList = new ArrayList <> ();
-  private ScriptureList list = ScriptureList.getInstance ();
+  private static ScriptureList list = ScriptureList.getInstance ();
   private ListView proView;
   private ListView memView;
   
@@ -40,16 +40,45 @@ public class MainActivity extends AppCompatActivity {
     setContentView (activity_main);
   
     setupTabs ();
-
     /* ******************************************************************************************
      * Loads the pre-loaded scriptures into an array and loads them into the scripture view
      ********************************************************************************************/
     // init array
     Log.d (getClass ().getSimpleName (), "Setting up lists");
-    
-    FillTabsFromList fillTabsFromList = new FillTabsFromList (memList, proList).invoke ();
-    proView = fillTabsFromList.getProView ();
-    memView = fillTabsFromList.getMemView ();
+  
+    omniList = list.getList ();
+  
+  
+    // Look at scriptures, determine if completed or not
+    // Adds to appropriate list view
+    Log.v (getClass ().getSimpleName (), "Add scriptures to lists");
+    for (ScriptureContainer sc : omniList) {
+      //Log.v (getClass ().getSimpleName (), "Attempt to separate lists");
+      if (sc.getCompleted ()) {
+        Log.v (getClass ().getSimpleName (), "Add to memorized list");
+        memList.add (sc);
+        Log.v (getClass ().getSimpleName (), "Added: " + sc.getReference ());
+      } else {
+        Log.v (getClass ().getSimpleName (), "Add to progressing list");
+        proList.add (sc);
+        Log.v (getClass ().getSimpleName (), "Added: " + sc.getReference ());
+      }
+    }
+  
+    Log.d (getClass ().getSimpleName (), "Set views");
+    // grab list view reference
+    memView = (ListView) findViewById (R.id.memorizedScripts);
+    proView = (ListView) findViewById (R.id.progressingScripts);
+  
+    Log.d (getClass ().getSimpleName (), "Create Adapters");
+    // create new scripture adapter
+    ScriptureAdapter memAdapter = new ScriptureAdapter (MainActivity.this, memList);
+    ScriptureAdapter proAdapter = new ScriptureAdapter (MainActivity.this, proList);
+  
+    Log.d (getClass ().getSimpleName (), "Update list views");
+    // set list views adapter to new scripture adapter
+    memView.setAdapter (memAdapter);
+    proView.setAdapter (proAdapter);
     
     // LIST VIEW ON CLICK LISTENER
     // Joseph Koetting
@@ -125,11 +154,42 @@ public class MainActivity extends AppCompatActivity {
     
     proView.setAdapter (null);
     memView.setAdapter (null);
+  
+  
+    omniList = list.getList ();
+  
+  
+    // Look at scriptures, determine if completed or not
+    // Adds to appropriate list view
+    Log.v (getClass ().getSimpleName (), "Add scriptures to lists");
+    for (ScriptureContainer sc : omniList) {
+      //Log.v (getClass ().getSimpleName (), "Attempt to separate lists");
+      if (sc.getCompleted ()) {
+        Log.v (getClass ().getSimpleName (), "Add to memorized list");
+        memList.add (sc);
+        Log.v (getClass ().getSimpleName (), "Added: " + sc.getReference ());
+      } else {
+        Log.v (getClass ().getSimpleName (), "Add to progressing list");
+        proList.add (sc);
+        Log.v (getClass ().getSimpleName (), "Added: " + sc.getReference ());
+      }
+    }
+  
+    Log.d (getClass ().getSimpleName (), "Set views");
+    // grab list view reference
+    memView = (ListView) findViewById (R.id.memorizedScripts);
+    proView = (ListView) findViewById (R.id.progressingScripts);
+  
+    Log.d (getClass ().getSimpleName (), "Create Adapters");
+    // create new scripture adapter
+    ScriptureAdapter memAdapter = new ScriptureAdapter (MainActivity.this, memList);
+    ScriptureAdapter proAdapter = new ScriptureAdapter (MainActivity.this, proList);
+  
+    Log.d (getClass ().getSimpleName (), "Update list views");
+    // set list views adapter to new scripture adapter
+    memView.setAdapter (memAdapter);
+    proView.setAdapter (proAdapter);
     
-    
-    FillTabsFromList fillTabsFromList = new FillTabsFromList (memList, proList).invoke ();
-    proView = fillTabsFromList.getProView ();
-    memView = fillTabsFromList.getMemView ();
     proView.setOnItemClickListener (
           new AdapterView.OnItemClickListener () {
           
@@ -247,63 +307,6 @@ public class MainActivity extends AppCompatActivity {
   public void launch_AddScriptureActivity (View view) {
     Intent i = new Intent (this, AddScriptureActivity.class);
     startActivity (i);
-  }
-  
-  private class FillTabsFromList {
-    private ArrayList < ScriptureContainer > memList;
-    private ArrayList < ScriptureContainer > proList;
-    private ListView memView;
-    private ListView proView;
-    
-    public FillTabsFromList (ArrayList < ScriptureContainer > memList, ArrayList < ScriptureContainer > proList) {
-      this.memList = memList;
-      this.proList = proList;
-    }
-    
-    public ListView getMemView () {
-      return memView;
-    }
-    
-    public ListView getProView () {
-      return proView;
-    }
-    
-    public FillTabsFromList invoke () {
-      omniList = list.getList ();
-      
-      
-      // Look at scriptures, determine if completed or not
-      // Adds to appropriate list view
-      Log.v (getClass ().getSimpleName (), "Add scriptures to lists");
-      for (ScriptureContainer sc : omniList) {
-        Log.v (getClass ().getSimpleName (), "Attempt to separate lists");
-        if (sc.getCompleted ()) {
-          Log.v (getClass ().getSimpleName (), "Add to memorized list");
-          memList.add (sc);
-          Log.v (getClass ().getSimpleName (), "Added");
-        } else {
-          Log.v (getClass ().getSimpleName (), "Add to progressing list");
-          proList.add (sc);
-          Log.v (getClass ().getSimpleName (), "Added");
-        }
-      }
-      
-      Log.d (getClass ().getSimpleName (), "Set views");
-      // grab list view reference
-      memView = (ListView) findViewById (R.id.memorizedScripts);
-      proView = (ListView) findViewById (R.id.progressingScripts);
-      
-      Log.d (getClass ().getSimpleName (), "Create Adapters");
-      // create new scripture adapter
-      ScriptureAdapter memAdapter = new ScriptureAdapter (MainActivity.this, memList);
-      ScriptureAdapter proAdapter = new ScriptureAdapter (MainActivity.this, proList);
-      
-      Log.d (getClass ().getSimpleName (), "Update list views");
-      // set list views adapter to new scripture adapter
-      memView.setAdapter (memAdapter);
-      proView.setAdapter (proAdapter);
-      return this;
-    }
   }
 }
 
