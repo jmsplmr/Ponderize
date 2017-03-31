@@ -17,6 +17,7 @@ public class MemorizeQuizActivity extends AppCompatActivity {
 
   private String[] originalVerse;
   private String displayString;
+  private List<String> testWords;
   int guessIndex;
   String Verse;
 
@@ -36,7 +37,7 @@ public class MemorizeQuizActivity extends AppCompatActivity {
     Verse = intent.getStringExtra(MainActivity.SCRIPTURE_TEXT);
 
     originalVerse = Verse.trim().split("\\s+");
-    List<String> testWords = removeWords(originalVerse);
+    testWords = removeWords(originalVerse);
     displayString = toString(testWords);
 
     TextView title = (TextView) findViewById(R.id.quizTitle);
@@ -67,12 +68,16 @@ public class MemorizeQuizActivity extends AppCompatActivity {
   }
 
   public void updateQuiz(String answer) {
-    answer.toLowerCase();
+    answer = answer.toLowerCase();
     String compareWord = new String(originalVerse[guessIndex]);
-    compareWord.toLowerCase();
+    compareWord = compareWord.toLowerCase();
 
     if (answer.equals(compareWord)) {
-
+      testWords.set(guessIndex, originalVerse[guessIndex]);
+      guessIndex++;
+      displayString = toString(testWords);
+      TextView quiz = (TextView) findViewById(R.id.quizContent);
+      quiz.setText(displayString);
     } else {
       Context context = getApplicationContext();
       CharSequence text = "Incorrect";
