@@ -20,16 +20,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
-    <com.facebook.share.widget.ShareButton
-        android:id="@+id/fb_share_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/share"
-        android:layout_marginStart="28dp"
-        android:layout_alignBaseline="@+id/practiceBtn"
-        android:layout_alignBottom="@+id/practiceBtn"
-        android:layout_alignParentStart="true" />
-
     <TabHost
         android:id="@+id/tabHostScript"
         android:layout_width="200dip"

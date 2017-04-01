@@ -51,4 +51,15 @@
         android:ems="10"
         android:inputType="textPersonName" />
 
+
+    <com.facebook.share.widget.ShareButton
+        android:id="@+id/fb_share_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/share"
+        android:visibility="gone"
+        android:layout_alignBaseline="@+id/checkBtn"
+        android:layout_alignBottom="@+id/checkBtn"
+        android:layout_alignEnd="@+id/checkBtn" />
+
 </RelativeLayout>

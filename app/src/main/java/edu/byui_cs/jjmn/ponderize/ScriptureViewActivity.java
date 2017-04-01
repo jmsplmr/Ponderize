@@ -123,25 +123,6 @@ public class ScriptureViewActivity extends AppActivity {
         //Auto generated, don't need.
       }
     });
-
-    //FACEBOOK SHARE BUTTON CODE     *******************************
-
-    // Configures share window
-    String masteredTitle = "I Memorized " + _scriptureTitle;
-    ShareLinkContent content = new ShareLinkContent.Builder()
-            .setContentTitle(masteredTitle)
-            .setContentUrl(Uri.parse("http://lds.org"))
-            .setContentDescription(_scriptureText)
-            .build();
-
-    //FACEBOOK THING CallbackManager - Like the facebook container to do everything.
-    CallbackManager callbackManager = CallbackManager.Factory.create();
-
-    // get reference to share button
-    final ShareButton shareButton = (ShareButton) findViewById(R.id.fb_share_button);
-
-    // share window is displayed
-    shareButton.setShareContent(content);
   }
 
 
