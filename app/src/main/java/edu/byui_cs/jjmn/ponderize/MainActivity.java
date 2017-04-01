@@ -1,6 +1,5 @@
 package edu.byui_cs.jjmn.ponderize;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,9 +10,6 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -271,6 +267,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public FillTabsFromList invoke () {
+      proList.clear ();
+      memList.clear ();
       omniList = list.getList ();
 
 

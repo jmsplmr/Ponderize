@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -29,7 +30,6 @@ public class AddScriptureActivity extends AppCompatActivity {
   }
   
   public void addScriptureToList (View view) {
-  
     Log.d (getClass ().getSimpleName (), "Grab scripture info");
     String scriptureReference = getStringFromView (R.id.editScriptureReference);
     String scriptureText = getStringFromView (R.id.editScriptureText);
@@ -39,6 +39,7 @@ public class AddScriptureActivity extends AppCompatActivity {
   
     Log.d (getClass ().getSimpleName (), "Update main list");
     list.updateList (_scriptures);
+    Toast.makeText(getApplicationContext (), "Scripture Added",Toast.LENGTH_SHORT).show ();
   }
   
   @NonNull
