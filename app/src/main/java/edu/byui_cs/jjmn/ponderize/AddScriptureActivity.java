@@ -12,8 +12,8 @@ import java.util.List;
 
 public class AddScriptureActivity extends AppCompatActivity {
   
-  private List < ScriptureContainer > _scriptures;
   private static ScriptureList list = ScriptureList.getInstance ();
+  private List < ScriptureContainer > _scriptures;
   
   @Override
   protected void onCreate (Bundle savedInstanceState) {
@@ -33,13 +33,13 @@ public class AddScriptureActivity extends AppCompatActivity {
     Log.d (getClass ().getSimpleName (), "Grab scripture info");
     String scriptureReference = getStringFromView (R.id.editScriptureReference);
     String scriptureText = getStringFromView (R.id.editScriptureText);
-  
+    
     Log.d (getClass ().getSimpleName (), "add to scripture list");
     _scriptures.add (new ScriptureContainer (scriptureReference, scriptureText));
-  
+    
     Log.d (getClass ().getSimpleName (), "Update main list");
     list.updateList (_scriptures);
-    Toast.makeText(getApplicationContext (), "Scripture Added",Toast.LENGTH_SHORT).show ();
+    Toast.makeText (getApplicationContext (), "Scripture Added", Toast.LENGTH_SHORT).show ();
   }
   
   @NonNull

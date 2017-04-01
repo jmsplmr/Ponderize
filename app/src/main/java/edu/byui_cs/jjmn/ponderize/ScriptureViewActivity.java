@@ -22,83 +22,81 @@ import java.util.Random;
 import java.util.Stack;
 
 public class ScriptureViewActivity extends AppActivity {
-
+  
+  public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
+  public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
   // init scripture data
   String _scriptureTitle;
   String _scriptureText;
-
-  public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
-  public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
-
   // for the memorize tab
-  private Stack<Integer> indexStack = new Stack<>();
+  private Stack < Integer > indexStack = new Stack <> ();
   private String[] originalVerse;
   private String[] displayVerse;
-
+  
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    Log.v(getClass().getSimpleName(), "Open ScriptureView activity.");
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_scripture_view);
-
-    TabHost host = (TabHost) findViewById(R.id.tabHostScript);
-    host.setup();
-
+  protected void onCreate (Bundle savedInstanceState) {
+    Log.v (getClass ().getSimpleName (), "Open ScriptureView activity.");
+    super.onCreate (savedInstanceState);
+    setContentView (R.layout.activity_scripture_view);
+    
+    TabHost host = (TabHost) findViewById (R.id.tabHostScript);
+    host.setup ();
+    
     // Receive intent from main activity
-    Intent intent = getIntent();
-
+    Intent intent = getIntent ();
+    
     // Extract data from intent
-    _scriptureTitle = intent.getStringExtra(MainActivity.SCRIPTURE_TITLE);
-    _scriptureText = intent.getStringExtra(MainActivity.SCRIPTURE_TEXT);
-
+    _scriptureTitle = intent.getStringExtra (MainActivity.SCRIPTURE_TITLE);
+    _scriptureText = intent.getStringExtra (MainActivity.SCRIPTURE_TEXT);
+    
     // Get reference for Text view
-    TextView scriptureTextView = (TextView) this.findViewById(R.id.txtScriptureText);
-
+    TextView scriptureTextView = (TextView) this.findViewById (R.id.txtScriptureText);
+    
     //Test Text
-    scriptureTextView.setText(_scriptureText);
-
+    scriptureTextView.setText (_scriptureText);
+    
     //Scripture Tab
-    TabHost.TabSpec spec = host.newTabSpec("Scripture");
-    spec.setContent(R.id.Scripture);
-    spec.setIndicator(_scriptureTitle);
-    host.addTab(spec);
-
+    TabHost.TabSpec spec = host.newTabSpec ("Scripture");
+    spec.setContent (R.id.Scripture);
+    spec.setIndicator (_scriptureTitle);
+    host.addTab (spec);
+    
     //Notes Tab
-    spec = host.newTabSpec("Notes");
-    spec.setContent(R.id.Notes);
-    spec.setIndicator("Notes");
-    host.addTab(spec);
-
+    spec = host.newTabSpec ("Notes");
+    spec.setContent (R.id.Notes);
+    spec.setIndicator ("Notes");
+    host.addTab (spec);
+    
     //Memorize tab
-    spec = host.newTabSpec("Memorize");
-    spec.setContent(R.id.Memorize);
-    spec.setIndicator("Memorize");
-    host.addTab(spec);
-
+    spec = host.newTabSpec ("Memorize");
+    spec.setContent (R.id.Memorize);
+    spec.setIndicator ("Memorize");
+    host.addTab (spec);
+    
     //load the notes for the scripture
-    Context scriptureContext = this.getApplicationContext();
+    Context scriptureContext = this.getApplicationContext ();
     //get the edit text reference
-    EditText noteView = (EditText) findViewById(R.id.etxtNotes);
+    EditText noteView = (EditText) findViewById (R.id.etxtNotes);
     //load the note
-    NoteStorage loadNote = new NoteStorage();
-    loadNote.loadNote(_scriptureTitle, scriptureContext, noteView);
-
-
+    NoteStorage loadNote = new NoteStorage ();
+    loadNote.loadNote (_scriptureTitle, scriptureContext, noteView);
+    
+    
     // MEMORIZE SCRIPTURE TAB CODE ****************************************
-
+    
     originalVerse = _scriptureText.trim ().split ("\\s+");
     displayVerse = _scriptureText.trim ().split ("\\s+");
-
+    
     TextView aView = (TextView) findViewById (R.id.ScriptureText);
     aView.setText (toString (displayVerse));
-
+    
     SeekBar seekBar = (SeekBar) findViewById (R.id.seekBar);
     seekBar.setOnSeekBarChangeListener (new SeekBar.OnSeekBarChangeListener () {
       @Override
       public void onProgressChanged (SeekBar seekBar, int progress, boolean fromUser) {
-
+        
         int removeCompare = (int) ((progress / 100.0) * displayVerse.length);
-
+        
         if (removeCompare > indexStack.size ()) {
           int removeCount = removeCompare - indexStack.size ();
           removeWords (removeCount);
@@ -112,82 +110,82 @@ public class ScriptureViewActivity extends AppActivity {
         String stringVerse = ScriptureViewActivity.this.toString (displayVerse);
         aView.setText (stringVerse);
       }
-
+      
       @Override
       public void onStartTrackingTouch (SeekBar seekBar) {
         //Auto generated, don't need.
       }
-
+      
       @Override
       public void onStopTrackingTouch (SeekBar seekBar) {
         //Auto generated, don't need.
       }
     });
-
+    
     //FACEBOOK SHARE BUTTON CODE     *******************************
-
+    
     // Configures share window
     String masteredTitle = "I Memorized " + _scriptureTitle;
-    ShareLinkContent content = new ShareLinkContent.Builder()
-            .setContentTitle(masteredTitle)
-            .setContentUrl(Uri.parse("http://lds.org"))
-            .setContentDescription(_scriptureText)
-            .build();
-
+    ShareLinkContent content = new ShareLinkContent.Builder ()
+                                     .setContentTitle (masteredTitle)
+                                     .setContentUrl (Uri.parse ("http://lds.org"))
+                                     .setContentDescription (_scriptureText)
+                                     .build ();
+    
     //FACEBOOK THING CallbackManager - Like the facebook container to do everything.
-    CallbackManager callbackManager = CallbackManager.Factory.create();
-
+    CallbackManager callbackManager = CallbackManager.Factory.create ();
+    
     // get reference to share button
-    final ShareButton shareButton = (ShareButton) findViewById(R.id.fb_share_button);
-
+    final ShareButton shareButton = (ShareButton) findViewById (R.id.fb_share_button);
+    
     // share window is displayed
-    shareButton.setShareContent(content);
+    shareButton.setShareContent (content);
   }
-
-
+  
+  
   @Override
   public boolean onCreateOptionsMenu (Menu menu) {
     return super.onCreateOptionsMenu (menu);
   }
-
+  
   @Override
   public boolean onOptionsItemSelected (MenuItem item) {
     return super.onOptionsItemSelected (item);
   }
-
+  
   @Override
   protected void onStop () {
     super.onStop ();
     Log.v (getClass ().getName (), "Paused");
-
+    
     //get the context for the scripture view
     Context scriptureContext = this.getApplicationContext ();
-
+    
     //Get the editText reference
     EditText saveText = (EditText) this.findViewById (R.id.etxtNotes);
-
+    
     //save the note
     NoteStorage note = new NoteStorage ();
     note.saveNote (_scriptureTitle, scriptureContext, saveText);
-
+    
   }
-
+  
   /**************************************
    * removeWords
    * Removes word from the verse to
    * practice memorizing.
    *************************************/
-
+  
   public void removeWords (int wordRemoval) {
-
+    
     //Remove a certain amount of words.
     for (int i = 0; i < wordRemoval; i++) {
       Random random = new Random ();
-
+      
       //Delete a random word.
       int wordIndex = random.nextInt (originalVerse.length);
-      Iterator< Integer > it = indexStack.iterator ();
-
+      Iterator < Integer > it = indexStack.iterator ();
+      
       //Make sure that the random int we remove it not already removed.
       while (it.hasNext ()) {
         if (it.next () == wordIndex) {
@@ -195,22 +193,22 @@ public class ScriptureViewActivity extends AppActivity {
           it = indexStack.iterator ();
         }
       }
-
+      
       //Remove word.
       String word = displayVerse[wordIndex];
       char[] charArray = word.toCharArray ();
-
+      
       for (int x = 1; x < charArray.length; x++) {
         charArray[x] = '_';
       }
       //Add modified word back.
       word = new String (charArray);
       displayVerse[wordIndex] = word;
-
+      
       indexStack.push (wordIndex);
     }
   }
-
+  
   /**********************************
    * addWords
    * add words back to the string to
@@ -222,26 +220,25 @@ public class ScriptureViewActivity extends AppActivity {
       displayVerse[wordIndex] = originalVerse[wordIndex];
     }
   }
-
+  
   /*******************************
    * getReference
    * changes an array to string.
    *******************************/
   public String toString (String[] words) {
     StringBuilder builder = new StringBuilder ();
-
+    
     for (String word : words) {
       builder.append (word).append (" ");
     }
-
+    
     return builder.toString ();
   }
-
-  public void toPractice(View view)
-  {
+  
+  public void toPractice (View view) {
     Intent i = new Intent (this, MemorizeQuizActivity.class);
-    i.putExtra(SCRIPTURE_TEXT, _scriptureText).putExtra(SCRIPTURE_TITLE, _scriptureTitle);
+    i.putExtra (SCRIPTURE_TEXT, _scriptureText).putExtra (SCRIPTURE_TITLE, _scriptureTitle);
     startActivity (i);
   }
-
+  
 }

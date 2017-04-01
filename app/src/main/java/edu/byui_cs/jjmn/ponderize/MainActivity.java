@@ -25,19 +25,19 @@ public class MainActivity extends AppCompatActivity {
   public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
   public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
   private static List < ScriptureContainer > omniList;
+  private static ScriptureList list = ScriptureList.getInstance ();
   private ArrayList < ScriptureContainer > memList = new ArrayList <> ();
   private ArrayList < ScriptureContainer > proList = new ArrayList <> ();
-  private static ScriptureList list = ScriptureList.getInstance ();
   private ListView proView;
   private ListView memView;
-
+  
   @Override
   protected void onCreate (Bundle savedInstanceState) {
-
+    
     Log.v (getClass ().getSimpleName (), "Create main activity.");
     super.onCreate (savedInstanceState);
     setContentView (activity_main);
-  
+    
     setupTabs ();
     /* ******************************************************************************************
      * Loads the pre-loaded scriptures into an array and loads them into the scripture view
@@ -54,24 +54,24 @@ public class MainActivity extends AppCompatActivity {
     // Mar 4, 2017
     // When an item in the list view is clicked,
     // Opens a new Scripture View Activity
-
+    
   }
   
   @Override
   protected void onResume () {
     super.onResume ();
-
+    
     omniList = list.getList ();
-
+    
     proView.setAdapter (null);
     memView.setAdapter (null);
     
     FillTabsFromList fillTabsFromList = new FillTabsFromList (memList, proList).invoke ();
     proView = fillTabsFromList.getProView ();
     memView = fillTabsFromList.getMemView ();
-
+    
   }
-
+  
   private void setupTabs () {
     TabHost host = (TabHost) findViewById (R.id.tabHostMain);
     host.setup ();
@@ -120,32 +120,32 @@ public class MainActivity extends AppCompatActivity {
     Intent i = new Intent (this, AddScriptureActivity.class);
     startActivity (i);
   }
-
+  
   private class FillTabsFromList {
     private ArrayList < ScriptureContainer > memList;
     private ArrayList < ScriptureContainer > proList;
     private ListView memView;
     private ListView proView;
-
+    
     public FillTabsFromList (ArrayList < ScriptureContainer > memList, ArrayList < ScriptureContainer > proList) {
       this.memList = memList;
       this.proList = proList;
     }
-
+    
     public ListView getMemView () {
       return memView;
     }
-
+    
     public ListView getProView () {
       return proView;
     }
-
+    
     public FillTabsFromList invoke () {
       proList.clear ();
       memList.clear ();
       omniList = list.getList ();
-
-
+      
+      
       // Look at scriptures, determine if completed or not
       // Adds to appropriate list view
       Log.v (getClass ().getSimpleName (), "Add scriptures to lists");
@@ -161,42 +161,42 @@ public class MainActivity extends AppCompatActivity {
           Log.v (getClass ().getSimpleName (), "Added");
         }
       }
-
+      
       Log.d (getClass ().getSimpleName (), "Set views");
       // grab list view reference
       memView = (ListView) findViewById (R.id.memorizedScripts);
       proView = (ListView) findViewById (R.id.progressingScripts);
-
+      
       Log.d (getClass ().getSimpleName (), "Create Adapters");
       // create new scripture adapter
       ScriptureAdapter memAdapter = new ScriptureAdapter (MainActivity.this, memList);
       ScriptureAdapter proAdapter = new ScriptureAdapter (MainActivity.this, proList);
-
+      
       Log.d (getClass ().getSimpleName (), "Update list views");
       // set list views adapter to new scripture adapter
       memView.setAdapter (memAdapter);
       proView.setAdapter (proAdapter);
       proView.setOnItemClickListener (
             new AdapterView.OnItemClickListener () {
-          
+              
               @Override
               public void onItemClick (AdapterView < ? > parent, View view, int position, long id) {
-            
+                
                 // Make a new Intent
                 Intent myIntent = new Intent (view.getContext (), ScriptureViewActivity.class);
-            
+                
                 // Grab References
                 TextView scriptureTitleView = (TextView) view.findViewById (R.id.list_item_scripture_title);
                 TextView scriptureTextView = (TextView) view.findViewById (R.id.list_item_scripture_text);
-            
+                
                 // Convert to string
                 String scriptureTitle = scriptureTitleView.getText ().toString ();
                 String scriptureText = scriptureTextView.getText ().toString ();
-            
+                
                 // Put into intent
                 myIntent.putExtra (SCRIPTURE_TITLE, scriptureTitle);
                 myIntent.putExtra (SCRIPTURE_TEXT, scriptureText);
-            
+                
                 // Open the new activity
                 startActivityForResult (myIntent, 0);
               }
@@ -209,27 +209,27 @@ public class MainActivity extends AppCompatActivity {
          * When an item in the list view is clicked,
          * Opens a new Scripture View Activity
          ************************************************************************************/
-  
+      
       memView.setOnItemClickListener (
             new AdapterView.OnItemClickListener () {
-          
+              
               @Override
               public void onItemClick (AdapterView < ? > parent, View view, int position, long id) {
-  
+                
                 // Make a new Intent
                 Intent myIntent = new Intent (view.getContext (), ScriptureViewActivity.class);
-  
+                
                 // Grab References
                 TextView scriptureTitleView = (TextView) view.findViewById (R.id.list_item_scripture_title);
                 TextView scriptureTextView = (TextView) view.findViewById (R.id.list_item_scripture_text);
-  
+                
                 // Convert to string
                 String scriptureTitle = scriptureTitleView.getText ().toString ();
                 String scriptureText = scriptureTextView.getText ().toString ();
-  
+                
                 // Put into intent
                 myIntent.putExtra (SCRIPTURE_TITLE, scriptureTitle).putExtra (SCRIPTURE_TEXT, scriptureText);
-  
+                
                 // Open the new activity
                 startActivityForResult (myIntent, 0);
               }
