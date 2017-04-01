@@ -54,65 +54,7 @@ public class MainActivity extends AppCompatActivity {
     // Mar 4, 2017
     // When an item in the list view is clicked,
     // Opens a new Scripture View Activity
-    
-    proView.setOnItemClickListener (
-          new AdapterView.OnItemClickListener () {
-            
-            @Override
-            public void onItemClick (AdapterView < ? > parent, View view, int position, long id) {
-              
-              // Make a new Intent
-              Intent myIntent = new Intent (view.getContext (), ScriptureViewActivity.class);
-              
-              // Grab References
-              TextView scriptureTitleView = (TextView) view.findViewById (R.id.list_item_scripture_title);
-              TextView scriptureTextView = (TextView) view.findViewById (R.id.list_item_scripture_text);
-              
-              // Convert to string
-              String scriptureTitle = scriptureTitleView.getText ().toString ();
-              String scriptureText = scriptureTextView.getText ().toString ();
-              
-              // Put into intent
-              myIntent.putExtra (SCRIPTURE_TITLE, scriptureTitle);
-              myIntent.putExtra (SCRIPTURE_TEXT, scriptureText);
-              
-              // Open the new activity
-              startActivityForResult (myIntent, 0);
-            }
-          });
 
-        /* ************************************************************************************
-         * LIST VIEW ON CLICK LISTENER
-         * Joseph Koetting
-         * Mar 4, 2017
-         * When an item in the list view is clicked,
-         * Opens a new Scripture View Activity
-         ************************************************************************************/
-    
-    memView.setOnItemClickListener (
-          new AdapterView.OnItemClickListener () {
-            
-            @Override
-            public void onItemClick (AdapterView < ? > parent, View view, int position, long id) {
-              
-              // Make a new Intent
-              Intent myIntent = new Intent (view.getContext (), ScriptureViewActivity.class);
-              
-              // Grab References
-              TextView scriptureTitleView = (TextView) view.findViewById (R.id.list_item_scripture_title);
-              TextView scriptureTextView = (TextView) view.findViewById (R.id.list_item_scripture_text);
-              
-              // Convert to string
-              String scriptureTitle = scriptureTitleView.getText ().toString ();
-              String scriptureText = scriptureTextView.getText ().toString ();
-              
-              // Put into intent
-              myIntent.putExtra (SCRIPTURE_TITLE, scriptureTitle).putExtra (SCRIPTURE_TEXT, scriptureText);
-              
-              // Open the new activity
-              startActivityForResult (myIntent, 0);
-            }
-          });
   }
   
   @Override
@@ -123,69 +65,11 @@ public class MainActivity extends AppCompatActivity {
 
     proView.setAdapter (null);
     memView.setAdapter (null);
-
-
+    
     FillTabsFromList fillTabsFromList = new FillTabsFromList (memList, proList).invoke ();
     proView = fillTabsFromList.getProView ();
     memView = fillTabsFromList.getMemView ();
-    proView.setOnItemClickListener (
-          new AdapterView.OnItemClickListener () {
 
-            @Override
-            public void onItemClick (AdapterView < ? > parent, View view, int position, long id) {
-
-              // Make a new Intent
-              Intent myIntent = new Intent (view.getContext (), ScriptureViewActivity.class);
-
-              // Grab References
-              TextView scriptureTitleView = (TextView) view.findViewById (R.id.list_item_scripture_title);
-              TextView scriptureTextView = (TextView) view.findViewById (R.id.list_item_scripture_text);
-
-              // Convert to string
-              String scriptureTitle = scriptureTitleView.getText ().toString ();
-              String scriptureText = scriptureTextView.getText ().toString ();
-
-              // Put into intent
-              myIntent.putExtra (SCRIPTURE_TITLE, scriptureTitle);
-              myIntent.putExtra (SCRIPTURE_TEXT, scriptureText);
-
-              // Open the new activity
-              startActivityForResult (myIntent, 0);
-            }
-          });
-
-        /* ************************************************************************************
-         * LIST VIEW ON CLICK LISTENER
-         * Joseph Koetting
-         * Mar 4, 2017
-         * When an item in the list view is clicked,
-         * Opens a new Scripture View Activity
-         ************************************************************************************/
-
-    memView.setOnItemClickListener (
-          new AdapterView.OnItemClickListener () {
-
-            @Override
-            public void onItemClick (AdapterView < ? > parent, View view, int position, long id) {
-
-              // Make a new Intent
-              Intent myIntent = new Intent (view.getContext (), ScriptureViewActivity.class);
-
-              // Grab References
-              TextView scriptureTitleView = (TextView) view.findViewById (R.id.list_item_scripture_title);
-              TextView scriptureTextView = (TextView) view.findViewById (R.id.list_item_scripture_text);
-
-              // Convert to string
-              String scriptureTitle = scriptureTitleView.getText ().toString ();
-              String scriptureText = scriptureTextView.getText ().toString ();
-
-              // Put into intent
-              myIntent.putExtra (SCRIPTURE_TITLE, scriptureTitle).putExtra (SCRIPTURE_TEXT, scriptureText);
-
-              // Open the new activity
-              startActivityForResult (myIntent, 0);
-            }
-          });
   }
 
   private void setupTabs () {
@@ -214,16 +98,6 @@ public class MainActivity extends AppCompatActivity {
   //For navigation testing buttons
   public void launch_ScriptureViewActivity (View view) {
     Intent i = new Intent (this, ScriptureViewActivity.class);
-    startActivity (i);
-  }
-  
-  /**
-   * Activity changer to MemorizeQuizActivity
-   *
-   * @param view Current view
-   */
-  public void launch_MemorizeQuizActivity (View view) {
-    Intent i = new Intent (this, MemorizeQuizActivity.class);
     startActivity (i);
   }
   
@@ -302,6 +176,65 @@ public class MainActivity extends AppCompatActivity {
       // set list views adapter to new scripture adapter
       memView.setAdapter (memAdapter);
       proView.setAdapter (proAdapter);
+      proView.setOnItemClickListener (
+            new AdapterView.OnItemClickListener () {
+          
+              @Override
+              public void onItemClick (AdapterView < ? > parent, View view, int position, long id) {
+            
+                // Make a new Intent
+                Intent myIntent = new Intent (view.getContext (), ScriptureViewActivity.class);
+            
+                // Grab References
+                TextView scriptureTitleView = (TextView) view.findViewById (R.id.list_item_scripture_title);
+                TextView scriptureTextView = (TextView) view.findViewById (R.id.list_item_scripture_text);
+            
+                // Convert to string
+                String scriptureTitle = scriptureTitleView.getText ().toString ();
+                String scriptureText = scriptureTextView.getText ().toString ();
+            
+                // Put into intent
+                myIntent.putExtra (SCRIPTURE_TITLE, scriptureTitle);
+                myIntent.putExtra (SCRIPTURE_TEXT, scriptureText);
+            
+                // Open the new activity
+                startActivityForResult (myIntent, 0);
+              }
+            });
+
+        /* ************************************************************************************
+         * LIST VIEW ON CLICK LISTENER
+         * Joseph Koetting
+         * Mar 4, 2017
+         * When an item in the list view is clicked,
+         * Opens a new Scripture View Activity
+         ************************************************************************************/
+  
+      memView.setOnItemClickListener (
+            new AdapterView.OnItemClickListener () {
+          
+              @Override
+              public void onItemClick (AdapterView < ? > parent, View view, int position, long id) {
+  
+                // Make a new Intent
+                Intent myIntent = new Intent (view.getContext (), ScriptureViewActivity.class);
+  
+                // Grab References
+                TextView scriptureTitleView = (TextView) view.findViewById (R.id.list_item_scripture_title);
+                TextView scriptureTextView = (TextView) view.findViewById (R.id.list_item_scripture_text);
+  
+                // Convert to string
+                String scriptureTitle = scriptureTitleView.getText ().toString ();
+                String scriptureText = scriptureTextView.getText ().toString ();
+  
+                // Put into intent
+                myIntent.putExtra (SCRIPTURE_TITLE, scriptureTitle).putExtra (SCRIPTURE_TEXT, scriptureText);
+  
+                // Open the new activity
+                startActivityForResult (myIntent, 0);
+              }
+            }
+      );
       return this;
     }
   }
