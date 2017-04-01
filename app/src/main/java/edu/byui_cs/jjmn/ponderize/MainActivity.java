@@ -48,13 +48,7 @@ public class MainActivity extends AppCompatActivity {
     FillTabsFromList fillTabsFromList = new FillTabsFromList (memList, proList).invoke ();
     proView = fillTabsFromList.getProView ();
     memView = fillTabsFromList.getMemView ();
-    
-    // LIST VIEW ON CLICK LISTENER
-    // Joseph Koetting
-    // Mar 4, 2017
-    // When an item in the list view is clicked,
-    // Opens a new Scripture View Activity
-    
+
   }
   
   @Override

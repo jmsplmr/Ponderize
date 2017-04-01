@@ -116,8 +116,7 @@ public class MemorizeQuizActivity extends AppCompatActivity {
       toast.show();
     }
 
-    if (guessIndex == originalVerse.length)
-    {
+    if (guessIndex == originalVerse.length) {
       Button btn = (Button) findViewById(R.id.checkBtn);
       btn.setVisibility(View.INVISIBLE);
 
@@ -128,9 +127,19 @@ public class MemorizeQuizActivity extends AppCompatActivity {
       shareButton.setVisibility(View.VISIBLE);
 
       Toast.makeText(getApplicationContext(), "Memorized", Toast.LENGTH_SHORT).show();
+
+
+      ScriptureList scriptureList = ScriptureList.getInstance();
+      List<ScriptureContainer> list = scriptureList.getList();
+
+      for (ScriptureContainer sc : list) {
+        Log.v("Searching", sc.getReference() + " ==? " + Title);
+        if (Title.equals(sc.getReference())) {
+          Log.v("FOUND", sc.getReference() + " == " + Title);
+          sc.setCompleted();
+        }
+      }
     }
-
-
   }
 
   public void getAnswer(View view) {
