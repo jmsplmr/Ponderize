@@ -27,6 +27,9 @@ public class ScriptureViewActivity extends AppActivity {
   String _scriptureTitle;
   String _scriptureText;
 
+  public static final String SCRIPTURE_TEXT = "SCRIPTURE_TEXT";
+  public static final String SCRIPTURE_TITLE = "SCRIPTURE_TITLE";
+
   // for the memorize tab
   private Stack<Integer> indexStack = new Stack<>();
   private String[] originalVerse;
@@ -232,6 +235,13 @@ public class ScriptureViewActivity extends AppActivity {
     }
 
     return builder.toString ();
+  }
+
+  public void toPractice(View view)
+  {
+    Intent i = new Intent (this, MemorizeQuizActivity.class);
+    i.putExtra(SCRIPTURE_TEXT, _scriptureText).putExtra(SCRIPTURE_TITLE, _scriptureTitle);
+    startActivity (i);
   }
 
 }
