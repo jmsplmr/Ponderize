@@ -126,8 +126,8 @@ public class ScriptureStorage {
       String json = new String (fileContent);
       Type listType = new TypeToken < ArrayList < ScriptureContainer > > () {
       }.getType ();
-      return gson.fromJson(json,listType);
-
+      return gson.fromJson (json, listType);
+      
     } catch ( Exception e ) {
       e.printStackTrace ();
     }
