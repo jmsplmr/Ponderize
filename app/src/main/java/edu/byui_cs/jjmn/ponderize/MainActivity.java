@@ -11,6 +11,8 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static edu.byui_cs.jjmn.ponderize.R.layout.activity_main;
@@ -138,7 +140,15 @@ public class MainActivity extends AppCompatActivity {
       proList.clear ();
       memList.clear ();
       omniList = list.getList ();
-      
+  
+      if (omniList.size() > 0) {
+        Collections.sort(omniList, new Comparator<ScriptureContainer> () {
+          @Override
+          public int compare(final ScriptureContainer object1, final ScriptureContainer object2) {
+            return object1.getReference ().compareTo(object2.getReference ());
+          }
+        });
+      }
       
       // Look at scriptures, determine if completed or not
       // Adds to appropriate list view
